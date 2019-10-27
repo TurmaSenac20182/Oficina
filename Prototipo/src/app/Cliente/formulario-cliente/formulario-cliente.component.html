@@ -1,0 +1,97 @@
+<div class=container>
+    <p class="TittleForm">Formulário de Cadastro</p>
+    <form class="">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="IDNome">Nome Completo</label>
+                <input type="text" class="form-control" id="IDNome" placeholder="Informe seu nome" maxlength="100">
+            </div>
+
+            <!--<div class="form-group col-md-6">
+        <label for="IDSenha">Senha</label>
+        <input type="password" class="form-control" id="IDSenha" placeholder="Informe sua senha">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="IDConfSenha">Confirmar Senha</label>
+        <input type="password" class="form-control" id="IDConfSenha" placeholder="Confirme sua senha">
+      </div>-->
+        </div>
+
+        <div class="form-group">
+            <label for="IDEndereco">Endereço</label>
+            <input type="text" class="form-control" id="IDEndereco" placeholder="Informe seu endereço">
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="IDCep">CEP</label>
+                <input type="text" class="form-control" id="IDCep" placeholder="Informe seu CEP" maxlength="9"
+                    pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
+            </div>
+
+
+            <div class="form-group col-md-4">
+                <label for="IDEstado">Estado</label>
+                <select id="IDEstado" class="form-control">
+                    <option selected>Selecione</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="ES">Estrangeiro</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="IDCidade">Cidade</label>
+                <input type="text" class="form-control" id="IDCidade" maxlength="50" placeholder="Informe sua cidade">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="IDCarro">Carro</label>
+                <input type="text" class="form-control" id="IDNome" placeholder="Modelo do Veículo" maxlength="20">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="IDCor">Cor</label>
+                <input type="text" class="form-control" id="IDCor" placeholder="Cor do Veículo" maxlength="20">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="IDPlaca">Placa</label>
+                <input type="text" class="form-control" id="IDPlaca" placeholder="Placa do Veículo" maxlength="20">
+            </div>
+
+
+        </div>
+        <div class="form-group">
+        </div>
+        <button type="submit" class="btn btn-dark">Cadastrar</button>
+    </form>
+</div>

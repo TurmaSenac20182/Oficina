@@ -1,0 +1,14 @@
+.container {
+    margin:auto;
+    width: 55em;
+    max-width: 100%;
+}
+
+.TittleForm{
+    padding-top: 2em;
+    font-size: 20px;
+    font-weight: 500;
+    font-family:verdana;
+    text-align: center;
+    vertical-align: center;
+}

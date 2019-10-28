@@ -1,0 +1,41 @@
+mvp 
+site terá que efetuar cadatsros  do lcientes 
+agenda serviço 
+e guarda informaçoes de notea fical 
+
+formulario de casatro de cliente 
+dados
+  nome
+  telefone
+  cpf 
+endereco
+  rua 
+  bairro
+  cidade
+  estado
+  cep 
+dados do carro
+  marca
+  modelo 
+  cor
+  placa
+  chaci?
+ordem de serviço
+  id
+  serviço
+  funcinnario
+  cliente
+  carro
+  data de entrada 
+  data de saida
+  descricao  
+  valor
+
+
+obs: pro fila quems abe fazer um banco de peças
+     
+
+  
+   
+ 
+ 

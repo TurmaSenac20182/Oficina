@@ -1,0 +1,24 @@
+pagina adm
+
+logo
+
+nav
+addclient
+gera ordem de serviço
+{
+  orçamento ou ordem
+}
+consultas
+{
+ ordens de serviço
+ relação de serviços
+}
+ 
+
+body
+ calandario
+
+
+obs: estoque ainda esta em discução.
+
+

@@ -5,11 +5,15 @@ e guarda informaçoes de notea fical
 
 formulario de casatro de cliente 
 dados
-  nome
-  telefone
+  nome  
   cpf 
+telefone
+ celular
+ residencial
+ email
 endereco
   rua 
+  numero
   bairro
   cidade
   estado
@@ -19,17 +23,24 @@ dados do carro
   modelo 
   cor
   placa
-  chaci?
+  ano
 ordem de serviço
-  id
-  serviço
-  funcinnario
+  id  
+  funcinario
   cliente
   carro
-  data
-  descricao
-  valor
+  dataEntada
+  dataSaida    
+  valortotal
+servicos 
+ descrição
+ valor
+ 
+ 
 
+ 
+
+  
      
 
   

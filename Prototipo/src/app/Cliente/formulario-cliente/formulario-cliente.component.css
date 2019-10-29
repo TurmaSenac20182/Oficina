@@ -1,37 +1,14 @@
 .container {
     margin:auto;
+    width: 55em;
     max-width: 100%;
 }
 
 .TittleForm{
-    margin: 0 auto;
     padding-top: 2em;
-    padding-bottom: 1em;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 500;
     font-family:verdana;
     text-align: center;
     vertical-align: center;
-}
-
-.ClassButton{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.form-button{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    align-items: center;
-    margin:20px;
-    padding: 3px 20px;
-    width: 40%;
-    height: 42px;
 }

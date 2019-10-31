@@ -1,1 +1,61 @@
-<p>ordem-servico works!</p>
+<div class="container">
+    <p class="TittleForm">Gerar ordem de serviço</p>
+    <form [formGroup]="servicoForm">
+        <fieldset class="col-md-12">
+            <legend>Ordem de Serviço</legend>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-4">
+                    <label for="IDFuncionaro">Nome do Funcionário</label>
+                    <input type="text" class="form-control" formControlName="funcionario" id="IDFuncionaro"
+                        placeholder="Informe o nome do funcionario" maxlength="100">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDMaoDeObra">Trabalho Realizado</label>
+                    <input type="text" class="form-control" formControlName="maoDeObra" id="IDMaoDeObra"
+                        placeholder="Informe a mão de obra" maxlength="100">
+                </div>
+
+
+                <div class="form-group col-md-4">
+                    <label for="IDValorServico">Valor do Serviço</label>
+                    <input type="text" class="form-control" formControlName="valorServico" id="IDValorServico"
+                        placeholder="Valor do serviço prestado" maxlength="100" onkeyup="OnlyNumbers(this);">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="IDDataEntrada">Data de Entrada</label>
+                    <input type="date" class="form-control" formControlName="dataEntrada" id="IDDataEntrada">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDDataSaida">Data de Saída</label>
+                    <input type="date" class="form-control" formControlName="dataSaida" id="IDDataSaida">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDValorTotal">Valor Total</label>
+                    <input type="text" class="form-control" formControlName="valorTotal" id="IDValorTotal"
+                        placeholder="Valor do total do serviço" maxlength="100" onkeyup="OnlyNumbers(this);">
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="IDDescricao">Descrição do Serviço</label>
+                    <textarea class="form-control" formControlName="descricao" id="IDDescricao" rows="5"></textarea>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="ClassButton">
+            <button type="submit" [disabled]="servicoForm.invalid" class="btn btn-dark form-button">Gerar</button>
+            <button type="reset" class="btn btn-info form-button">Limpar</button>
+        </div>
+    </form>
+</div>

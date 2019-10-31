@@ -12,8 +12,7 @@ export class FormularioClienteComponent implements OnInit {
   clienteForm: FormGroup;
   //cliente: Cliente;
 
-  constructor(
-              private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.clienteForm = this.formBuilder.group({
@@ -30,8 +29,8 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required, 
-          Validators.minLength(4),
-          Validators.maxLength(100),
+          Validators.minLength(11),
+          Validators.maxLength(15),
           Validators.pattern(/^[1-9]+$/)
         ]
       ],
@@ -40,7 +39,7 @@ export class FormularioClienteComponent implements OnInit {
         [
           Validators.required, 
           Validators.minLength(4),
-          Validators.maxLength(100),
+          Validators.maxLength(9),
           Validators.pattern(/^[1-9]+$/)
         ]
       ],
@@ -58,7 +57,7 @@ export class FormularioClienteComponent implements OnInit {
         [
           Validators.required, 
           Validators.minLength(4),
-          Validators.maxLength(100),
+          Validators.maxLength(10),
           Validators.pattern(/^[0-9]+$/)
         ]
       ],
@@ -67,7 +66,7 @@ export class FormularioClienteComponent implements OnInit {
         [
           Validators.required, 
           Validators.minLength(4),
-          Validators.maxLength(100),
+          Validators.maxLength(11),
           Validators.pattern(/^[0-9]+$/)
         ]
       ],
@@ -75,8 +74,8 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required, 
-          Validators.minLength(4),
-          Validators.maxLength(100),
+          Validators.minLength(8),
+          Validators.maxLength(9),
           Validators.pattern(/^[0-9]+$/)
         ]
       ],
@@ -112,7 +111,7 @@ export class FormularioClienteComponent implements OnInit {
         [
           Validators.required, 
           Validators.minLength(4),
-          Validators.maxLength(100),
+          Validators.maxLength(10),
           Validators.pattern(/^[0-9]+$/)
         ]
       ],

@@ -1,156 +1,166 @@
-<div class=container>
+<div class="container">
     <p class="TittleForm">Cadastro de Clientes</p>
-    <form [formGroup]="clienteForm" >
-            <fieldset class="col-md-12">
-                    <legend>Dados do Cliente</legend>
+    <form [formGroup]="clienteForm">
+        <fieldset class="col-md-12">
+            <legend>Dados do Cliente</legend>
             <!--<input type="text" class="SeparationForm" value="Dados do Cliente" readonly>-->
             <div class="form-row">
-                    
+
                 <div class="form-group col-md-4">
                     <label for="IDNome">Nome Completo</label>
-                    <input type="text" class="form-control" formControlName="nome" id="IDNome" placeholder="Informe seu nome" maxlength="100">
+                    <input type="text" class="form-control" formControlName="nome" id="IDNome"
+                        placeholder="Informe seu nome" maxlength="100">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDCpf">CPF</label>
-                    <input type="text" class="form-control" formControlName="cpf" id="IDCpf" placeholder="Informe seu CPF" onkeyup="OnlyNumbers(this);"
-                        maxlength="11">
+                    <input type="text" class="form-control" formControlName="cpf" id="IDCpf"
+                        placeholder="Informe seu CPF" onkeyup="OnlyNumbers(this);" maxlength="11">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDRg">RG</label>
-                    <input type="text" class="form-control" formControlName="rg" id="IDRg" placeholder="Informe seu RG" onkeyup="OnlyNumbers(this);"
-                        maxlength="9">
+                    <input type="text" class="form-control" formControlName="rg" id="IDRg" placeholder="Informe seu RG"
+                        onkeyup="OnlyNumbers(this);" maxlength="9">
                 </div>
 
             </div>
-      
 
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="IDEmail">Email</label>
-                <input type="email" class="form-control" formControlName="email" id="IDEmail" placeholder="Informe seu Email" maxlength="50">
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="IDEmail">Email</label>
+                    <input type="email" class="form-control" formControlName="email" id="IDEmail"
+                        placeholder="Informe seu Email" maxlength="50">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDResidencial">Telefone Residencial</label>
+                    <input type="text" class="form-control" formControlName="telefone" id="IDCpf"
+                        placeholder="Informe seu telefone residencial" onkeyup="OnlyNumbers(this);" maxlength="10">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDCelular">Telefone Celular</label>
+                    <input type="text" class="form-control" formControlName="celular" id="IDCelular"
+                        placeholder="Informe seu telefone celular" onkeyup="OnlyNumbers(this);" maxlength="11">
+                </div>
+
             </div>
 
-            <div class="form-group col-md-4">
-                <label for="IDResidencial">Telefone Residencial</label>
-                <input type="text" class="form-control" formControlName="telefone" id="IDCpf" placeholder="Informe seu telefone residencial"
-                    onkeyup="OnlyNumbers(this);" maxlength="10">
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="IDCelular">Telefone Celular</label>
-                <input type="text" class="form-control" formControlName="celular" id="IDCelular" placeholder="Informe seu telefone celular"
-                    onkeyup="OnlyNumbers(this);" maxlength="11">
-            </div>
-
-        </div>
-
-  </fieldset>
-  <fieldset class="col-md-12">
-        <legend>Endereço do Cliente</legend>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="IDCep">CEP</label>
-                <input type="text" class="form-control" formControlName="cep" id="IDCep" placeholder="Informe seu CEP" maxlength="9" pattern="\d{5}-?\d{3}"
-                    onkeyup="OnlyNumbersCEP(this);">
-            </div>
-
-
-            <div class="form-group col-md-4">
-                <label for="IDEstado">Estado</label>
-                <select formControlName="estado" id="IDEstado" class="form-control">
-                    <option selected>Selecione</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                    <option value="ET">Estrangeiro</option>
-                </select>
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="IDCidade">Cidade</label>
-                <input type="text" class="form-control" formControlName="cidade" id="IDCidade" maxlength="50" placeholder="Informe sua cidade">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="IDRua">Logradouro</label>
-                <input type="text" class="form-control" formControlName="logradouro" id="IDRua" placeholder="Informe seu endereço">
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="IDNumero">Número</label>
-                <input type="text" class="form-control" formControlName="numero" id="IDNumero" placeholder="Número residencial">
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="IDBairro">Bairro</label>
-                <input type="text" class="form-control" formControlName="bairro" id="IDBairro" maxlength="50" placeholder="Informe sua cidade">
-            </div>
-        </div>
         </fieldset>
-        <!-------------------------------------->
         <fieldset class="col-md-12">
-                <legend>Veículo do Cliente</legend>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="IDMarca">Marca</label>
-                <input type="text" class="form-control" formControlName="marca" id="IDMarca" placeholder="Marca do Carro" maxlength="20">
+            <legend>Endereço do Cliente</legend>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="IDCep">CEP</label>
+                    <input type="text" class="form-control" formControlName="cep" id="IDCep"
+                        placeholder="Informe seu CEP" maxlength="9" pattern="\d{5}-?\d{3}"
+                        onkeyup="OnlyNumbersCEP(this);">
+                </div>
+
+
+                <div class="form-group col-md-4">
+                    <label for="IDEstado">Estado</label>
+                    <select formControlName="estado" id="IDEstado" class="form-control">
+                        <option selected>Selecione</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                        <option value="ET">Estrangeiro</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDCidade">Cidade</label>
+                    <input type="text" class="form-control" formControlName="cidade" id="IDCidade" maxlength="50"
+                        placeholder="Informe sua cidade">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="IDRua">Logradouro</label>
+                    <input type="text" class="form-control" formControlName="logradouro" id="IDRua"
+                        placeholder="Informe seu endereço">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDNumero">Número</label>
+                    <input type="text" class="form-control" formControlName="numero" id="IDNumero"
+                        placeholder="Número residencial">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDBairro">Bairro</label>
+                    <input type="text" class="form-control" formControlName="bairro" id="IDBairro" maxlength="50"
+                        placeholder="Informe sua cidade">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="col-md-12">
+            <legend>Veículo do Cliente</legend>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="IDMarca">Marca</label>
+                    <input type="text" class="form-control" formControlName="marca" id="IDMarca"
+                        placeholder="Marca do Carro" maxlength="20">
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="IDCarro">Modelo</label>
+                    <input type="text" class="form-control" formControlName="modelo" id="IDNome"
+                        placeholder="Modelo do Carro" maxlength="20">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="IDCor">Cor</label>
+                    <input type="text" class="form-control" formControlName="cor" id="IDCor" placeholder="Cor do Carro"
+                        maxlength="20">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDPlaca">Placa</label>
+                    <input type="text" class="form-control" formControlName="placa" id="IDPlaca"
+                        placeholder="Placa do Carro" maxlength="20">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="IDPlaca">Ano</label>
+                    <input type="text" class="form-control" formControlName="ano" id="IDPlaca"
+                        placeholder="Ano do Carro" maxlength="20">
+                </div>
             </div>
 
-            <div class="form-group col-sm-6">
-                <label for="IDCarro">Modelo</label>
-                <input type="text" class="form-control" formControlName="modelo" id="IDNome" placeholder="Modelo do Carro" maxlength="20">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="IDCor">Cor</label>
-                <input type="text" class="form-control" formControlName="cor" id="IDCor" placeholder="Cor do Carro" maxlength="20">
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="IDPlaca">Placa</label>
-                <input type="text" class="form-control" formControlName="placa" id="IDPlaca" placeholder="Placa do Carro" maxlength="20">
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="IDPlaca">Ano</label>
-                <input type="text" class="form-control" formControlName="ano" id="IDPlaca" placeholder="Ano do Carro" maxlength="20">
-            </div>
-        </div>
-        
-    </fieldset>
+        </fieldset>
         <div class="ClassButton">
-
             <button type="submit" [disabled]="clienteForm.invalid" class="btn btn-dark form-button">Cadastrar</button>
             <button type="reset" class="btn btn-info form-button">Limpar</button>
-
         </div>
 
     </form>

@@ -1,6 +1,6 @@
 <div class=container>
     <p class="TittleForm">Cadastro de Clientes</p>
-    <form [formGroup]="clienteForm" (submit)="">
+    <form [formGroup]="clienteForm" >
             <fieldset class="col-md-12">
                     <legend>Dados do Cliente</legend>
             <!--<input type="text" class="SeparationForm" value="Dados do Cliente" readonly>-->
@@ -8,18 +8,18 @@
                     
                 <div class="form-group col-md-4">
                     <label for="IDNome">Nome Completo</label>
-                    <input type="text" class="form-control" [formGroup]="nome" id="IDNome" placeholder="Informe seu nome" maxlength="100">
+                    <input type="text" class="form-control" formControlName="nome" id="IDNome" placeholder="Informe seu nome" maxlength="100">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDCpf">CPF</label>
-                    <input type="text" class="form-control" [formGroup]="cpf" id="IDCpf" placeholder="Informe seu CPF" onkeyup="OnlyNumbers(this);"
+                    <input type="text" class="form-control" formControlName="cpf" id="IDCpf" placeholder="Informe seu CPF" onkeyup="OnlyNumbers(this);"
                         maxlength="11">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDRg">RG</label>
-                    <input type="text" class="form-control" [formGroup]="rg" id="IDRg" placeholder="Informe seu RG" onkeyup="OnlyNumbers(this);"
+                    <input type="text" class="form-control" formControlName="rg" id="IDRg" placeholder="Informe seu RG" onkeyup="OnlyNumbers(this);"
                         maxlength="9">
                 </div>
 
@@ -29,18 +29,18 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="IDEmail">Email</label>
-                <input type="email" class="form-control" [formGroup]="email" id="IDEmail" placeholder="Informe seu Email" maxlength="50">
+                <input type="email" class="form-control" formControlName="email" id="IDEmail" placeholder="Informe seu Email" maxlength="50">
             </div>
 
             <div class="form-group col-md-4">
                 <label for="IDResidencial">Telefone Residencial</label>
-                <input type="text" class="form-control" [formGroup]="telefone" id="IDCpf" placeholder="Informe seu telefone residencial"
+                <input type="text" class="form-control" formControlName="telefone" id="IDCpf" placeholder="Informe seu telefone residencial"
                     onkeyup="OnlyNumbers(this);" maxlength="10">
             </div>
 
             <div class="form-group col-md-4">
                 <label for="IDCelular">Telefone Celular</label>
-                <input type="text" class="form-control" [formGroup]="celular" id="IDCelular" placeholder="Informe seu telefone celular"
+                <input type="text" class="form-control" formControlName="celular" id="IDCelular" placeholder="Informe seu telefone celular"
                     onkeyup="OnlyNumbers(this);" maxlength="11">
             </div>
 
@@ -52,14 +52,14 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="IDCep">CEP</label>
-                <input type="text" class="form-control" [formGroup]="cep" id="IDCep" placeholder="Informe seu CEP" maxlength="9" pattern="\d{5}-?\d{3}"
+                <input type="text" class="form-control" formControlName="cep" id="IDCep" placeholder="Informe seu CEP" maxlength="9" pattern="\d{5}-?\d{3}"
                     onkeyup="OnlyNumbersCEP(this);">
             </div>
 
 
             <div class="form-group col-md-4">
                 <label for="IDEstado">Estado</label>
-                <select [formGroup]="estado" id="IDEstado" class="form-control">
+                <select formControlName="estado" id="IDEstado" class="form-control">
                     <option selected>Selecione</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
@@ -94,23 +94,23 @@
 
             <div class="form-group col-md-4">
                 <label for="IDCidade">Cidade</label>
-                <input type="text" class="form-control" [formGroup]="cidade" id="IDCidade" maxlength="50" placeholder="Informe sua cidade">
+                <input type="text" class="form-control" formControlName="cidade" id="IDCidade" maxlength="50" placeholder="Informe sua cidade">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="IDRua">Logradouro</label>
-                <input type="text" class="form-control" [formGroup]="logradouro" id="IDRua" placeholder="Informe seu endereço">
+                <input type="text" class="form-control" formControlName="logradouro" id="IDRua" placeholder="Informe seu endereço">
             </div>
 
             <div class="form-group col-md-4">
                 <label for="IDNumero">Número</label>
-                <input type="text" class="form-control" [formGroup]="numero" id="IDNumero" placeholder="Número residencial">
+                <input type="text" class="form-control" formControlName="numero" id="IDNumero" placeholder="Número residencial">
             </div>
 
             <div class="form-group col-md-4">
                 <label for="IDBairro">Bairro</label>
-                <input type="text" class="form-control" [formGroup]="bairro" id="IDBairro" maxlength="50" placeholder="Informe sua cidade">
+                <input type="text" class="form-control" formControlName="bairro" id="IDBairro" maxlength="50" placeholder="Informe sua cidade">
             </div>
         </div>
         </fieldset>
@@ -120,28 +120,28 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="IDMarca">Marca</label>
-                <input type="text" class="form-control"[formGroup]="marca" id="IDMarca" placeholder="Marca do Carro" maxlength="20">
+                <input type="text" class="form-control" formControlName="marca" id="IDMarca" placeholder="Marca do Carro" maxlength="20">
             </div>
 
             <div class="form-group col-sm-6">
                 <label for="IDCarro">Modelo</label>
-                <input type="text" class="form-control" [formGroup]="modelo" id="IDNome" placeholder="Modelo do Carro" maxlength="20">
+                <input type="text" class="form-control" formControlName="modelo" id="IDNome" placeholder="Modelo do Carro" maxlength="20">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="IDCor">Cor</label>
-                <input type="text" class="form-control" [formGroup]="cor" id="IDCor" placeholder="Cor do Carro" maxlength="20">
+                <input type="text" class="form-control" formControlName="cor" id="IDCor" placeholder="Cor do Carro" maxlength="20">
             </div>
 
             <div class="form-group col-md-4">
                 <label for="IDPlaca">Placa</label>
-                <input type="text" class="form-control" [formGroup]="placa" id="IDPlaca" placeholder="Placa do Carro" maxlength="20">
+                <input type="text" class="form-control" formControlName="placa" id="IDPlaca" placeholder="Placa do Carro" maxlength="20">
             </div>
 
             <div class="form-group col-md-4">
                 <label for="IDPlaca">Ano</label>
-                <input type="text" class="form-control" [formGroup]="ano" id="IDPlaca" placeholder="Ano do Carro" maxlength="20">
+                <input type="text" class="form-control" formControlName="ano" id="IDPlaca" placeholder="Ano do Carro" maxlength="20">
             </div>
         </div>
         

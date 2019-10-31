@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,12 +16,12 @@ import { OrdemServicoComponent } from './ordem-servico/ordem-servico.component';
     AppComponent,
     FormularioClienteComponent,
     HomeComponent,
-    FormsModule,
-    HttpClient,
     OrdemServicoComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     routing
   ],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,14 +12,165 @@ export class FormularioClienteComponent implements OnInit {
   clienteForm: FormGroup;
   //cliente: Cliente;
 
-  constructor(private route: Route,
-              private router: ActivatedRoute,
-              private formbuilder: FormBuilder) { }
+  constructor(
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.clienteForm = this.formbuilder.group({
-      
-    })
+    this.clienteForm = this.formBuilder.group({
+      nome: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z ]+$/)
+        ]
+      ],
+      cpf: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[1-9]+$/)
+        ]
+      ],
+      rg: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[1-9]+$/)
+        ]
+      ],
+      email: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z *]+$/)
+        ]
+      ],
+      telefone: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[0-9]+$/)
+        ]
+      ],
+      celular: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[0-9]+$/)
+        ]
+      ],
+      cep: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[0-9]+$/)
+        ]
+      ],
+      estado: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z ]+$/)
+        ]
+      ],
+      cidade: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z ]+$/)
+        ]
+      ],
+      logradouro: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z0-9 ]+$/)
+        ]
+      ],
+      numero: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[0-9]+$/)
+        ]
+      ],
+      bairro: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z *]+$/)
+        ]
+      ],
+      marca: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z *]+$/)
+        ]
+      ],
+      modelo: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z0-9 *]+$/)
+        ]
+      ],
+      cor: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z ]+$/)
+        ]
+      ],
+      placa: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z0-9-]+$/)
+        ]
+      ],
+      ano: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[0-9]+$/)
+        ]
+      ]
+    });
   }
 
 }

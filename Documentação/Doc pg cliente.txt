@@ -1,0 +1,1 @@
+Na página de lista de cliente cada linha da lista será um botão que levará para o formulário de exibição que será aproveitado o de cadastro. Na exibição dos dados terá um botão de edição de dados que dará ao usuário a possibilidade de editar os dados do cliente.

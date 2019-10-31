@@ -1,12 +1,20 @@
-
 @font-face {
     font-family: Poppins-Regular;
     src: url('/src/assets/fonts/poppins/Poppins-Regular.ttf');
 }
 
 @font-face {
+    font-family: Montserrat-Bold;
+    src: url('/src/assets/fonts/montserrat/Montserrat-Bold.ttf');
+}
+
+@font-face {
     font-family: Poppins-Bold;
     src: url('/src/assets/fonts/poppins/Poppins-Bold.ttf');
+}
+
+* {
+    font-family: Poppins-Bold, sans-serif;
 }
 
 .container {
@@ -15,29 +23,33 @@
     max-width: 100%;
 }
 
-.TittleForm{
+.TittleForm {
     margin: 0 auto;
     padding-top: 2em;
     padding-bottom: 1em;
     font-size: 27px;
     font-weight: 500;
-    font-family: Poppins-Bold;
     text-align: center;
     vertical-align: center;
 }
 
+input:hover {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid groove;
+}
+
 fieldset {
-    border:2px rgb(172, 167, 167) solid;
-    border-radius: 7px; 
+    border: 2px rgb(172, 167, 167) solid;
+    border-radius: 7px;
     margin-bottom: 1em;
 }
+
 legend {
-    font-family: Poppins-Bold;
     font-size: 20px;
     width: auto;
 }
-.ClassButton{
-    font-family: Poppins-Bold;
+
+.ClassButton {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -47,45 +59,14 @@ legend {
     justify-content: center;
 }
 
-
-
-.form-button{
+.form-button {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -ms-flexbox;
     align-items: center;
-    margin:20px;
+    margin: 20px;
     padding: 3px 20px;
     width: 40%;
     height: 42px;
-}
-
-input{
-    font-family: Poppins-Bold;
-}
-
-.SeparationForm{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: center;
-    margin: 0 auto;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-size: 15px;
-    padding-top: 0.1em;
-    padding-bottom: 0.1em;
-    padding-right: 5em;
-    padding-left: 5em;
-    max-width: 100%;
-    border: 1px solid rgb(49, 49, 49);
-    border-radius: 7px; 
-    font-weight: 400;
-  
-    
 }

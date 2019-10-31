@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { FormularioClienteComponent } from './formulario-cliente/formulario-clie
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 import { OrdemServicoComponent } from './ordem-servico/ordem-servico.component';
+import { CepComponent } from './cep/cep.component';
 
 
 @NgModule({
@@ -16,14 +17,16 @@ import { OrdemServicoComponent } from './ordem-servico/ordem-servico.component';
     AppComponent,
     FormularioClienteComponent,
     HomeComponent,
-    OrdemServicoComponent
+    OrdemServicoComponent,
+    CepComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    routing
+    routing,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

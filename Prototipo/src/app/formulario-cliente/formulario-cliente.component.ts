@@ -115,6 +115,15 @@ export class FormularioClienteComponent implements OnInit {
           Validators.pattern(/^[0-9]+$/)
         ]
       ],
+      complemento: [
+        '',
+        [
+          Validators.required, 
+          Validators.minLength(4),
+          Validators.maxLength(100),
+          Validators.pattern(/^[a-zA-Z *]+$/)
+        ]
+      ],
       bairro: [
         '',
         [

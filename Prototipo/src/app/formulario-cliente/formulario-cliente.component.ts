@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Route, ActivatedRoute } from '@angular/router';
+import { Cep } from '../Cep';
+import { CepService } from '../services/cep.service';
+
 
 @Component({
   selector: 'app-formulario-cliente',
@@ -9,11 +11,37 @@ import { Route, ActivatedRoute } from '@angular/router';
 })
 export class FormularioClienteComponent implements OnInit {
 
+//Preencher campos do cep
+  cep : Cep = {
+    cep : "",
+    logradouro : "",
+    complemento : "",
+    bairro : "",
+    numero : "",
+    localidade : "",
+    uf : ""
+  }
+
+  ArrayCep = [];
+
+  AddCep(){
+    let newCep = Object.assign({}, this.cep);
+    this.ArrayCep.push(newCep);
+  }
+
   clienteForm: FormGroup;
   //cliente: Cliente;
 
-  constructor(private formBuilder: FormBuilder) { }
 
+  constructor(private formBuilder: FormBuilder, private _cepService:CepService) { }
+  
+//Consultar cep
+  buscarCep(){
+    this._cepService.buscarCepService(this.cep.cep)
+      .then((cep:Cep) => this.cep = cep);
+  }
+
+  
   ngOnInit() {
     this.clienteForm = this.formBuilder.group({
       nome: [

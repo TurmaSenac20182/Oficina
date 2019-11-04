@@ -8,17 +8,17 @@
 
                 <div class="form-group col-md-4">
                     <label for="IDNome">Nome Completo</label>
-                    <input type="text" class="form-control" formControlName="nome" id="IDNome" placeholder="Informe seu nome" maxlength="100">
+                    <input type="text" class="form-control" formControlName="nome" id="IDNome" maxlength="100">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDCpf">CPF</label>
-                    <input type="text" class="form-control" formControlName="cpf" id="IDCpf" placeholder="Informe seu CPF" onkeyup="OnlyNumbers(this);" maxlength="11">
+                    <input type="text" class="form-control" formControlName="cpf" id="IDCpf" onkeyup="OnlyNumbers(this);" maxlength="11">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDRg">RG</label>
-                    <input type="text" class="form-control" formControlName="rg" id="IDRg" placeholder="Informe seu RG" onkeyup="OnlyNumbers(this);" maxlength="9">
+                    <input type="text" class="form-control" formControlName="rg" id="IDRg" onkeyup="OnlyNumbers(this);" maxlength="9">
                 </div>
 
             </div>
@@ -27,28 +27,28 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="IDEmail">Email</label>
-                    <input type="email" class="form-control" formControlName="email" id="IDEmail" placeholder="Informe seu Email" maxlength="50">
+                    <input type="email" class="form-control" formControlName="email" id="IDEmail" maxlength="50">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDResidencial">Telefone Residencial</label>
-                    <input type="text" class="form-control" formControlName="telefone" id="IDCpf" placeholder="Informe seu telefone residencial" onkeyup="OnlyNumbers(this);" maxlength="10">
+                    <input type="text" class="form-control" formControlName="telefone" id="IDCpf" onkeyup="OnlyNumbers(this);" maxlength="10">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDCelular">Telefone Celular</label>
-                    <input type="text" class="form-control" formControlName="celular" id="IDCelular" placeholder="Informe seu telefone celular" onkeyup="OnlyNumbers(this);" maxlength="11">
+                    <input type="text" class="form-control" formControlName="celular" id="IDCelular" onkeyup="OnlyNumbers(this);" maxlength="11">
                 </div>
             </div>
 
         </fieldset>
         <fieldset class="col-md-12">
             <legend>Endereço do Cliente</legend>
+
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="IDCep">CEP</label>
-                    <input type="text" class="form-control" formControlName="cep" [(ngModel)]="cep.cep" id="IDCep" placeholder="Informe seu CEP" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbersCEP(this);">
-                    <button type="button" (click)="buscarCep()"> buscar </button>
+                    <input type="text" class="form-control" (keyup)="buscarCep()" formControlName="cep" [(ngModel)]="cep.cep" id="IDCep" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
                 </div>
 
                 <div class="form-group col-md-4">
@@ -88,28 +88,28 @@
 
                 <div class="form-group col-md-4">
                     <label for="IDCidade">Cidade</label>
-                    <input type="text" class="form-control" formControlName="cidade" [(ngModel)]="cep.localidade" id="IDCidade" maxlength="50" placeholder="Informe sua cidade">
+                    <input type="text" class="form-control" formControlName="cidade" [(ngModel)]="cep.localidade" id="IDCidade" maxlength="50">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="IDRua">Logradouro</label>
-                    <input type="text" class="form-control" formControlName="logradouro" [(ngModel)]="cep.logradouro" id="IDRua" placeholder="Informe seu endereço">
+                    <input type="text" class="form-control" formControlName="logradouro" [(ngModel)]="cep.logradouro" id="IDRua">
                 </div>
 
                 <div class="form-group col-md-2">
                     <label for="IDNumero">Número</label>
-                    <input type="text" class="form-control" formControlName="numero" id="IDNumero" placeholder="Número residencial">
+                    <input type="text" class="form-control" formControlName="numero" onkeyup="OnlyNumbers(this);" id="IDNumero">
                 </div>
 
                 <div class="form-group col-md-3">
                     <label for="IDComplemento">Complemento</label>
-                    <input type="text" class="form-control" formControlName="complemento" [(ngModel)]="cep.complemento" id="IDComplemento" maxlength="50" placeholder="Informe sua cidade">
+                    <input type="text" class="form-control" formControlName="complemento" [(ngModel)]="cep.complemento" id="IDComplemento" maxlength="50">
                 </div>
 
                 <div class="form-group col-md-3">
                     <label for="IDBairro">Bairro</label>
-                    <input type="text" class="form-control" formControlName="bairro" [(ngModel)]="cep.bairro" id="IDBairro" maxlength="50" placeholder="Informe seu bairro">
+                    <input type="text" class="form-control" formControlName="bairro" [(ngModel)]="cep.bairro" id="IDBairro" maxlength="50">
                 </div>
 
 
@@ -121,28 +121,28 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="IDMarca">Marca</label>
-                    <input type="text" class="form-control" formControlName="marca" id="IDMarca" placeholder="Marca do Carro" maxlength="20">
+                    <input type="text" class="form-control" formControlName="marca" id="IDMarca">
                 </div>
 
                 <div class="form-group col-sm-6">
                     <label for="IDCarro">Modelo</label>
-                    <input type="text" class="form-control" formControlName="modelo" id="IDNome" placeholder="Modelo do Carro" maxlength="20">
+                    <input type="text" class="form-control" formControlName="modelo" id="IDNome">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="IDCor">Cor</label>
-                    <input type="text" class="form-control" formControlName="cor" id="IDCor" placeholder="Cor do Carro" maxlength="20">
+                    <input type="text" class="form-control" formControlName="cor" id="IDCor">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDPlaca">Placa</label>
-                    <input type="text" class="form-control" formControlName="placa" id="IDPlaca" placeholder="Placa do Carro" maxlength="20">
+                    <input type="text" class="form-control" formControlName="placa" id="IDPlaca">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDPlaca">Ano</label>
-                    <input type="text" class="form-control" formControlName="ano" id="IDPlaca" placeholder="Ano do Carro" maxlength="20">
+                    <input type="text" class="form-control" formControlName="ano" id="IDPlaca" onkeyup="OnlyNumbers(this);">
                 </div>
             </div>
 

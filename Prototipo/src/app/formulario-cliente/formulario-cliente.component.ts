@@ -11,199 +11,197 @@ import { CepService } from '../services/cep.service';
 })
 export class FormularioClienteComponent implements OnInit {
 
-//Preencher campos do cep
-  cep : Cep = {
-    cep : "",
-    logradouro : "",
-    complemento : "",
-    bairro : "",
-    numero : "",
-    localidade : "",
-    uf : ""
+  //Preencher campos do cep
+  cep: Cep = {
+    cep: "",
+    logradouro: "",
+    complemento: "",
+    bairro: "",
+    numero: "",
+    localidade: "",
+    uf: ""
   }
 
   ArrayCep = [];
 
-  AddCep(){
+  AddCep() {
     let newCep = Object.assign({}, this.cep);
     this.ArrayCep.push(newCep);
   }
 
   clienteForm: FormGroup;
-  //cliente: Cliente;
+  //  cliente: Cliente;
 
 
-  constructor(private formBuilder: FormBuilder, private _cepService:CepService) { }
-  
-//Consultar cep
-  buscarCep(){
+  constructor(private formBuilder: FormBuilder, private _cepService: CepService) { }
+
+  //Consultar cep
+  buscarCep() {
     this._cepService.buscarCepService(this.cep.cep)
-      .then((cep:Cep) => this.cep = cep);
+      .then((cep: Cep) => this.cep = cep);
   }
 
-  
+
   ngOnInit() {
     this.clienteForm = this.formBuilder.group({
       nome: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z ]+$/)
+          Validators.pattern('^[a-zA-Z ]+$')
         ]
       ],
       cpf: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(11),
-          Validators.maxLength(15),
-          Validators.pattern(/^[1-9]+$/)
+          Validators.maxLength(11),
+          Validators.pattern('^[0-9]+$')
         ]
       ],
       rg: [
         '',
         [
-          Validators.required, 
-          Validators.minLength(4),
+          Validators.required,
+          Validators.minLength(9),
           Validators.maxLength(9),
-          Validators.pattern(/^[1-9]+$/)
+          Validators.pattern('^[0-9]+$')
         ]
       ],
       email: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
-          Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z *]+$/)
+          Validators.maxLength(100)
         ]
       ],
       telefone: [
         '',
         [
-          Validators.required, 
-          Validators.minLength(4),
+          Validators.required,
+          Validators.minLength(10),
           Validators.maxLength(10),
-          Validators.pattern(/^[0-9]+$/)
+          Validators.pattern('^[0-9]+$')
         ]
       ],
       celular: [
         '',
         [
-          Validators.required, 
-          Validators.minLength(4),
+          Validators.required,
+          Validators.minLength(11),
           Validators.maxLength(11),
-          Validators.pattern(/^[0-9]+$/)
+          Validators.pattern('^[0-9]+$')
         ]
       ],
       cep: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(8),
           Validators.maxLength(9),
-          Validators.pattern(/^[0-9]+$/)
+          Validators.pattern('^[0-9-]+$')
         ]
       ],
       estado: [
         '',
         [
-          Validators.required, 
-          Validators.minLength(4),
-          Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z ]+$/)
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+          Validators.pattern('^[a-zA-Z ]+$')
         ]
       ],
       cidade: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z ]+$/)
+          Validators.pattern('^[a-zA-Z ]+$')
         ]
       ],
       logradouro: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z0-9 ]+$/)
+          Validators.pattern('^[a-zA-Z0-9 ]+$')
         ]
       ],
       numero: [
         '',
         [
-          Validators.required, 
-          Validators.minLength(4),
+          Validators.required,
           Validators.maxLength(10),
-          Validators.pattern(/^[0-9]+$/)
+          Validators.pattern('^[0-9]+$')
         ]
       ],
       complemento: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z *]+$/)
+          Validators.pattern('^[a-zA-Z0-9 -]+$')
         ]
       ],
       bairro: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z *]+$/)
+          Validators.pattern('^[a-zA-Z0-9 -]+$')
         ]
       ],
       marca: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z *]+$/)
+          Validators.pattern('^[a-zA-Z ]+$')
         ]
       ],
       modelo: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z0-9 *]+$/)
+          Validators.pattern('^[a-zA-Z0-9 -]+$')
         ]
       ],
       cor: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z ]+$/)
+          Validators.pattern('^[a-zA-Z ]+$')
         ]
       ],
       placa: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
-          Validators.maxLength(100),
-          Validators.pattern(/^[a-zA-Z0-9-]+$/)
+          Validators.maxLength(20),
+           Validators.pattern('^[a-zA-Z0-9-]+$')
         ]
       ],
       ano: [
         '',
         [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(4),
-          Validators.maxLength(100),
-          Validators.pattern(/^[0-9]+$/)
+          Validators.maxLength(4),
+          Validators.pattern('^[0-9]+$')
         ]
       ]
     });

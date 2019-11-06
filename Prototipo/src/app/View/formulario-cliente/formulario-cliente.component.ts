@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Cep } from '../Cep';
-import { CepService } from '../services/cep.service';
+import { Cep } from 'src/app/Model/Cep';
+import { CepService } from 'src/app/services/cep.service';
+
 
 
 @Component({
@@ -48,7 +49,7 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(1),
           Validators.maxLength(100),
           Validators.pattern('^[a-zA-Z ]+$')
         ]
@@ -75,7 +76,7 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(2),
           Validators.maxLength(100)
         ]
       ],
@@ -103,7 +104,7 @@ export class FormularioClienteComponent implements OnInit {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(9),
-          Validators.pattern('^[0-9-]+$')
+          Validators.pattern('^[0-9]+$')
         ]
       ],
       estado: [
@@ -112,7 +113,7 @@ export class FormularioClienteComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(50),
-          Validators.pattern('^[a-zA-Z ]+$')
+          Validators.pattern('^[a-zA-Z ´~ ]+$')
         ]
       ],
       cidade: [
@@ -121,7 +122,7 @@ export class FormularioClienteComponent implements OnInit {
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
-          Validators.pattern('^[a-zA-Z ]+$')
+          //Validators.pattern('^[a-zA-Z -ç~´]+$')
         ]
       ],
       logradouro: [
@@ -136,7 +137,7 @@ export class FormularioClienteComponent implements OnInit {
       numero: [
         '',
         [
-          Validators.required,
+          //Validators.required,
           Validators.maxLength(10),
           Validators.pattern('^[0-9]+$')
         ]
@@ -144,7 +145,7 @@ export class FormularioClienteComponent implements OnInit {
       complemento: [
         '',
         [
-          Validators.required,
+          //Validators.required,
           Validators.minLength(4),
           Validators.maxLength(100),
           Validators.pattern('^[a-zA-Z0-9 -]+$')

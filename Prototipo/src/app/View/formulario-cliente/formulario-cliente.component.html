@@ -5,7 +5,6 @@
             <legend>Dados do Cliente</legend>
             <!--<input type="text" class="SeparationForm" value="Dados do Cliente" readonly>-->
             <div class="form-row">
-
                 <div class="form-group col-md-4">
                     <label for="IDNome">Nome Completo</label>
                     <input type="text" class="form-control" formControlName="nome" id="IDNome" maxlength="100">
@@ -20,9 +19,7 @@
                     <label for="IDRg">RG</label>
                     <input type="text" class="form-control" formControlName="rg" id="IDRg" onkeyup="OnlyNumbers(this);" maxlength="9">
                 </div>
-
             </div>
-
 
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -40,7 +37,6 @@
                     <input type="text" class="form-control" formControlName="celular" id="IDCelular" onkeyup="OnlyNumbers(this);" maxlength="11">
                 </div>
             </div>
-
         </fieldset>
         <fieldset class="col-md-12">
             <legend>Endereço do Cliente</legend>
@@ -111,8 +107,6 @@
                     <label for="IDBairro">Bairro</label>
                     <input type="text" class="form-control" formControlName="bairro" [(ngModel)]="cep.bairro" id="IDBairro" maxlength="50">
                 </div>
-
-
             </div>
         </fieldset>
 
@@ -151,6 +145,5 @@
             <button type="submit" [disabled]="clienteForm.invalid" class="btn btn-dark form-button">Cadastrar</button>
             <button type="reset" class="btn btn-info form-button">Limpar</button>
         </div>
-
     </form>
 </div>

@@ -1,4 +1,4 @@
-export class contato {
+export class Contato {
     
         idContato: number;
         tel1: string;

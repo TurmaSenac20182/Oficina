@@ -1,4 +1,4 @@
-export class ordemSerivco{       
+export class OrdemSerivco{       
   
     idordemServico: number;
     cliente_ordemServ: string;

@@ -1,4 +1,4 @@
-export class servicos{
+export class Servicos{
     
         idServico: number;
         descricao: string;

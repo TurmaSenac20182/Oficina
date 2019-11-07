@@ -1,4 +1,4 @@
-export class  dadoCarro {
+export class  DadoCarro {
     
     idCarro : number;
     marca: string;

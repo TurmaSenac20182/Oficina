@@ -9,13 +9,17 @@ import { FormularioClienteComponent } from '../app/View/formulario-cliente/formu
 import { HomeComponent } from '../app/View/home/home.component';
 import { routing } from './app.routing';
 import { OrdemServicoComponent } from '../app/View/ordem-servico/ordem-servico.component';
+import { ListaClienteComponent } from './View/lista-cliente/lista-cliente.component';
+import { ListaOsComponent } from './View/lista-os/lista-os.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioClienteComponent,
     HomeComponent,
-    OrdemServicoComponent
+    OrdemServicoComponent,
+    ListaClienteComponent,
+    ListaOsComponent
   ],
   imports: [
     BrowserModule,

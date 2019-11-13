@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cep } from 'src/app/Model/Cep';
 import { CepService } from 'src/app/services/cep.service';
+import { TesteBanco } from 'src/app/Model/TesteBanco';
+import { DAOService } from 'src/app/services/dao.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -12,6 +15,8 @@ import { CepService } from 'src/app/services/cep.service';
 })
 export class FormularioClienteComponent implements OnInit {
 
+
+    cliente: TesteBanco;
   //Preencher campos do cep
   cep: Cep = {
     cep: "",
@@ -34,7 +39,11 @@ export class FormularioClienteComponent implements OnInit {
   //  cliente: Cliente;
 
 
-  constructor(private formBuilder: FormBuilder, private _cepService: CepService) { }
+  constructor(private formBuilder: FormBuilder,
+     private _cepService: CepService ,
+      private DAO: DAOService,
+      private route: ActivatedRoute, 
+      private router: Router,) { }
 
   //Consultar cep
   buscarCep() {
@@ -206,6 +215,24 @@ export class FormularioClienteComponent implements OnInit {
         ]
       ]
     });
+  }
+
+  addCliente() {
+    // Resgata os valores do campo e faz um cast(conversão) para o modelo Cliente
+    const novoCliente = this.clienteForm.getRawValue() as TesteBanco;
+
+    this.DAO
+      .Insert(novoCliente)
+      .subscribe(
+        () => { // arrow function
+         this.router.navigateByUrl('/list-cliente'); // redireciona para a pagina list
+         this.clienteForm.reset(); // Limpa os campos do formulario
+        },
+        error => {
+          console.log(error);
+          this.clienteForm.reset();
+        }
+      );
   }
 
 }

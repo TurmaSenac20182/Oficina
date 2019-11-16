@@ -5,17 +5,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormularioClienteComponent } from './formulario-cliente/formulario-cliente.component';
-import { HomeComponent } from './home/home.component';
+import { FormularioClienteComponent } from '../app/View/formulario-cliente/formulario-cliente.component';
+import { HomeComponent } from '../app/View/home/home.component';
 import { routing } from './app.routing';
-import { OrdemServicoComponent } from './ordem-servico/ordem-servico.component';
+import { OrdemServicoComponent } from '../app/View/ordem-servico/ordem-servico.component';
+import { ListaClienteComponent } from './View/lista-cliente/lista-cliente.component';
+import { ListaOsComponent } from './View/lista-os/lista-os.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioClienteComponent,
     HomeComponent,
-    OrdemServicoComponent
+    OrdemServicoComponent,
+    ListaClienteComponent,
+    ListaOsComponent
   ],
   imports: [
     BrowserModule,

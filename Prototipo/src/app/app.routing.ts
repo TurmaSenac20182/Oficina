@@ -1,8 +1,10 @@
 import {Routes, RouterModule} from '@angular/router';
-import { FormularioClienteComponent } from './formulario-cliente/formulario-cliente.component';
-import { HomeComponent } from './home/home.component';
+import { FormularioClienteComponent } from 'src/app/View/formulario-cliente/formulario-cliente.component';
+import { HomeComponent } from 'src/app/View/home/home.component';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
-import { OrdemServicoComponent } from './ordem-servico/ordem-servico.component';
+import { OrdemServicoComponent } from 'src/app/View/ordem-servico/ordem-servico.component';
+import { ListaClienteComponent } from './View/lista-cliente/lista-cliente.component';
+import { ListaOsComponent } from './View/lista-os/lista-os.component';
 
 
 const APP_Routes: Routes=[
@@ -15,6 +17,12 @@ const APP_Routes: Routes=[
     },
     {
         path: 'ordem-servico', component:OrdemServicoComponent
+    },
+    {
+        path: 'lista-cliente', component:ListaClienteComponent
+    },
+    {
+        path: 'lista-os', component:ListaOsComponent
     }
     ];
 

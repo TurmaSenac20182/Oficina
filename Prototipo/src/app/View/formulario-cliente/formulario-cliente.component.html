@@ -1,3 +1,34 @@
+<div class="body">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href=""><img src="/assets/images/LogoB2.png" width="60px" height="45px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="formulario-cliente"><i class="fas fa-user-plus fa-md"></i> Cliente</a>
+            </li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="ordem-servico"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fab fa-searchengin fa-md"></i> Consultas</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="lista-cliente">Clientes</a>
+                    <a class="dropdown-item" href="lista-os">Ordens de serviço</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
     <p class="TittleForm">Cadastro de Clientes</p>
     <form [formGroup]="clienteForm">
@@ -5,7 +36,6 @@
             <legend>Dados do Cliente</legend>
             <!--<input type="text" class="SeparationForm" value="Dados do Cliente" readonly>-->
             <div class="form-row">
-
                 <div class="form-group col-md-4">
                     <label for="IDNome">Nome Completo</label>
                     <input type="text" class="form-control" formControlName="nome" id="IDNome" maxlength="100">
@@ -13,16 +43,16 @@
 
                 <div class="form-group col-md-4">
                     <label for="IDCpf">CPF</label>
-                    <input type="text" class="form-control" formControlName="cpf" id="IDCpf" onkeyup="OnlyNumbers(this);" maxlength="11">
+                    <input type="text" class="form-control" formControlName="cpf" id="IDCpf" onkeyup="OnlyNumbers(this);"
+                        maxlength="11">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDRg">RG</label>
-                    <input type="text" class="form-control" formControlName="rg" id="IDRg" onkeyup="OnlyNumbers(this);" maxlength="9">
+                    <input type="text" class="form-control" formControlName="rg" id="IDRg" onkeyup="OnlyNumbers(this);"
+                        maxlength="9">
                 </div>
-
             </div>
-
 
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -32,15 +62,16 @@
 
                 <div class="form-group col-md-4">
                     <label for="IDResidencial">Telefone Residencial</label>
-                    <input type="text" class="form-control" formControlName="telefone" id="IDCpf" onkeyup="OnlyNumbers(this);" maxlength="10">
+                    <input type="text" class="form-control" formControlName="telefone" id="IDCpf" onkeyup="OnlyNumbers(this);"
+                        maxlength="10">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="IDCelular">Telefone Celular</label>
-                    <input type="text" class="form-control" formControlName="celular" id="IDCelular" onkeyup="OnlyNumbers(this);" maxlength="11">
+                    <input type="text" class="form-control" formControlName="celular" id="IDCelular" onkeyup="OnlyNumbers(this);"
+                        maxlength="11">
                 </div>
             </div>
-
         </fieldset>
         <fieldset class="col-md-12">
             <legend>Endereço do Cliente</legend>
@@ -48,7 +79,8 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="IDCep">CEP</label>
-                    <input type="text" class="form-control" (keyup)="buscarCep()" formControlName="cep" [(ngModel)]="cep.cep" id="IDCep" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
+                    <input type="text" class="form-control" (keyup)="buscarCep()" formControlName="cep" [(ngModel)]="cep.cep"
+                        id="IDCep" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
                 </div>
 
                 <div class="form-group col-md-4">
@@ -88,13 +120,15 @@
 
                 <div class="form-group col-md-4">
                     <label for="IDCidade">Cidade</label>
-                    <input type="text" class="form-control" formControlName="cidade" [(ngModel)]="cep.localidade" id="IDCidade" maxlength="50">
+                    <input type="text" class="form-control" formControlName="cidade" [(ngModel)]="cep.localidade" id="IDCidade"
+                        maxlength="50">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="IDRua">Logradouro</label>
-                    <input type="text" class="form-control" formControlName="logradouro" [(ngModel)]="cep.logradouro" id="IDRua">
+                    <input type="text" class="form-control" formControlName="logradouro" [(ngModel)]="cep.logradouro"
+                        id="IDRua">
                 </div>
 
                 <div class="form-group col-md-2">
@@ -104,15 +138,15 @@
 
                 <div class="form-group col-md-3">
                     <label for="IDComplemento">Complemento</label>
-                    <input type="text" class="form-control" formControlName="complemento" [(ngModel)]="cep.complemento" id="IDComplemento" maxlength="50">
+                    <input type="text" class="form-control" formControlName="complemento" [(ngModel)]="cep.complemento"
+                        id="IDComplemento" maxlength="50">
                 </div>
 
                 <div class="form-group col-md-3">
                     <label for="IDBairro">Bairro</label>
-                    <input type="text" class="form-control" formControlName="bairro" [(ngModel)]="cep.bairro" id="IDBairro" maxlength="50">
+                    <input type="text" class="form-control" formControlName="bairro" [(ngModel)]="cep.bairro" id="IDBairro"
+                        maxlength="50">
                 </div>
-
-
             </div>
         </fieldset>
 
@@ -148,9 +182,9 @@
 
         </fieldset>
         <div class="ClassButton">
-            <button type="submit" [disabled]="clienteForm.invalid" class="btn btn-dark form-button">Cadastrar</button>
+            <button type="submit"  class="btn btn-dark form-button">Cadastrar</button>
             <button type="reset" class="btn btn-info form-button">Limpar</button>
         </div>
-
     </form>
+</div>
 </div>

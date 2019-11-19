@@ -17,6 +17,7 @@ export class FormularioClienteComponent implements OnInit {
 
 
     cliente: TesteBanco;
+
   //Preencher campos do cep
   cep: Cep = {
     cep: "",
@@ -40,7 +41,7 @@ export class FormularioClienteComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-     private _cepService: CepService ,
+      private _cepService: CepService ,
       private DAO: DAOService,
       private route: ActivatedRoute, 
       private router: Router,) { }
@@ -217,22 +218,10 @@ export class FormularioClienteComponent implements OnInit {
     });
   }
 
-  addCliente() {
-    // Resgata os valores do campo e faz um cast(conversão) para o modelo Cliente
-    const novoCliente = this.clienteForm.getRawValue() as TesteBanco;
-
-    this.DAO
-      .Insert(novoCliente)
-      .subscribe(
-        () => { // arrow function
-         this.router.navigateByUrl('/list-cliente'); // redireciona para a pagina list
-         this.clienteForm.reset(); // Limpa os campos do formulario
-        },
-        error => {
-          console.log(error);
-          this.clienteForm.reset();
-        }
-      );
-  }
+  createCliente(form){     
+      this.DAO.createCliente(form.value).subscribe((Cliente: TesteBanco)=>{
+        console.log("Cliente created,", Cliente);
+      });
+    }  
 
 }

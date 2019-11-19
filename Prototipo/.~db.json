@@ -20,6 +20,27 @@
       "placa": "3a2s1d",
       "ano": "546",
       "id": 1
+    },
+    {
+      "nome": "marzo",
+      "cpf": "12345648792",
+      "rg": "321564654",
+      "email": "marzo@andre.com",
+      "telefone": "1322341651",
+      "celular": "32418541219",
+      "cep": "25940-116",
+      "estado": "RJ",
+      "cidade": "Guapimirim",
+      "logradouro": "Avenida Max Wolf",
+      "numero": "4",
+      "complemento": "naosru",
+      "bairro": "Várzea Alegre",
+      "marca": "fiat",
+      "modelo": "uno",
+      "cor": "branco",
+      "placa": "2541asd",
+      "ano": "2015",
+      "id": 2
     }
   ]
 }

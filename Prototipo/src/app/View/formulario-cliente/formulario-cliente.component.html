@@ -31,7 +31,7 @@
 
 <div class="container">
     <p class="TittleForm">Cadastro de Clientes</p>
-    <form [formGroup]="clienteForm">
+    <form [formGroup]="clienteForm" (submit)="addCliente()">
         <fieldset class="col-md-12">
             <legend>Dados do Cliente</legend>
             <!--<input type="text" class="SeparationForm" value="Dados do Cliente" readonly>-->
@@ -79,7 +79,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="IDCep">CEP</label>
-                    <input type="text" class="form-control" (keyup)="buscarCep()" formControlName="cep" [(ngModel)]="cep.cep"
+                    <input type="text" class="form-control" (focusout)="buscarCep()" formControlName="cep" [(ngModel)]="cep.cep"
                         id="IDCep" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
                 </div>
 
@@ -182,7 +182,7 @@
 
         </fieldset>
         <div class="ClassButton">
-            <button type="submit"  class="btn btn-dark form-button">Cadastrar</button>
+            <button type="submit" class="btn btn-dark form-button">Cadastrar</button>
             <button type="reset" class="btn btn-info form-button">Limpar</button>
         </div>
     </form>

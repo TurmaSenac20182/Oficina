@@ -1,51 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TesteBanco } from '../Model/TesteBanco';
+import { Observable } from 'rxjs';
 
-import {TesteBanco} from '../Model/TesteBanco'
-import { HttpHeaders } from '@angular/common/http';
-
-const httpOptions = {
-  headers: new HttpHeaders(
-    {'Content-Type' : 'application/json;charset=utf-8'}
-  )
-};
-
-const API_URL = 'http://localhost:3000';
-@Injectable({
-  providedIn: 'root'
-})
 
 @Injectable({
   providedIn: 'root'
 })
 export class DAOService {
 
-  constructor(private http: HttpClient) {}
+  PHP_API_SERVER = "http://127.0.0.1:8080";
 
-  /* CRUD METHODS */
-
-  // CREATE
-  Insert(TesteBanco: TesteBanco) {
-    return this.http.post(`${API_URL}/testeBanco`, TesteBanco, httpOptions);
+  constructor(private httpClient: HttpClient) { }
+  
+  createCliente(TesteBanco: TesteBanco): Observable<TesteBanco> {
+    return this.httpClient.post<TesteBanco>(`${this.PHP_API_SERVER}/api/create.php`, TesteBanco);
   }
-
-  // RETRIEVE SINGLE
-  get(id: number) {
-    return this.http.get<TesteBanco>(`${API_URL}/testeBanco/${id}`, httpOptions);
-  }
-
-  // RETRIEVE All
-  getall() {
-    return this.http.get<TesteBanco>(`${API_URL}/testeBanco`, httpOptions);
-  }
-
-  // UPDATE
-  update(TesteBanco: TesteBanco) {
-    return this.http.put(`${API_URL}/testeBanco/${TesteBanco.idCliente}`, TesteBanco, httpOptions);
-  }
-
-  // DELETE
-  delete(id: number) {
-    return this.http.delete(`${API_URL}/testeBanco/${id}`, httpOptions);
-  }
+  
 }

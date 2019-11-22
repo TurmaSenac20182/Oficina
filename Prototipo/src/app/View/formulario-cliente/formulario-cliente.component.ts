@@ -5,6 +5,8 @@ import { CepService } from 'src/app/services/cep.service';
 import { TesteBanco } from 'src/app/Model/TesteBanco';
 import { DAOService } from 'src/app/services/dao.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cliente } from 'src/app/Model/cliente';
+import { CrudService } from 'src/app/services/crud.service';
 
 
 
@@ -41,7 +43,8 @@ export class FormularioClienteComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
      private _cepService: CepService ,
-      private DAO: DAOService,
+      //private DAO: DAOService,
+      private crud: CrudService,
       private route: ActivatedRoute, 
       private router: Router,) { }
 
@@ -129,7 +132,7 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(2),
           Validators.maxLength(100),
           //Validators.pattern('^[a-zA-Z -ç~´]+$')
         ]
@@ -138,7 +141,7 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(2),
           Validators.maxLength(100),
           Validators.pattern('^[a-zA-Z0-9 ]+$')
         ]
@@ -155,7 +158,7 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           //Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(2),
           Validators.maxLength(100),
           Validators.pattern('^[a-zA-Z0-9 -]+$')
         ]
@@ -164,7 +167,7 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(2),
           Validators.maxLength(100),
           Validators.pattern('^[a-zA-Z0-9 -]+$')
         ]
@@ -173,7 +176,7 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(1),
           Validators.maxLength(100),
           Validators.pattern('^[a-zA-Z ]+$')
         ]
@@ -182,7 +185,7 @@ export class FormularioClienteComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(1),
           Validators.maxLength(100),
           Validators.pattern('^[a-zA-Z0-9 -]+$')
         ]
@@ -219,13 +222,13 @@ export class FormularioClienteComponent implements OnInit {
 
   addCliente() {
     // Resgata os valores do campo e faz um cast(conversão) para o modelo Cliente
-    const novoCliente = this.clienteForm.getRawValue() as TesteBanco;
+    const novoCliente = this.clienteForm.getRawValue() as Cliente;
 
-    this.DAO
-      .Insert(novoCliente)
+    this.crud
+      .addCliente(novoCliente)
       .subscribe(
         () => { // arrow function
-         this.router.navigateByUrl('/list-cliente'); // redireciona para a pagina list
+         this.router.navigateByUrl('/lista-cliente'); // redireciona para a pagina list
          this.clienteForm.reset(); // Limpa os campos do formulario
         },
         error => {

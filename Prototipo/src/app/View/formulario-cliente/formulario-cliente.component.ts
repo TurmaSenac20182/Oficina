@@ -1,12 +1,10 @@
+import { DadoCarro } from 'src/app/Model/TesteBanco';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cep } from 'src/app/Model/Cep';
 import { CepService } from 'src/app/services/cep.service';
-import { TesteBanco } from 'src/app/Model/TesteBanco';
 import { DAOService } from 'src/app/services/dao.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Cliente } from 'src/app/Model/cliente';
-import { CrudService } from 'src/app/services/crud.service';
 
 
 
@@ -18,7 +16,7 @@ import { CrudService } from 'src/app/services/crud.service';
 export class FormularioClienteComponent implements OnInit {
 
 
-    cliente: TesteBanco;
+  dadosCarro : DadoCarro
   //Preencher campos do cep
   cep: Cep = {
     cep: "",
@@ -44,7 +42,7 @@ export class FormularioClienteComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
      private _cepService: CepService ,
       //private DAO: DAOService,
-      private crud: CrudService,
+      private crud: DAOService,
       private route: ActivatedRoute, 
       private router: Router,) { }
 
@@ -221,11 +219,7 @@ export class FormularioClienteComponent implements OnInit {
   }
 
   addCliente() {
-    // Resgata os valores do campo e faz um cast(conversão) para o modelo Cliente
-    const novoCliente = this.clienteForm.getRawValue() as Cliente;
-
-    this.crud
-      .addCliente(novoCliente)
+    this.crud.insert(this.dadosCarro)
       .subscribe(
         () => { // arrow function
          this.router.navigateByUrl('/lista-cliente'); // redireciona para a pagina list

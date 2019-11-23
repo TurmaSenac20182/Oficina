@@ -4,21 +4,23 @@
  */
 require 'database.php';
 
-$policies = [];
-$sql = "SELECT id, number, amount FROM policies";
+$dadoscarro = [];
+$sql = "SELECT id FROM dadoCarro";
 
 if($result = mysqli_query($con,$sql))
 {
   $i = 0;
   while($row = mysqli_fetch_assoc($result))
   {
-    $policies[$i]['id']    = $row['id'];
-    $policies[$i]['number'] = $row['number'];
-    $policies[$i]['amount'] = $row['amount'];
+    $dadoCarro[$i]['id']    = $row['id'];
+    $dadoCarro[$i]['modelo'] = $row['modelo'];
+    $dadoCarro[$i]['cor'] = $row['cor'];
+    $dadoCarro[$i]['placa'] = $row['placa'];
+    $dadoCarro[$i]['anoCarro'] = $row['anoCarro'];
     $i++;
   }
 
-  echo json_encode($policies);
+  echo json_encode($dadoCarro);
 }
 else
 {

@@ -18,8 +18,12 @@
     color: rgb(255, 255, 255);
 }
 
-.dropdown-item{
-    color:rgb(22, 22, 22);
+i {
+    color: rgb(172, 167, 167);
+}
+
+.dropdown-item {
+    color: rgb(51, 51, 51);
 }
 
 .body {
@@ -29,6 +33,7 @@
     background: -moz-linear-gradient(45deg, #07293d, #3881d4);
     background: linear-gradient(45deg, #07293d, #3881d4);
 }
+
 .container {
     margin: 0 auto;
     width: 80%;
@@ -36,7 +41,6 @@
 }
 
 .TittleForm {
-    color: rgb(255, 255, 255);
     margin: 0 auto;
     padding-top: 2em;
     padding-bottom: 1em;
@@ -62,12 +66,12 @@ input:hover {
     border: 1px solid groove;
 }
 
-.form-control{
-    color: black;
+.form-control {
+    color: rgb(51, 51, 51);
 }
 
-option{
-    color:black;
+option {
+    color: rgb(51, 51, 51);
 }
 
 .ClassButton {
@@ -80,23 +84,23 @@ option{
     justify-content: center;
 }
 
-.btn-info{
-    background: rgb(13, 102, 129);
-    border-color:rgb(13, 102, 129);
+.btn-info {
+    background: rgb(20, 106, 133);
+    border-color: rgb(13, 102, 129);
 }
 
-.btn-info:hover{
-    background:rgb(16, 86, 143) ;
-    border-color:rgb(16, 86, 143);
+.btn-info:hover {
+    background: rgb(18, 92, 153);
+    border-color: rgb(18, 92, 153);
 }
 
-.btn-dark{
+.btn-dark {
     background: rgb(27, 27, 27);
 }
-.btn-dark:hover{
-    background: black;
-}
 
+.btn-dark:hover {
+    background: rgb(39, 39, 39);
+}
 
 .form-button {
     display: -webkit-box;

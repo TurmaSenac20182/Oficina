@@ -218,18 +218,21 @@ export class FormularioClienteComponent implements OnInit {
     });
   }
 
-  addCliente() {
-    this.crud.insert(this.dadosCarro)
+  addProduto() {
+    // Resgata os valores do campo e faz um cast(conversão) para o modelo Produto
+    const novoProduto = this.clienteForm.getRawValue() as DadoCarro;
+    this.crud
+      .adddadosCarro(novoProduto)
       .subscribe(
-        () => { // arrow function
-         this.router.navigateByUrl('/lista-cliente'); // redireciona para a pagina list
-         this.clienteForm.reset(); // Limpa os campos do formulario
-        },
+        () =>// { 
+          // arrow function
+        // this.router.navigateByUrl('tabs/lista'); // redireciona para a pagina list
+         //this.clienteForm.reset(); // Limpa os campos do formulario
+        //},
         error => {
           console.log(error);
-          this.clienteForm.reset();
+         // this.clienteForm.reset();
         }
       );
   }
-
 }

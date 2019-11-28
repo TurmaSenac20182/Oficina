@@ -17,6 +17,8 @@ export class FormularioClienteComponent implements OnInit {
 
 
   dadosCarro : DadoCarro
+  editable: boolean = false;
+
   //Preencher campos do cep
   cep: Cep = {
     cep: "",
@@ -36,13 +38,15 @@ export class FormularioClienteComponent implements OnInit {
   }
 
   clienteForm: FormGroup;
+  dadosCarroForm: FormGroup;
+
   //  cliente: Cliente;
 
 
   constructor(private formBuilder: FormBuilder,
      private _cepService: CepService ,
       //private DAO: DAOService,
-      private crud: DAOService,
+      private daoService: DAOService,
       private route: ActivatedRoute, 
       private router: Router,) { }
 
@@ -216,22 +220,22 @@ export class FormularioClienteComponent implements OnInit {
         ]
       ]
     });
+
   }
 
-  addProduto() {
+  addCarro() {
     // Resgata os valores do campo e faz um cast(conversão) para o modelo Produto
-    const novoProduto = this.clienteForm.getRawValue() as DadoCarro;
-    this.crud
-      .adddadosCarro(novoProduto)
+    const novoCarro = this.dadosCarroForm.getRawValue() as DadoCarro;
+    this.daoService
+      .adddadosCarro(novoCarro)
       .subscribe(
-        () =>// { 
-          // arrow function
-        // this.router.navigateByUrl('tabs/lista'); // redireciona para a pagina list
-         //this.clienteForm.reset(); // Limpa os campos do formulario
-        //},
+        () => { // arrow function
+         this.router.navigateByUrl('lista-cliente'); // redireciona para a pagina list
+         this.dadosCarroForm.reset(); // Limpa os campos do formulario
+        },
         error => {
           console.log(error);
-         // this.clienteForm.reset();
+          this.dadosCarroForm.reset();
         }
       );
   }

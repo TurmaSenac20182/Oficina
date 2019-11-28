@@ -1,15 +1,16 @@
 <?php
   require_once('../connection.php');
-  function fnCreateProduto($nm_produto, $qnt_produto, $preco_produto, $img_produto) {
+  function fnCreateDadoCarro($marca, $modelo, $cor, $placa, $anoCarro) {
     $link = getConnection();
-    $query = "insert into tb_produto values(null, '{$nm_produto}', '{$qnt_produto}', '{$preco_produto}', '{$img_produto}')";
+    $query = "insert into dadoCarro values(null, '{$marca}', '{$modelo}', '{$cor}', '{$placa}', '{$anoCarro}')";
     if(!mysqli_query($link, $query)) {
       throw new \Exception("Error ao gravar", 1);
       return false;
     }
     return true;
   }
-  function fnListProdutos() {
+ 
+ /* function fnListProdutos() {
     $link = getConnection();
     $query = "select * from tb_produto";
     $rs = mysqli_query($link, $query);
@@ -45,4 +46,4 @@
       return false;
     }
     return true;
-  }
+  }*/

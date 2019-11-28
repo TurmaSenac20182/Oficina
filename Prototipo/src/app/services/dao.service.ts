@@ -10,7 +10,7 @@ import { DadoCarro } from '../Model/dadosCarro';
 })
 export class DAOService {
 
-  base_path = 'https://localhost/oficina/dadoCarro';
+  base_path = 'https://localhost/apiBanco/dadoCarro';
 
   constructor(private http: HttpClient) { }
 

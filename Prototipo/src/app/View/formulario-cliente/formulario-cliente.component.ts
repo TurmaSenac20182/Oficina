@@ -15,8 +15,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormularioClienteComponent implements OnInit {
 
-
-  dadosCarro : DadoCarro
+  clienteForm: FormGroup;
+  dadosCarroDB : DadoCarro;
+  dadosCarroForm: FormGroup;
+  dadosCarroID:number;
   editable: boolean = false;
 
   //Preencher campos do cep
@@ -36,26 +38,17 @@ export class FormularioClienteComponent implements OnInit {
     let newCep = Object.assign({}, this.cep);
     this.ArrayCep.push(newCep);
   }
-
-  clienteForm: FormGroup;
-  dadosCarroForm: FormGroup;
-
-  //  cliente: Cliente;
-
-
-  constructor(private formBuilder: FormBuilder,
-     private _cepService: CepService ,
-      //private DAO: DAOService,
-      private daoService: DAOService,
-      private route: ActivatedRoute, 
-      private router: Router,) { }
-
   //Consultar cep
   buscarCep() {
     this._cepService.buscarCepService(this.cep.cep)
       .then((cep: Cep) => this.cep = cep);
   }
 
+  constructor(private formBuilder: FormBuilder,
+     private _cepService: CepService ,
+      private daoService: DAOService,
+      private route: ActivatedRoute, 
+      private router: Router,) { }
 
   ngOnInit() {
     this.clienteForm = this.formBuilder.group({
@@ -221,10 +214,16 @@ export class FormularioClienteComponent implements OnInit {
       ]
     });
 
+    this.route.paramMap.subscribe(params => {
+      this.dadosCarroID =+ params.get('id');
+      if(this.dadosCarroID) {
+        this.getCarroID(this.dadosCarroID);
+        this.editable = true;
+      }
+    })
   }
 
   addCarro() {
-    // Resgata os valores do campo e faz um cast(conversão) para o modelo Produto
     const novoCarro = this.dadosCarroForm.getRawValue() as DadoCarro;
     this.daoService
       .adddadosCarro(novoCarro)
@@ -238,5 +237,39 @@ export class FormularioClienteComponent implements OnInit {
           this.dadosCarroForm.reset();
         }
       );
+  }
+
+  getCarroID(id: number) {
+    this.daoService.selectdadosCarroById(id).subscribe(
+      (dadosCarroDB: DadoCarro) => this.loadForm(dadosCarroDB),
+      errorDB => console.log(errorDB)
+    );
+  }
+
+
+  loadForm(dadosCarroDB: DadoCarro) {
+    this.dadosCarroForm.patchValue({
+      marca: dadosCarroDB.marca,
+      modelo: dadosCarroDB.modelo,
+      cor: dadosCarroDB.cor,
+      placa: dadosCarroDB.placa,
+      anoCarro: dadosCarroDB.anoCarro,
+    });
+  }
+
+  editDadosCarro() {
+    const carroEditado = this.dadosCarroForm.getRawValue() as DadoCarro;
+    carroEditado.idCarro = this.dadosCarroID;
+
+    this.daoService.updatedadosCarro(carroEditado).subscribe(
+      () => {
+        this.router.navigateByUrl('lista-cliente');
+        this.dadosCarroForm.reset();
+      },
+      error => {
+        console.log(error);
+        this.dadosCarroForm.reset();
+      }
+    );
   }
 }

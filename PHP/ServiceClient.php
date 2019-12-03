@@ -210,7 +210,7 @@ if (isset($_POST['registrar_cliente'])) {
         $result2 = mysqli_query($conn, $query2);
         $idContato = mysqli_insert_id($conn);
 
-        $query3 = "insert into endereco (logradouro,numero,cep,bairro,cidade,uf,complemnto)
+        $query3 = "insert into endereco (logradouro,numero,cep,bairro,cidade,uf,complemento)
         values('{$logradouro}','{$numero}', '{$cep}', '{$bairro}', '{$cidade}', '{$estado}', '{$complemento}')";
         $result3 = mysqli_query($conn, $query3);
         $idEndereco = mysqli_insert_id($conn);

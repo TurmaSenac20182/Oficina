@@ -9,9 +9,66 @@
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <script src='fullcalendar/lib/jquery.min.js'></script>
+    <script src='fullcalendar/lib/moment.min.js'></script>
+    <script src='fullcalendar/fullcalendar.js'></script>
+
+    <style>
+        #calendario {
+            position: relative;
+            width: 70%;
+            margin: 0px auto;
+        }
+    </style>
+
+    <!-- script de tradução -->
+    <script src='fullcalendar/lang/pt-br.js'></script>
+
+    <script>
+        $(document).ready(function () {
+
+            //CARREGA CALENDÁRIO E EVENTOS DO BANCO
+            $('#calendario').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                defaultDate: '2016-01-12',
+                editable: true,
+                eventLimit: true,
+                events: 'eventos.php',
+                eventColor: '#dd6777'
+            });
+            //CADASTRA NOVO EVENTO
+            $('#novo_evento').submit(function () {
+                //serialize() junta todos os dados do form e deixa pronto pra ser enviado pelo ajax
+                var dados = jQuery(this).serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "cadastrar_evento.php",
+                    data: dados,
+                    success: function (data) {
+                        if (data == "1") {
+                            alert("Cadastrado com sucesso! ");
+                            //atualiza a página!
+                            location.reload();
+                        } else {
+                            alert("Houve algum problema.. ");
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
 </head>
 
 <body>
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand"><img src="images/LogoB2.png" width="60px" height="45px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -38,6 +95,15 @@
             </ul>
         </div>
     </nav>
+
+    <div id='calendario'>
+            <br/>
+            <form id="novo_evento" action="./php/cadastrarEvento.php" method="post">
+                Nome do Evento: <input type="text" name="nome" required/><br/><br/>            
+                Data do Evento: <input type="date" name="data" required/><br/><br/>            
+                <button type="submit"> Cadastrar novo evento </button>
+            </form>
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

@@ -296,9 +296,9 @@ tbody tr:hover {
         line-height: 1.2;
         font-weight: unset;
         position: absolute;
-        width: 40%;
+        width: 20%;
         left: 30px;
-        top: 0;
+        top: 1em;
     }
     table tbody tr td:nth-child(1):before {
         content: "ID";
@@ -311,6 +311,7 @@ tbody tr:hover {
     }
     table tbody tr td:nth-child(4):before {
         content: "TELEFONE";
+        text-align: center;
     }
     /*table tbody tr td:nth-child(5):before {
         content: "Quantity";

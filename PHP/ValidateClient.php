@@ -221,7 +221,7 @@ if (isset($_POST['registrar_cliente'])) {
 
         //Se todos os dados forem inseridos no banco, redirecione para Home.
         if ($result1 && $result2 && $result3 && $result4) {
-            header('location: index.html');
+            header('location: index.php');
             $_SESSION['cadastro_realizado'] = $usuario_cadastrado;
             die;
         //Caso contrário emita um erro.

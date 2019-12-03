@@ -1,5 +1,5 @@
 <?php
-include('ServiceClient.php');
+include('ValidateClient.php');
 ?>
 
 <!doctype html>
@@ -25,7 +25,7 @@ include('ServiceClient.php');
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html"><img src="images/LogoB2.png" width="60px" height="45px"></a>
+        <a class="navbar-brand" href="index.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,15 +36,15 @@ include('ServiceClient.php');
                     <a class="nav-link" href="formulario-cliente"><i class="fas fa-user-plus fa-md"></i> Cliente</a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" href="FormOs.html"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
+                    <a class="nav-link" href="FormOs.php"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fab fa-searchengin fa-md"></i> Consultas</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="ListClient.html">Clientes</a>
-                        <a class="dropdown-item" href="ListOs.html">Ordens de serviço</a>
+                        <a class="dropdown-item" href="ListClient.php">Clientes</a>
+                        <a class="dropdown-item" href="ListOs.php">Ordens de serviço</a>
                     </div>
                 </li>
             </ul>

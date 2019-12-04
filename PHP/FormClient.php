@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('ValidateClient.php');
 ?>
 
@@ -14,11 +15,9 @@ include('ValidateClient.php');
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/ClientPage.css" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!--===============================================================================================-->
 
 </head>
@@ -26,8 +25,7 @@ include('ValidateClient.php');
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -39,8 +37,7 @@ include('ValidateClient.php');
                     <a class="nav-link" href="FormOs.php"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fab fa-searchengin fa-md"></i> Consultas</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="ListClient.php">Clientes</a>
@@ -53,7 +50,20 @@ include('ValidateClient.php');
 
     <div class="ContainerClass">
         <div class="container-fluid">
+
             <p class="TittleForm">Cadastro de Clientes</p>
+
+            <?php if (isset($_SESSION["usuario_existente"])) : ?>
+                <?php $erro_cadastro = $_SESSION["usuario_existente"]; ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
+                    <strong><?php echo $erro_cadastro; ?></strong>, insira um novo cliente!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <?php session_destroy(); ?>
+                </div>
+            <?php endif ?>
+
             <form action="FormClient.php" method="POST">
                 <fieldset class="col-md-12 FieldsetTittle">
                     <legend class="LegendTittle">Dados do Cliente</legend>
@@ -66,14 +76,12 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="IDCpf">CPF</label>
-                            <input type="text" class="form-control" name="cpf" id="IDCpf" onkeyup="OnlyNumbers(this);"
-                                maxlength="11">
+                            <input type="text" class="form-control" name="cpf" id="IDCpf" onkeyup="OnlyNumbers(this);" maxlength="11">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDRg">RG</label>
-                            <input type="text" class="form-control" name="rg" id="IDRg" onkeyup="OnlyNumbers(this);"
-                                maxlength="9">
+                            <input type="text" class="form-control" name="rg" id="IDRg" onkeyup="OnlyNumbers(this);" maxlength="9">
                         </div>
                     </div>
 
@@ -85,14 +93,12 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="IDResidencial">Telefone Residencial</label>
-                            <input type="text" class="form-control" name="telefone" id="IDCpf"
-                                onkeyup="OnlyNumbers(this);" maxlength="10">
+                            <input type="text" class="form-control" name="telefone" id="IDCpf" onkeyup="OnlyNumbers(this);" maxlength="10">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDCelular">Telefone Celular</label>
-                            <input type="text" class="form-control" name="celular" id="IDCelular"
-                                onkeyup="OnlyNumbers(this);" maxlength="11">
+                            <input type="text" class="form-control" name="celular" id="IDCelular" onkeyup="OnlyNumbers(this);" maxlength="11">
                         </div>
                     </div>
                 </fieldset>
@@ -102,8 +108,7 @@ include('ValidateClient.php');
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="cep">CEP</label>
-                            <input type="text" class="form-control" name="cep" id="cep" maxlength="9"
-                                pattern="\d{5}-?\d{3}" onblur="pesquisacep(this.value);" onkeyup="OnlyNumbers(this);">
+                            <input type="text" class="form-control" name="cep" id="cep" maxlength="9" pattern="\d{5}-?\d{3}" onblur="pesquisacep(this.value);" onkeyup="OnlyNumbers(this);">
                         </div>
 
                         <div class="form-group col-md-4">
@@ -154,14 +159,12 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-2">
                             <label for="numero">Número</label>
-                            <input type="text" class="form-control" name="numero" onkeyup="OnlyNumbers(this);"
-                                id="numero">
+                            <input type="text" class="form-control" name="numero" onkeyup="OnlyNumbers(this);" id="numero">
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" name="complemento" id="complemento"
-                                maxlength="50">
+                            <input type="text" class="form-control" name="complemento" id="complemento" maxlength="50">
                         </div>
 
                         <div class="form-group col-md-3">
@@ -197,8 +200,7 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="IDPlaca">Ano</label>
-                            <input type="text" class="form-control" name="ano" id="IDPlaca"
-                                onkeyup="OnlyNumbers(this);">
+                            <input type="text" class="form-control" name="ano" id="IDPlaca" onkeyup="OnlyNumbers(this);">
                         </div>
                     </div>
 
@@ -214,17 +216,11 @@ include('ValidateClient.php');
     <script src="js/OnlyNumbers.js"></script>
     <script src="js/ViaCep.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>

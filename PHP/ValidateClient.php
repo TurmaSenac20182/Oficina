@@ -1,17 +1,16 @@
 <?php
-session_start();
 include('connection.php');
 $conn = connection();
 
 //Declarando as variáveis
 $errors = array(
-    "usuario_cadastrado" => "Usuário já cadastrado",
-    "cpf_cadastrado" => "Cpf já cadastrado",
-    "rg_cadastrado" => "Rg já cadastrado"
+    "usuario_cadastrado" => "Cliente já cadastrado"
+    /*"cpf_cadastrado" => "Cpf já cadastrado",
+    "rg_cadastrado" => "Rg já cadastrado"*/
 );
 
 //Declarando para ser usado posteriormente.
-$nome = "";
+$email = "";
 $cpf = "";
 $rg = "";
 
@@ -163,19 +162,19 @@ if (isset($_POST['registrar_cliente'])) {
 
 
     //Verificar se o usuário já existe.
-    $check_usuario = "select * from cliente where nome='{$nome}' or cpf='{$cpf}' or rg='{$rg}'";
+    $check_usuario = "select C.rg, C.cpf, E.email from contato AS E JOIN cliente AS C where email = '{$email}' or rg ='{$rg}' or cpf = '{$cpf}'";
 
     $result = mysqli_query($conn, $check_usuario);
     $user = mysqli_fetch_assoc($result);
 
     //Caso ele exista: diga que está uso.
     if ($user) {
-        if ($user['nome'] === $nome) {
-            array_push($errors, "Usuário já cadastrado");
+        if (($user['email'] === $email) || ($user['cpf'] === $cpf) || ($user['rg'] === $rg)) {
+            array_push($errors, "Cliente já cadastrado");
             $_SESSION["usuario_existente"] = $errors["usuario_cadastrado"];
             return false;
         }
-        if ($user['cpf'] === $cpf) {
+       /* if ($user['cpf'] === $cpf) {
             array_push($errors, "Cpf já cadastrado");
             $_SESSION["cpf_existente"] = $errors["cpf_cadastrado"];
             return false;
@@ -185,7 +184,7 @@ if (isset($_POST['registrar_cliente'])) {
             array_push($errors, "Rg já cadastrado");
             $_SESSION["rg_existente"] = $errors["rg_cadastrado"];
             return false;
-        }
+        }*/
     }
     //Para não permitir que o formulário seja enviado com erro ou vazio!
     $row = mysqli_num_rows($errors);

@@ -104,13 +104,15 @@ include('ValidateClient.php');
                 </fieldset>
                 <fieldset class="col-md-12 FieldsetTittle">
                     <legend class="LegendTittle">Endereço do Cliente</legend>
-
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="cep">CEP</label>
-                            <input type="text" class="form-control" name="cep" id="cep" maxlength="9" pattern="\d{5}-?\d{3}" onblur="pesquisacep(this.value);" onkeyup="OnlyNumbers(this);">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="cep" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
+                                <button type="button" class="button-cep" onclick="pesquisacep(cep.value);"><i class="fas fa-map-marked-alt fa-lg"></i></button>
+                            </div>
                         </div>
-
+                        
                         <div class="form-group col-md-4">
                             <label for="uf">Estado</label>
                             <select name="uf" id="uf" class="form-control">
@@ -182,7 +184,7 @@ include('ValidateClient.php');
                             <input type="text" class="form-control" name="marca" id="IDMarca">
                         </div>
 
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-md-6">
                             <label for="IDCarro">Modelo</label>
                             <input type="text" class="form-control" name="modelo" id="IDNome">
                         </div>

@@ -1,5 +1,6 @@
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
+    document.getElementById('cep').value=("");
     document.getElementById('rua').value=("");
     document.getElementById('bairro').value=("");
     document.getElementById('cidade').value=("");
@@ -14,11 +15,11 @@ if (!("erro" in conteudo)) {
     document.getElementById('cidade').value=(conteudo.localidade);
     document.getElementById('uf').value=(conteudo.uf);
 } //end if.
-else {
+/*else {
     //CEP não Encontrado.
     limpa_formulário_cep();
     alert("CEP não encontrado.");
-}
+}*/
 }
 
 function pesquisacep(valor) {
@@ -26,8 +27,10 @@ function pesquisacep(valor) {
 //Nova variável "cep" somente com dígitos.
 var cep = valor.replace(/\D/g, '');
 
+
+
 //Verifica se campo cep possui valor informado.
-if (cep != "") {
+if (cep != "" || cep == 8) {
 
     //Expressão regular para validar o CEP.
     var validacep = /^[0-9]{8}$/;
@@ -35,11 +38,15 @@ if (cep != "") {
     //Valida o formato do CEP.
     if(validacep.test(cep)) {
 
+        // Máscara para CEP
+        document.getElementById('cep').value = cep.substring(0,5)+"-"+cep.substring(5);
+
         //Preenche os campos com "..." enquanto consulta webservice.
-        document.getElementById('rua').value="...";
-        document.getElementById('bairro').value="...";
-        document.getElementById('cidade').value="...";
-        document.getElementById('uf').value="...";
+        
+        document.getElementById('rua').value="Carregando...";
+        document.getElementById('bairro').value="Carregando...";
+        document.getElementById('cidade').value="Carregando...";
+        document.getElementById('uf').value="Carregando...";
 
         //Cria um elemento javascript.
         var script = document.createElement('script');
@@ -54,11 +61,13 @@ if (cep != "") {
     else {
         //cep é inválido.
         limpa_formulário_cep();
-        alert("Formato de CEP inválido.");
-    }
+        alert("O CEP é inválido!");
+    } 
 } //end if.
+
+/*
 else {
     //cep sem valor, limpa formulário.
     limpa_formulário_cep();
-}
+}*/
 };

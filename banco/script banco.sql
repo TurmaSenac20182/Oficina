@@ -20,14 +20,14 @@ create table contato(
 create table servico(
   idServico int  not null primary key auto_increment,
   descricao varchar(100) not null,
-  valor  	double null  
+  valor	double null  
 );
 
 create table endereco (
   idEndereco int  not null primary key auto_increment,
   logradouro varchar(100) null,
   numero varchar(10)  null,
-  cep    varchar(8) not null,
+  cep varchar(9) not null,
   bairro varchar(50)  null,
   cidade varchar(50)  null,
   uf varchar(4) not null, 
@@ -36,17 +36,19 @@ create table endereco (
 
 create table cliente (
   idCliente int  not null primary key auto_increment,
-  nome   varchar(100) not null,
-  cpf   varchar(11)  not null,
-  rg    varchar(9)  null,
-  contato_cliente int not null,
-  endereco_cleinte int not null,
+  nome varchar(100) not null,
+  cpf varchar(11) not null,
+  rg varchar(9)  null,
   carro_cliente int not null, 
-  ordemServico_cliente int not null,
-  
+  contato_cliente int not null,
+  endereco_cliente int not null,
+
+  /*ordemServico_cliente int not null,*/
+
+  constraint FK_carro_cliente foreign key(carro_cliente) references dadoCarro(idCarro),
   constraint FK_contato_cliente foreign key(contato_cliente) references contato(idContato),
-  constraint FK_endereco_cleinte foreign key(endereco_cleinte) references endereco(idEndereco),
-  constraint FK_carro_cliente foreign key(carro_cliente) references dadoCarro(idCarro)   
+  constraint FK_endereco_cliente foreign key(endereco_cliente) references endereco(idEndereco)
+   
 );
 
 create table ordemServico (
@@ -72,4 +74,4 @@ create table ordemServico (
 );
   
   /* comando de chava estrangeira da tabela cliente vinda de ordme de serviço*/
-  ALTER TABLE cliente ADD CONSTRAINT FK_ordemServico_cliente FOREIGN KEY(ordemServico_cliente) REFERENCES ordemServico(idordemServico) ON DELETE CASCADE;
+  /*ALTER TABLE cliente ADD CONSTRAINT FK_ordemServico_cliente FOREIGN KEY(ordemServico_cliente) REFERENCES ordemServico(idordemServico) ON DELETE CASCADE;*/

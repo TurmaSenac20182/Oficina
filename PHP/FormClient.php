@@ -108,7 +108,7 @@ include('ValidateClient.php');
                         <div class="form-group col-md-4">
                             <label for="cep">CEP</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" onkeypress="mascara(this, '#####-###')" id="cep" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" id="cep" name="cep" onkeypress="mascara(this, '#####-###')" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
                                 <button type="button" class="button-cep" onclick="pesquisacep(cep.value);"><i class="fas fa-map-marked-alt fa-lg"></i></button>
                             </div>
                         </div>
@@ -215,6 +215,7 @@ include('ValidateClient.php');
         </div>
     </div>
 
+    <script src="js/ValidateCPF.js"></script>
     <script src="js/MaskCepTel.js"></script>
     <script src="js/OnlyNumbers.js"></script>
     <script src="js/ViaCep.js"></script>

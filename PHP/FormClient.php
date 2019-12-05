@@ -76,12 +76,12 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="IDCpf">CPF</label>
-                            <input type="text" class="form-control" name="cpf" id="IDCpf" onkeyup="OnlyNumbers(this);" maxlength="11">
+                            <input type="text" class="form-control" name="cpf" id="IDCpf"  onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDRg">RG</label>
-                            <input type="text" class="form-control" name="rg" id="IDRg" onkeyup="OnlyNumbers(this);" maxlength="9">
+                            <input type="text" class="form-control" name="rg" id="IDRg" onkeypress="mascara(this, '##.###.###-#')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="12">
                         </div>
                     </div>
 
@@ -93,12 +93,12 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="IDResidencial">Telefone Residencial</label>
-                            <input type="text" class="form-control" name="telefone" id="IDCpf" onkeyup="OnlyNumbers(this);" maxlength="10">
+                            <input type="text" class="form-control" name="telefone" id="IDResidencial" onkeypress="mascara(this, '## ####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="12">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDCelular">Telefone Celular</label>
-                            <input type="text" class="form-control" name="celular" id="IDCelular" onkeyup="OnlyNumbers(this);" maxlength="11">
+                            <input type="text" class="form-control" name="celular" id="IDCelular" onkeypress="mascara(this, '## #####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="13">
                         </div>
                     </div>
                 </fieldset>
@@ -108,7 +108,7 @@ include('ValidateClient.php');
                         <div class="form-group col-md-4">
                             <label for="cep">CEP</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="cep" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" onkeypress="mascara(this, '#####-###')" id="cep" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
                                 <button type="button" class="button-cep" onclick="pesquisacep(cep.value);"><i class="fas fa-map-marked-alt fa-lg"></i></button>
                             </div>
                         </div>
@@ -215,6 +215,7 @@ include('ValidateClient.php');
         </div>
     </div>
 
+    <script src="js/MaskCepTel.js"></script>
     <script src="js/OnlyNumbers.js"></script>
     <script src="js/ViaCep.js"></script>
 

@@ -12,8 +12,8 @@ create table dadoCarro (
 
 create table contato(
   idContato int  not null primary key auto_increment,
-  tel1 varchar(11) not null,
-  tel2 varchar(11) null,
+  tel1 varchar(12) not null,
+  tel2 varchar(13) null,
   email varchar(100) null
 );
 
@@ -37,8 +37,8 @@ create table endereco (
 create table cliente (
   idCliente int  not null primary key auto_increment,
   nome varchar(100) not null,
-  cpf varchar(11) not null,
-  rg varchar(9)  null,
+  cpf varchar(14) not null,
+  rg varchar(12)  null,
   carro_cliente int not null, 
   contato_cliente int not null,
   endereco_cliente int not null,

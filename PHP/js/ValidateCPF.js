@@ -7,8 +7,6 @@ function validaCPF(strCPF) {
     var Resto;
     Soma = 0;
 
-
-    
     //verificar se CPF contém  números repitidos ou se é vazio.
 
 
@@ -44,6 +42,7 @@ function validaCPF(strCPF) {
 
     return true;
 }
+
 
 function mensagem() {
 

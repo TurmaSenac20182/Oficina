@@ -1,3 +1,4 @@
+drop database if exists oficina;
 create database oficina;
 use oficina;
   

@@ -134,7 +134,7 @@ if (isset($_POST['registrar_cliente'])) {
         return false;
     }
 
-    /*function validarCPF($cpf)
+    function validarCPF($cpf)
   {
     //O primeiro é o padrão de pesquisa ( Oque ele irá pesquisar), o segundo('') é oque ele irá remover, e o terceiro é aonde irá pesquisar
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
@@ -162,8 +162,9 @@ if (isset($_POST['registrar_cliente'])) {
     return true;
   }
   if (!validarCPF($cpf)) {
+      echo "<script>alert('Insira um CEP Válido');</script>";
     return false;
-  }*/
+  }
 
 
     //Verificar se o usuário já existe.

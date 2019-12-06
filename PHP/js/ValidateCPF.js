@@ -7,7 +7,7 @@ function validaCPF(strCPF) {
     var Resto;
     Soma = 0;
 
-    strCPF = preg_replace('/[^0-9]/', '', strCPF);
+
     
     //verificar se CPF contém  números repitidos ou se é vazio.
 

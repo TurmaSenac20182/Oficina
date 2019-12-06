@@ -111,6 +111,44 @@ option {
     background: rgb(39, 39, 39);
 }
 
+.button-add {
+    display:table;
+    margin-left: 99%;
+    margin-bottom: -2em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    border:none;
+    background:transparent;
+    color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    .button-add {
+        margin-left: 95%;
+    }
+}
+  
+
+  @media only screen and (max-width: 927px) {
+    .button-add {
+        margin-left: 98%;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .button-add {
+        margin-left: 98%;
+    }
+  }
+
+@media only screen and (max-width: 576px) {
+    .button-add {
+        margin-left: 95%;
+    }
+  }
+
 .form-button {
     display: -webkit-box;
     display: -webkit-flex;

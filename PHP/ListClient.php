@@ -2,7 +2,8 @@
 <html lang="pt-br">
 
 <head>
-    <?php require "function.php"; ?>
+    <?php require "function.php";
+    $dados = retriveAllCli() ?>
     <meta charset="utf-8">
     <title>Marzo mecânica</title>
     <!--===============================================================================================-->
@@ -45,7 +46,6 @@
             </ul>
         </div>
     </nav>
-    <?php foreach($dados as $lista) { ?>
     <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
@@ -60,19 +60,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="column1"><button class="columnButton"><?=$lista['idCliente'] ?></button></td>
-                                <td class="column1"><button class="columnButton"><?=$lista['nome'] ?></button></td>
-                                <td class="column1"><button class="columnButton"><?=$lista['cpf'] ?></button></td>
-                                <td class="column1"><button class="columnButton"><?=$lista['contato_cliente'] ?></button></td>
-                            </tr>
+                            <?php foreach($dados as $lista) { ?>
+                                <tr>
+                                    <td class="column1"><button class="columnButton"><?=$lista['idCliente'] ?></button></td>
+                                    <td class="column1"><button class="columnButton"><?=$lista['nome'] ?></button></td>
+                                    <td class="column1"><button class="columnButton"><?=$lista['cpf'] ?></button></td>
+                                    <td class="column1"><button class="columnButton"><?=$lista['cel'] ?></button></td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    <?php } ?>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

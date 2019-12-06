@@ -3,12 +3,12 @@
 
     function retriveAllCli() {
         $con = connection();
-        $query = 'select idCliente, nome, cpf, contato_cliente from cliente';
+        $query = 'select c.idCliente, c.nome, c.cpf, t.cel from cliente as c join contato as t on c.idCliente = idContato';
         $resultado = mysqli_query($con, $query);
         
         $dados = array();
 
-        while($registro = mysqli_fetch_assoc($result)) {
+        while($registro = mysqli_fetch_assoc($resultado)) {
            array_push($dados, $registro);
         }
         return $dados;
@@ -16,18 +16,28 @@
 
     function retriveAllOs() {
         $con = connection();
-        $query = "select idordemServico, funcionario, cliente_ordemservico from ordemservico";
+        $query = "select o.idordemServico, o.funcionario, c.nome from ordemservico as o join cliente as c on idordemServico = idCliente";
         mysqli_query($con, $query);
-        
-        return $query;
+
+        $dados = array();
+
+        while($registro = mysqli_fetch_assoc($resultado)) {
+           array_push($dados, $registro);
+        }
+        return $dados;
     }
 
     function retriveSingleCli($id) {
         $con = connection();
         $query = "select * from cliente where id = $id";
         mysql_query($con, $query);
+        
+        $dados = array();
 
-        return $query;
+        while($registro = mysqli_fetch_assoc($resultado)) {
+           array_push($dados, $registro);
+        }
+        return $dados;
     }
     
     function retriveSingleOs($id) {
@@ -35,7 +45,12 @@
         $query = "select * from ordemservico where id = $id";
         mysql_query($con, $query);
 
-        return $query;
+        $dados = array();
+
+        while($registro = mysqli_fetch_assoc($resultado)) {
+           array_push($dados, $registro);
+        }
+        return $dados;
     }
 
     function updateCli($id, $nome, $cpf, $rg, $carro, $contato, $endereco) {

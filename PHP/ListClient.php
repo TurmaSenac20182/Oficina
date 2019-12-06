@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+    <?php require "function.php"; ?>
     <meta charset="utf-8">
     <title>Marzo mecânica</title>
     <!--===============================================================================================-->
@@ -44,7 +45,7 @@
             </ul>
         </div>
     </nav>
-
+    <?php foreach($dados as $lista) { ?>
     <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
@@ -56,26 +57,14 @@
                                 <th class="column2">NOME</th>
                                 <th class="column3">CPF</th>
                                 <th class="column4">TELEFONE</th>
-                                <!-- <th class="column5">Quantity</th>
-                                        <th class="column6">Total</th>-->
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="column1"><button class="columnButton">10000</button></td>
-                                <td class="column2"><button class="columnButton">Teste Teste Santos de Teste</button>
-                                </td>
-                                <td class="column3"><button class="columnButton">999.999.999-99</button></td>
-                                <td class="column4"><button class="columnButton">21 99999-9999</button></td>
-
-                            </tr>
-                            <tr>
-                                <td class="column1"><button class="columnButton">10000</button></td>
-                                <td class="column2"><button class="columnButton">Teste Teste Santos de Teste</button>
-                                </td>
-                                <td class="column3"><button class="columnButton">999.999.999-99</button></td>
-                                <td class="column4"><button class="columnButton">21 99999-9999</button></td>
-
+                                <td class="column1"><button class="columnButton"><?=$lista['idCliente'] ?></button></td>
+                                <td class="column1"><button class="columnButton"><?=$lista['nome'] ?></button></td>
+                                <td class="column1"><button class="columnButton"><?=$lista['cpf'] ?></button></td>
+                                <td class="column1"><button class="columnButton"><?=$lista['contato_cliente'] ?></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -83,7 +72,7 @@
             </div>
         </div>
     </div>
-    
+    <?php } ?>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

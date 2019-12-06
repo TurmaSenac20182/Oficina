@@ -4,9 +4,14 @@
     function retriveAllCli() {
         $con = connection();
         $query = 'select idCliente, nome, cpf, contato_cliente from cliente';
-        mysqli_query($con, $query);
+        $resultado = mysqli_query($con, $query);
         
-        return $query;
+        $dados = array();
+
+        while($registro = mysqli_fetch_assoc($result)) {
+           array_push($dados, $registro);
+        }
+        return $dados;
     }
 
     function retriveAllOs() {

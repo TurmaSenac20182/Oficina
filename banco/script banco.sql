@@ -20,7 +20,8 @@ create table contato(
 
 create table servico(
   idServico int not null primary key auto_increment,
-  descricao varchar(100) not null,
+  descricao text not null,
+  maoDeObra varchar(150) null,
   valor	decimal null
 );
 
@@ -55,7 +56,6 @@ create table ordemServico (
   funcionario varchar(100) not null,
   dataEntrada date NOT NULL,
   dataSaida varchar(10) NOT NULL, 
-  maoDeObra double null,
   valorTotal double not null,
   /*carro_ordemServ int not null,*/
   servico_ordemServ int not null,

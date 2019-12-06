@@ -61,7 +61,7 @@ if (isset($_POST['registrar_os'])) {
 
 
     //Verificar se já existe.
-    $check = "select S.descricao, O.maoDeObra from servico AS S JOIN ordemServico AS O where descricao = '{$descricao}' or maoDeObra ='{$trabalho}'";
+    $check = "select descricao, maoDeObra from servico where descricao = '{$descricao}' or maoDeObra ='{$trabalho}'";
 
     $result = mysqli_query($conn, $check);
     $user = mysqli_fetch_assoc($result);
@@ -82,18 +82,19 @@ if (isset($_POST['registrar_os'])) {
     } 
 
     //Caso não ocorra nenhum erro, permita que os dados sejam inseridos no banco.
+
     $servico_cadastrado = "Ordem de Serviço cadastrada com sucesso!";
 
     if ($row == 0) {
 
         //Inserção de dados
 
-        function insertServico($descricao, $valorServico)
+        function insertServico($descricao, $trabalho, $valorServico)
         {
             $conn = connection();
 
-            $query = "insert into servico (descricao, valor)
-            values('{$descricao}','{$valorServico}')";
+            $query = "insert into servico (descricao, maoDeObra, valor)
+            values('{$descricao}','{$trabalho}', '{$valorServico}')";
 
             if (mysqli_query($conn, $query)) {
                 $_SESSION['idServico'] = mysqli_insert_id($conn);
@@ -104,13 +105,13 @@ if (isset($_POST['registrar_os'])) {
             mysqli_close($conn);
         }
 
-        function insertOS($funcionario, $dataEntrada, $dataSaida, $trabalho, $valorTotal)
+        function insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal)
         {
             $conn = connection();
             $idServico = $_SESSION['idServico'];
 
-            $query2 = "insert into ordemServico (funcionario, dataEntrada, dataSaida, maoDeObra, valorTotal, servico_ordemServ)
-            values('{$funcionario}', '{$dataEntrada}', '{$dataSaida}', '{$trabalho}', '{$valorTotal}', '{$idServico}')";
+            $query2 = "insert into ordemServico (funcionario, dataEntrada, dataSaida, valorTotal, servico_ordemServ)
+            values('{$funcionario}', '{$dataEntrada}', '{$dataSaida}', '{$valorTotal}', '{$idServico}')";
 
             if (mysqli_query($conn, $query2)) {
                 return  true;
@@ -119,15 +120,15 @@ if (isset($_POST['registrar_os'])) {
             }
             mysqli_close($conn);
 
-            session_unset('idServico');
+            unset($idServico);
         }
+
+        if (insertServico($descricao, $trabalho, $valorServico)) { }
+        if (insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal)) { }
+    
+        header('location: index.php');
+        $_SESSION['os_realizada'] = $servico_cadastrado;
+        die;
+
     }
-
-
-    if (insertServico($descricao, $valorServico)) { }
-    if (insertOS($funcionario, $dataEntrada, $dataSaida, $trabalho, $valorTotal)) { }
-
-    header('location: index.php');
-    $_SESSION['os_realizada'] = $servico_cadastrado;
-    die;
 }

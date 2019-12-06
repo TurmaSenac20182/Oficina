@@ -67,7 +67,7 @@
                                 <td class="column1"><button class="columnButton"><?=$lista['funcionario'] ?></button></td>
                                 <td class="column1"><button class="columnButton"><?=$lista['nome'] ?></button></td>
                             </tr>
-                            <? } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

@@ -104,7 +104,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <?php session_unset('cadastro_realizado'); ?>
+                <?php unset($_SESSION["cadastro_realizado"]); ?>
             </div>
         <?php endif ?>
 
@@ -115,9 +115,11 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <?php session_unset('os_realizada'); ?>
+                <?php unset($_SESSION["os_realizada"]); ?>
             </div>
         <?php endif ?>
+
+
 
         <div id='calendario'>
             <br />

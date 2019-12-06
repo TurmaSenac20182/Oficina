@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('ValidaOS.php');
 ?>
 
@@ -57,7 +58,7 @@ include('ValidaOS.php');
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <?php session_unset('servico_existente'); ?>
+                    <?php unset($_SESSION["servico_existente"]); ?>
                 </div>
             <?php endif ?>
 

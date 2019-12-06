@@ -178,7 +178,7 @@ if (isset($_POST['registrar_cliente'])) {
         if (($user['cpf'] === $cpf) || ($user['rg'] === $rg)) {
             array_push($errors, "Cliente já cadastrado");
             $_SESSION["usuario_existente"] = $errors["usuario_cadastrado"];
-            return false;
+            return false;   
         }
        /* if ($user['cpf'] === $cpf) {
             array_push($errors, "Cpf já cadastrado");
@@ -274,19 +274,19 @@ if (isset($_POST['registrar_cliente'])) {
             }
             mysqli_close($conn);
 
-            session_unset('idCarro');
-            session_unset('idContato');
-            session_unset('idEndereco');
+            unset($idCarro); 
+            unset($idContato); 
+            unset($idEndereco); 
         }
+
+        if (insertCarro($marca, $modelo, $cor, $placa, $ano)) { }
+        if (insertContato($telR, $telC, $email)) { }
+        if (insertEndereco($logradouro, $numero, $cep, $bairro, $cidade, $estado, $complemento)) { }
+        if (insertCliente($nome, $cpf, $rg)) { }
+    
+        header('location: index.php');
+        $_SESSION['cadastro_realizado'] = $usuario_cadastrado;
+        die;
+
     }
-
-
-    if (insertCarro($marca, $modelo, $cor, $placa, $ano)) { }
-    if (insertContato($telR, $telC, $email)) { }
-    if (insertEndereco($logradouro, $numero, $cep, $bairro, $cidade, $estado, $complemento)) { }
-    if (insertCliente($nome, $cpf, $rg)) { }
-
-    header('location: index.php');
-    $_SESSION['cadastro_realizado'] = $usuario_cadastrado;
-    die;
 }

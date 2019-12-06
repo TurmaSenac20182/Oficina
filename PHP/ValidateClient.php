@@ -162,7 +162,7 @@ if (isset($_POST['registrar_cliente'])) {
     return true;
   }
   if (!validarCPF($cpf)) {
-      echo "<script>alert('Insira um CEP Válido');</script>";
+      echo "<script>alert('Insira um CPF Válido');</script>";
     return false;
   }
 

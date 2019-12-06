@@ -104,7 +104,18 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <?php session_destroy(); ?>
+                <?php session_unset('cadastro_realizado'); ?>
+            </div>
+        <?php endif ?>
+
+        <?php if (isset($_SESSION["os_realizada"])) : ?>
+            <?php $servico_cadastrado = $_SESSION["os_realizada"]; ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center; margin-top: 10px;">
+                <strong><?php echo $servico_cadastrado; ?></strong>!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <?php session_unset('os_realizada'); ?>
             </div>
         <?php endif ?>
 

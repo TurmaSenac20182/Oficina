@@ -19,9 +19,9 @@ create table contato(
 );
 
 create table servico(
-  idServico int  not null primary key auto_increment,
+  idServico int not null primary key auto_increment,
   descricao varchar(100) not null,
-  valor	decimal null  
+  valor	decimal null
 );
 
 create table endereco (
@@ -44,8 +44,6 @@ create table cliente (
   contato_cliente int not null,
   endereco_cliente int not null,
 
-  /*ordemServico_cliente int not null,*/
-
   constraint FK_carro_cliente foreign key(carro_cliente) references dadoCarro(idCarro),
   constraint FK_contato_cliente foreign key(contato_cliente) references contato(idContato),
   constraint FK_endereco_cliente foreign key(endereco_cliente) references endereco(idEndereco)
@@ -54,18 +52,18 @@ create table cliente (
 
 create table ordemServico (
   idordemServico int  not null primary key auto_increment,
-  cliente_ordemServ int not null,
-  carro_ordemServ int not null,
-  servico_ordemServ int not null,
   funcionario varchar(100) not null,
-  dataEntrada varchar(10) NOT NULL,
+  dataEntrada date NOT NULL,
   dataSaida varchar(10) NOT NULL, 
   maoDeObra double null,
   valorTotal double not null,
-  
-  constraint FK_cliente_ordemServ foreign key(cliente_ordemServ) references cliente(idCliente),
-  constraint FK_carro_ordemServ foreign key(carro_ordemServ) references dadoCarro(idCarro),
-  constraint FK_servico_ordemServ foreign key(servico_ordemServ) references servico(idServico)  
+  /*carro_ordemServ int not null,*/
+  servico_ordemServ int not null,
+  /*cliente_ordemServ int not null,*/
+
+  /*constraint FK_carro_ordemServ foreign key(carro_ordemServ) references dadoCarro(idCarro),*/
+  constraint FK_servico_ordemServ foreign key(servico_ordemServ) references servico(idServico)
+  /*constraint FK_cliente_ordemServ foreign key(cliente_ordemServ) references cliente(idCliente)*/
   );
   
   CREATE TABLE evento(

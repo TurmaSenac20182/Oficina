@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="pt-br">
-
+<?php 
+    require "function.php"; 
+    $dados = retriveAllOs(); ?>
 <head>
     <meta charset="utf-8">
     <title>Marzo mecânica</title>
@@ -56,24 +58,16 @@
                                 <th class="column1">ID</th>
                                 <th class="column2">Funcionario</th>
                                 <th class="column3">Cliente</th>
-                                <th class="column4">Descrição</th>
-                                <!-- <th class="column5">Quantity</th>
-                                        <th class="column6">Total</th>-->
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($dados as $lista) {?>
                             <tr>
-                                <td class="column1"><button class="columnButton">10000</button></td>
-                                <td class="column2"><button class="columnButton">Marzo News</button></td>
-                                <td class="column3"><button class="columnButton">Irineu</button></td>
-                                <td class="column4"><button class="columnButton">Troca de uma peça</button></td>
+                                <td class="column1"><button class="columnButton"><?=$lista['idordemServico'] ?></button></td>
+                                <td class="column1"><button class="columnButton"><?=$lista['funcionario'] ?></button></td>
+                                <td class="column1"><button class="columnButton"><?=$lista['nome'] ?></button></td>
                             </tr>
-                            <tr>
-                                <td class="column1"><button class="columnButton">10000</button></td>
-                                <td class="column2"><button class="columnButton">Marzo News</button></td>
-                                <td class="column3"><button class="columnButton">Irineu</button></td>
-                                <td class="column4"><button class="columnButton">Troca de uma peça</button></td>
-                            </tr>
+                            <? } ?>
                         </tbody>
                     </table>
                 </div>

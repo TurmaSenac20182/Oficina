@@ -20,7 +20,7 @@ create table contato(
 create table servico(
   idServico int  not null primary key auto_increment,
   descricao varchar(100) not null,
-  valor	double null  
+  valor	decimal null  
 );
 
 create table endereco (

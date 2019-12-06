@@ -178,6 +178,11 @@ include('ValidateClient.php');
 
                 <fieldset class="col-md-12 FieldsetTittle">
                     <legend class="LegendTittle">Veículo do Cliente</legend>
+                    
+                    <div class="form-group col-md-12">
+                        <button type="button" class="button-add"><i class="fas fa-plus-circle fa-lg"></i></button>        
+                    </div>
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="IDMarca">Marca</label>
@@ -189,6 +194,7 @@ include('ValidateClient.php');
                             <input type="text" class="form-control" name="modelo" id="IDNome">
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="IDCor">Cor</label>
@@ -197,16 +203,16 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="IDPlaca">Placa</label>
-                            <input type="text" class="form-control" name="placa" id="IDPlaca">
+                            <input type="text" class="form-control" maxlength="7" name="placa" id="IDPlaca">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDPlaca">Ano</label>
-                            <input type="text" class="form-control" name="ano" id="IDPlaca" onkeyup="OnlyNumbers(this);">
+                            <input type="text" class="form-control" name="ano" id="IDPlaca" maxlength="4" onkeyup="OnlyNumbers(this);">
                         </div>
                     </div>
-
                 </fieldset>
+
                 <div class="ClassButton">
                     <button type="submit" name="registrar_cliente" class="btn btn-dark form-button">Cadastrar</button>
                     <button type="reset" class="btn btn-info form-button">Limpar</button>

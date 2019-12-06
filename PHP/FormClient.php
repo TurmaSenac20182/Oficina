@@ -76,7 +76,7 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="IDCpf">CPF</label>
-                            <input type="text" class="form-control" name="cpf" id="IDCpf"  onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                            <input type="text" class="form-control" name="cpf" id="IDCpf"  onkeypress="mascara(this, '###.###.###-##')" onblur="mensagem()" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
                         </div>
 
                         <div class="form-group col-md-4">

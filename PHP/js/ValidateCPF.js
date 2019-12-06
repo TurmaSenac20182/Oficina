@@ -7,7 +7,10 @@ function validaCPF(strCPF) {
     var Resto;
     Soma = 0;
 
+    strCPF = preg_replace('/[^0-9]/', '', strCPF);
+    
     //verificar se CPF contém  números repitidos ou se é vazio.
+
 
     if (strCPF == "00000000000" ||
         strCPF == '11111111111' ||
@@ -50,10 +53,4 @@ function mensagem() {
         alert("Digite um CPF Válido!");
         limpa_formulário_cpf();
     }
-
-    if (!filtro.test(strCPF)) {
-        mensagem();
-        return false;
-    }
-
 }

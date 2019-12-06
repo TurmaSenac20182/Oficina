@@ -55,19 +55,24 @@ if (isset($_POST['registrar_cliente'])) {
         array_push($errors, "");
         return false;
     }
+    /*
     if (empty($email)) {
         array_push($errors, "");
         return false;
     }
+    */
+
+    /*
     if (empty($telR)) {
         array_push($errors, "");
         return false;
-    }
+    } */
 
     if (empty($telC)) {
         array_push($errors, "");
         return false;
     }
+
 /*
     if (empty($cep)) {
         array_push($errors, "");
@@ -162,14 +167,14 @@ if (isset($_POST['registrar_cliente'])) {
 
 
     //Verificar se o usuário já existe.
-    $check_usuario = "select C.rg, C.cpf, E.email from contato AS E JOIN cliente AS C where email = '{$email}' or rg ='{$rg}' or cpf = '{$cpf}'";
+    $check_usuario = "select cpf, rg from cliente where cpf = '{$cpf}' or rg ='{$rg}'";
 
     $result = mysqli_query($conn, $check_usuario);
     $user = mysqli_fetch_assoc($result);
 
     //Caso ele exista: diga que está uso.
     if ($user) {
-        if (($user['email'] === $email) || ($user['cpf'] === $cpf) || ($user['rg'] === $rg)) {
+        if (($user['cpf'] === $cpf) || ($user['rg'] === $rg)) {
             array_push($errors, "Cliente já cadastrado");
             $_SESSION["usuario_existente"] = $errors["usuario_cadastrado"];
             return false;
@@ -221,7 +226,7 @@ if (isset($_POST['registrar_cliente'])) {
         {
             $conn = connection();
 
-            $query2 = "insert into contato (tel1, tel2, email)
+            $query2 = "insert into contato (tel, cel, email)
             values('{$telR}', '{$telC}', '{$email}')";
 
             if (mysqli_query($conn, $query2)) {

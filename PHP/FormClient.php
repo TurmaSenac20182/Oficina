@@ -150,28 +150,28 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="cidade">Cidade</label>
-                            <input type="text" class="form-control" name="cidade" id="cidade" maxlength="50">
+                            <input type="text" class="form-control" maxlength="50" name="cidade" id="cidade">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="rua">Logradouro</label>
-                            <input type="text" class="form-control" name="logradouro" id="rua">
+                            <input type="text" class="form-control" maxlength="100"name="logradouro" id="rua">
                         </div>
 
                         <div class="form-group col-md-2">
                             <label for="numero">Número</label>
-                            <input type="text" class="form-control" name="numero" onkeyup="OnlyNumbers(this);" id="numero">
+                            <input type="text" class="form-control" maxlength="10" name="numero" onkeyup="OnlyNumbers(this);" id="numero">
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" name="complemento" id="complemento" maxlength="50">
+                            <input type="text" class="form-control"  maxlength="100" name="complemento" id="complemento">
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="bairro">Bairro</label>
-                            <input type="text" class="form-control" name="bairro" id="bairro" maxlength="50">
+                            <input type="text" class="form-control" maxlength="50" name="bairro" id="bairro">
                         </div>
                     </div>
                 </fieldset>
@@ -186,19 +186,19 @@ include('ValidateClient.php');
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="IDMarca">Marca</label>
-                            <input type="text" class="form-control" name="marca" id="IDMarca">
+                            <input type="text" class="form-control" maxlength="30" name="marca" id="IDMarca">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="IDCarro">Modelo</label>
-                            <input type="text" class="form-control" name="modelo" id="IDNome">
+                            <input type="text" class="form-control" maxlength="30" name="modelo" id="IDNome">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="IDCor">Cor</label>
-                            <input type="text" class="form-control" name="cor" id="IDCor">
+                            <input type="text" class="form-control" maxlength="30" name="cor" id="IDCor">
                         </div>
 
                         <div class="form-group col-md-4">

@@ -55,6 +55,7 @@ body {
 }
 
 .LegendTittle {
+    margin-bottom: 25px;
     font-size: 20px;
     width: auto;
 }
@@ -112,42 +113,53 @@ option {
 }
 
 .button-add {
-    display:table;
-    margin-left: 99%;
-    margin-bottom: -2em;
+    display: inline-block;
+    margin-left: 98%;
+    margin-bottom: -26px;
+    margin-top: -25px;
+    border-radius: 200px;
+    padding-top: 9px;
+    padding-bottom: 9px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -ms-flexbox;
-    border:none;
-    background:transparent;
+    border: none;
     color: white;
+    background: none;
+}
+
+.button-add:hover {
+    background-color: rgb(59, 58, 58);
 }
 
 @media only screen and (max-width: 768px) {
     .button-add {
         margin-left: 95%;
     }
+    body {
+        height: 100%;
+        min-height: 75em;
+    }
 }
-  
 
-  @media only screen and (max-width: 927px) {
+@media only screen and (max-width: 927px) {
     .button-add {
         margin-left: 98%;
     }
-  }
+}
 
-  @media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
     .button-add {
         margin-left: 98%;
     }
-  }
+}
 
 @media only screen and (max-width: 576px) {
     .button-add {
         margin-left: 95%;
     }
-  }
+}
 
 .form-button {
     display: -webkit-box;

@@ -1,0 +1,2 @@
+Página de ordem de servico adicionar botão de busca;
+Na emissão de nota fiscal impressa será retornado os dados do cliente como: nome, cpf e os dados do carro que foi mexido, além das infomações da ordem de servico;

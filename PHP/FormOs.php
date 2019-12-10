@@ -69,6 +69,24 @@ include('ValidaOS.php');
                     <div class="form-row">
 
                         <div class="form-group col-md-4">
+                            <label for="IDCpf">CPF</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="IDCpf" name="cpf"  onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                                <button type="button" class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="IDCliente">Cliente</label>
+                            <input type="text" class="form-control" name="cliente" id="IDCliente" maxlength="15">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="IDVeiculo">Veículo</label>
+                            <input type="text" class="form-control" name="veiculo" id="IDVeiculo" maxlength="50">
+                        </div>
+
+                        <div class="form-group col-md-4">
                             <label for="IDFuncionaro">Nome do Funcionário</label>
                             <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" maxlength="100">
                         </div>
@@ -118,6 +136,8 @@ include('ValidaOS.php');
             </form>
         </div>
     </div>
+
+    <script src="js/MaskCepTel.js"></script>
 
     <script src="js/OnlyNumbers.js"></script>
 

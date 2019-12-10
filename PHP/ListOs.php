@@ -57,7 +57,7 @@
                             <tr class="table100-head">
                                 <th class="column1">ID</th>
                                 <th class="column2">Funcionario</th>
-                                <th class="column3">Cliente</th>
+                                <!--<th class="column3">Cliente</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -65,7 +65,7 @@
                             <tr>
                                 <td class="column1"><button class="columnButton"><?=$lista['idordemServico'] ?></button></td>
                                 <td class="column1"><button class="columnButton"><?=$lista['funcionario'] ?></button></td>
-                                <td class="column1"><button class="columnButton"><?=$lista['nome'] ?></button></td>
+                                <!--<td class="column1"><button class="columnButton"><?//=$lista['c.nome'] ?></button></td>-->
                             </tr>
                             <?php } ?>
                         </tbody>

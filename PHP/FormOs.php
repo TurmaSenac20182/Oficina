@@ -21,6 +21,20 @@ include('ValidaOS.php');
 </head>
 
 <body>
+    <script>
+        $(document).ready(function() {
+            $("input[name='cpf']").blur(function() {
+                var $cliente = $("input[name='cliente']");
+                var $placa = $("input[name='placa']");
+                $.getJSON('teste.php', {
+                    cpf: $(this).val()
+                }, function(json) {
+                    $cliente.val(json.cliente);
+                    $placa.val(json.placa);
+                });
+            });
+        });
+    </script>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
@@ -64,78 +78,89 @@ include('ValidaOS.php');
 
             <form action="FormOs.php" method="POST">
                 <fieldset class="col-md-12 FieldsetTittle">
-                    <legend class="LegendTittle">Ordem de Serviço</legend>
+                    <div class="form-group">
+                        <legend class="LegendTittle">Ordem de Serviço</legend>
 
-                    <div class="form-row">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="IDCpf">CPF</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="IDCpf" name="cpf" onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                                    <button type="button" class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
+                                </div>
+                            </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="IDCpf">CPF</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="IDCpf" name="cpf"  onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
-                                <button type="button" class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
+                            <div class="form-group col-md-4">
+                                <label for="IDCliente">Cliente</label>
+                                <input type="text" class="form-control" name="cliente" id="IDCliente" maxlength="15">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="IDVeiculo">Veículo</label>
+                                <input type="text" class="form-control" name="placa" id="IDVeiculo" maxlength="50">
                             </div>
                         </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="IDCliente">Cliente</label>
-                            <input type="text" class="form-control" name="cliente" id="IDCliente" maxlength="15">
-                        </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="IDVeiculo">Veículo</label>
-                            <input type="text" class="form-control" name="veiculo" id="IDVeiculo" maxlength="50">
-                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="IDFuncionaro">Nome do Funcionário</label>
+                                <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" maxlength="100">
+                            </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="IDFuncionaro">Nome do Funcionário</label>
-                            <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" maxlength="100">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="IDMaoDeObra">Trabalho Realizado</label>
-                            <input type="text" class="form-control" name="maoDeObra" id="IDMaoDeObra" maxlength="100">
-                        </div>
+                            <div class="form-group col-md-4">
+                                <label for="IDMaoDeObra">Trabalho Realizado</label>
+                                <input type="text" class="form-control" name="maoDeObra" id="IDMaoDeObra" maxlength="100">
+                            </div>
 
 
-                        <div class="form-group col-md-4">
-                            <label for="IDValorServico">Valor do Serviço</label>
-                            <input type="text" class="form-control" name="valorServico" id="IDValorServico" maxlength="100" onkeyup="OnlyNumbers(this);">
+                            <div class="form-group col-md-4">
+                                <label for="IDValorServico">Valor do Serviço</label>
+                                <input type="text" class="form-control" name="valorServico" id="IDValorServico" maxlength="100" onkeyup="OnlyNumbers(this);">
+                            </div>
                         </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="IDDataEntrada">Data de Entrada</label>
+                                <input type="date" class="form-control" name="dataEntrada" id="IDDataEntrada">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="IDDataSaida">Data de Saída</label>
+                                <input type="date" class="form-control" name="dataSaida" id="IDDataSaida">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="IDValorTotal">Valor Total</label>
+                                <input type="text" class="form-control" name="valorTotal" id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="IDDataEntrada">Data de Entrada</label>
-                            <input type="date" class="form-control" name="dataEntrada" id="IDDataEntrada">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="IDDataSaida">Data de Saída</label>
-                            <input type="date" class="form-control" name="dataSaida" id="IDDataSaida">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="IDValorTotal">Valor Total</label>
-                            <input type="text" class="form-control" name="valorTotal" id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
-                        </div>
-                    </div>
-
-
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="IDDescricao">Descrição do Serviço</label>
                             <textarea class="form-control" name="descricao" id="IDDescricao" rows="5"></textarea>
                         </div>
                     </div>
-                </fieldset>
-
-                <div class="ClassButton">
-                    <button type="submit" name="registrar_os" class="btn btn-dark form-button">Gerar</button>
-                    <button type="reset" class="btn btn-info form-button">Limpar</button>
-                </div>
-            </form>
         </div>
+        </fieldset>
+
+        <div class="ClassButton">
+            <button type="submit" name="registrar_os" class="btn btn-dark form-button">Gerar</button>
+            <button type="reset" class="btn btn-info form-button">Limpar</button>
+        </div>
+        </form>
     </div>
+    </div>
+
+
+
+    <script src="jquery/jquery-3.2.1.min.js"></script>
+
+    <script src="jquery/validate.js"></script>
 
     <script src="js/MaskCepTel.js"></script>
 

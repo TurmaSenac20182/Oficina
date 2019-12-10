@@ -6,7 +6,7 @@ contato.tel AS Telefone, contato.cel AS Celular, contato.email AS Email, enderec
 endereco.bairro AS Bairro, endereco.numero AS Numero, endereco.cidade AS cidade, endereco.uf AS Estado, endereco.complemento AS Complemento,
 dadoCarro.marca AS Marca, dadoCarro.modelo AS Modelo, dadoCarro.cor AS Cor, dadoCarro.placa AS Placa, dadoCarro.anoCarro AS Ano
 FROM cliente, dadoCarro, contato, endereco
-where dadoCarro.FK_Cliente = cliente.idCliente
+where dadoCarro.FK_Cliente = cliente.idCliente and contato.idContato = cliente.contato_cliente and endereco.idEndereco = cliente.endereco_cliente
 order by idCarro, FK_Cliente asc;
 
 SELECT *FROM VIEW_LISTA;

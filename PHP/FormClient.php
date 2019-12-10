@@ -189,29 +189,29 @@ include('ValidateClient.php');
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="IDMarca">Marca</label>
-                                <input type="text" class="form-control" maxlength="30" name="marca[0]" id="IDMarca">
+                                <input type="text" class="form-control" maxlength="30" name="marca" id="IDMarca">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="IDCarro">Modelo</label>
-                                <input type="text" class="form-control" maxlength="30" name="modelo[0]" id="IDNome">
+                                <input type="text" class="form-control" maxlength="30" name="modelo" id="IDNome">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="IDCor">Cor</label>
-                                <input type="text" class="form-control" maxlength="30" name="cor[0]" id="IDCor">
+                                <input type="text" class="form-control" maxlength="30" name="cor" id="IDCor">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDPlaca">Placa</label>
-                                <input type="text" class="form-control" maxlength="7" name="placa[0]" id="IDPlaca">
+                                <input type="text" class="form-control" maxlength="7" name="placa" id="IDPlaca">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDAno">Ano</label>
-                                <input type="text" class="form-control" id="IDAno" name="ano[0]" maxlength="4" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" id="IDAno" name="ano" maxlength="4" onkeyup="OnlyNumbers(this);">
                             </div>
                         </div>
                     </fieldset>

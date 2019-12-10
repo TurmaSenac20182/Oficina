@@ -30,7 +30,7 @@
     function retriveSingleCli($id) {
         $con = connection();
         $query = "select * from cliente where id = $id";
-        mysql_query($con, $query);
+        mysqli_query($con, $query);
         
         $dados = array();
 
@@ -43,7 +43,7 @@
     function retriveSingleOs($id) {
         $con = connection();
         $query = "select * from ordemservico where id = $id";
-        mysql_query($con, $query);
+        mysqli_query($con, $query);
 
         $dados = array();
 
@@ -68,4 +68,3 @@
 
         return $query;
     }  
-

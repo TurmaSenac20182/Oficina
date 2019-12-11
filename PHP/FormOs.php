@@ -76,19 +76,19 @@ include('ValidaOS.php');
                             <div class="form-group col-md-4">
                                 <label for="IDCpf">CPF</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="IDCpf" name="cpf" onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                                    <input type="text" class="form-control" id="IDCpf" name="cpf" required onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
                                     <button type="button" id="btn-cpf" class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
                                 </div>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDCliente">Cliente</label>
-                                <input type="text" class="form-control" name="cliente" id="IDCliente" maxlength="15">
+                                <input type="text" class="form-control" readonly name="cliente" id="IDCliente" maxlength="15" required>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDVeiculo">Veículo</label>
-                                <input type="text" class="form-control" name="placa" id="IDVeiculo" maxlength="50">
+                                <input type="text" class="form-control" readonly name="placa" id="IDVeiculo" maxlength="50" required>
                             </div>
 
 
@@ -98,18 +98,18 @@ include('ValidaOS.php');
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="IDFuncionaro">Nome do Funcionário</label>
-                                <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" maxlength="100">
+                                <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" required maxlength="100">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDMaoDeObra">Trabalho Realizado</label>
-                                <input type="text" class="form-control" name="maoDeObra" id="IDMaoDeObra" maxlength="100">
+                                <input type="text" class="form-control" name="maoDeObra" id="IDMaoDeObra" required maxlength="100">
                             </div>
 
 
                             <div class="form-group col-md-4">
                                 <label for="IDValorServico">Valor do Serviço</label>
-                                <input type="text" class="form-control" name="valorServico" id="IDValorServico" maxlength="100" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" name="valorServico" id="IDValorServico" required maxlength="100" onkeyup="OnlyNumbers(this);">
                             </div>
                         </div>
 
@@ -117,17 +117,17 @@ include('ValidaOS.php');
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="IDDataEntrada">Data de Entrada</label>
-                                <input type="date" class="form-control" name="dataEntrada" id="IDDataEntrada">
+                                <input type="date" class="form-control" name="dataEntrada" required id="IDDataEntrada">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDDataSaida">Data de Saída</label>
-                                <input type="date" class="form-control" name="dataSaida" id="IDDataSaida">
+                                <input type="date" class="form-control" name="dataSaida" required id="IDDataSaida">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDValorTotal">Valor Total</label>
-                                <input type="text" class="form-control" name="valorTotal" id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" name="valorTotal" required id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
                             </div>
                         </div>
 
@@ -135,7 +135,7 @@ include('ValidaOS.php');
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="IDDescricao">Descrição do Serviço</label>
-                            <textarea class="form-control" name="descricao" id="IDDescricao" rows="5"></textarea>
+                            <textarea class="form-control" name="descricao" id="IDDescricao" required rows="5"></textarea>
                         </div>
                     </div>
         </div>

@@ -63,8 +63,8 @@
                         <tbody>
                             <?php foreach($dados as $lista) {?>
                             <tr>
-                                <td class="column1"><button class="columnButton"><?=$lista['idordemServico'] ?></button></td>
-                                <td class="column1"><button class="columnButton"><?=$lista['funcionario'] ?></button></td>
+                                <td class="column1"><a clas="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['idordemServico'] ?></button></a></td>
+                                <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['funcionario'] ?></button></a></td>
                                 <!--<td class="column1"><button class="columnButton"><?//=$lista['c.nome'] ?></button></td>-->
                             </tr>
                             <?php } ?>

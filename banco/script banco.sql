@@ -58,11 +58,11 @@ create table ordemServico (
   dataEntrada date NOT NULL,
   dataSaida varchar(10) NOT NULL, 
   valorTotal double not null,
-  /*carro_ordemServ int not null,*/
+  carro_ordemServ int not null,
   servico_ordemServ int not null,
   cliente_ordemServ int not null,
 
-  /*constraint FK_carro_ordemServ foreign key(carro_ordemServ) references dadoCarro(idCarro),*/
+  constraint FK_carro_ordemServ foreign key(carro_ordemServ) references dadoCarro(idCarro),
   constraint FK_servico_ordemServ foreign key(servico_ordemServ) references servico(idServico),
   constraint FK_cliente_ordemServ foreign key(cliente_ordemServ) references cliente(idCliente)
   );

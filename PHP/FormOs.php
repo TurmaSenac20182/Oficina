@@ -71,7 +71,8 @@ include('ValidaOS.php');
 
                         <div class="form-row">
                             <input type="hidden" name="idCliente">
-
+                            <input type="hidden" name="idCarro">
+                            
                             <div class="form-group col-md-4">
                                 <label for="IDCpf">CPF</label>
                                 <div class="input-group">

@@ -9,6 +9,7 @@ function retorna($cpf, $conn){
 	if($result->num_rows){
 		$row = mysqli_fetch_assoc($result);
 		$dados['idCliente'] = $row['IDCliente'];
+		$dados['idCarro'] = $row['IDCarro'];
 		$dados['cpf'] = $row['CPF'];
 		$dados['cliente'] = $row['Cliente'];
 		$dados['placa'] = $row['Placa'];

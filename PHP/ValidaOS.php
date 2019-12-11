@@ -15,6 +15,7 @@ if (isset($_POST['registrar_os'])) {
     // ->Receber os dados do formulário<-
 
     $idCliente = mysqli_real_escape_string($conn, $_POST['idCliente']);
+    $idCarro = mysqli_real_escape_string($conn, $_POST['idCarro']);
     $cpf_cliente = mysqli_real_escape_string($conn, $_POST['cpf']);
     $nome_cliente = mysqli_real_escape_string($conn, $_POST['cliente']);
     $placa_cliente = mysqli_real_escape_string($conn, $_POST['placa']);
@@ -128,13 +129,13 @@ if (isset($_POST['registrar_os'])) {
             mysqli_close($conn);
         }
 
-        function insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal, $idCliente)
+        function insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal,  $idCarro, $idCliente)
         {
             $conn = connection();
             $idServico = $_SESSION['idServico'];
 
-            $query2 = "insert into ordemServico (funcionario, dataEntrada, dataSaida, valorTotal, servico_ordemServ, cliente_ordemServ)
-            values('{$funcionario}', '{$dataEntrada}', '{$dataSaida}', '{$valorTotal}', '{$idServico}', '{$idCliente}')";
+            $query2 = "insert into ordemServico (funcionario, dataEntrada, dataSaida, valorTotal, carro_ordemServ, servico_ordemServ, cliente_ordemServ)
+            values('{$funcionario}', '{$dataEntrada}', '{$dataSaida}', '{$valorTotal}', '{$idCarro}', '{$idServico}', '{$idCliente}')";
 
             if (mysqli_query($conn, $query2)) {
                 return  true;
@@ -147,7 +148,7 @@ if (isset($_POST['registrar_os'])) {
         }
 
         if (insertServico($descricao, $trabalho, $valorServico)) { }
-        if (insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal, $idCliente)) { }
+        if (insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal,  $idCarro, $idCliente)) { }
     
         header('location: index.php');
         $_SESSION['os_realizada'] = $servico_cadastrado;

@@ -9,6 +9,7 @@ include('ValidaOS.php');
 <head>
     <meta charset="utf-8">
     <title>Marzo mecânica</title>
+    <script src="jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -21,20 +22,7 @@ include('ValidaOS.php');
 </head>
 
 <body>
-    <script>
-        $(document).ready(function() {
-            $("input[name='cpf']").blur(function() {
-                var $cliente = $("input[name='cliente']");
-                var $placa = $("input[name='placa']");
-                $.getJSON('teste.php', {
-                    cpf: $(this).val()
-                }, function(json) {
-                    $cliente.val(json.cliente);
-                    $placa.val(json.placa);
-                });
-            });
-        });
-    </script>
+
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
@@ -82,11 +70,13 @@ include('ValidaOS.php');
                         <legend class="LegendTittle">Ordem de Serviço</legend>
 
                         <div class="form-row">
+                            <input type="hidden" name="idCliente">
+
                             <div class="form-group col-md-4">
                                 <label for="IDCpf">CPF</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="IDCpf" name="cpf" onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
-                                    <button type="button" class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
+                                    <button type="button" id="btn-cpf" class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
                                 </div>
                             </div>
 
@@ -99,6 +89,8 @@ include('ValidaOS.php');
                                 <label for="IDVeiculo">Veículo</label>
                                 <input type="text" class="form-control" name="placa" id="IDVeiculo" maxlength="50">
                             </div>
+
+
                         </div>
 
 
@@ -158,15 +150,14 @@ include('ValidaOS.php');
 
 
 
-    <script src="jquery/jquery-3.2.1.min.js"></script>
+
+    <script src="jquery/SearchClient.js"></script>
 
     <script src="jquery/validate.js"></script>
 
     <script src="js/MaskCepTel.js"></script>
 
     <script src="js/OnlyNumbers.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 

@@ -7,7 +7,7 @@ define("PORT", 3306);
 
 function connection()
 {
-    $conn = new mysqli(SERVER, USER, PASS, DB, PORT);
+    $conn = mysqli_connect(SERVER, USER, PASS, DB, PORT);
     mysqli_set_charset($conn, "utf8");
     return $conn;
     

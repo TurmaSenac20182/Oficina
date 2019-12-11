@@ -14,7 +14,10 @@ $descricao = "";
 if (isset($_POST['registrar_os'])) {
     // ->Receber os dados do formulário<-
 
-    //Dados do Cliente
+    $idCliente = mysqli_real_escape_string($conn, $_POST['idCliente']);
+    $cpf_cliente = mysqli_real_escape_string($conn, $_POST['cpf']);
+    $nome_cliente = mysqli_real_escape_string($conn, $_POST['cliente']);
+    $placa_cliente = mysqli_real_escape_string($conn, $_POST['placa']);
     $funcionario = mysqli_real_escape_string($conn, $_POST['funcionario']);
     $trabalho = mysqli_real_escape_string($conn, $_POST['maoDeObra']);
     $valorServico = mysqli_real_escape_string($conn, $_POST['valorServico']);
@@ -25,6 +28,26 @@ if (isset($_POST['registrar_os'])) {
     
 
     //Bloquear que dados vazios sejam inseridos.
+    if (empty($idCliente)) {
+        array_push($errors, "");
+        return false;
+    }
+
+    if (empty($cpf_cliente)) {
+        array_push($errors, "");
+        return false;
+    }
+
+    if (empty($nome_cliente)) {
+        array_push($errors, "");
+        return false;
+    }
+
+    if (empty($placa_cliente)) {
+        array_push($errors, "");
+        return false;
+    }
+
     if (empty($funcionario)) {
         array_push($errors, "");
         return false;
@@ -105,13 +128,13 @@ if (isset($_POST['registrar_os'])) {
             mysqli_close($conn);
         }
 
-        function insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal)
+        function insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal, $idCliente)
         {
             $conn = connection();
             $idServico = $_SESSION['idServico'];
 
-            $query2 = "insert into ordemServico (funcionario, dataEntrada, dataSaida, valorTotal, servico_ordemServ)
-            values('{$funcionario}', '{$dataEntrada}', '{$dataSaida}', '{$valorTotal}', '{$idServico}')";
+            $query2 = "insert into ordemServico (funcionario, dataEntrada, dataSaida, valorTotal, servico_ordemServ, cliente_ordemServ)
+            values('{$funcionario}', '{$dataEntrada}', '{$dataSaida}', '{$valorTotal}', '{$idServico}', '{$idCliente}')";
 
             if (mysqli_query($conn, $query2)) {
                 return  true;
@@ -124,7 +147,7 @@ if (isset($_POST['registrar_os'])) {
         }
 
         if (insertServico($descricao, $trabalho, $valorServico)) { }
-        if (insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal)) { }
+        if (insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal, $idCliente)) { }
     
         header('location: index.php');
         $_SESSION['os_realizada'] = $servico_cadastrado;

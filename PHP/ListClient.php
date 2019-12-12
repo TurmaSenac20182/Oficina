@@ -6,7 +6,7 @@
     $dados = retriveAllCli() ?>
     <meta charset="utf-8">
     <title>Marzo mecânica</title>
-    <script src="jquery/jquery-3.2.1.min.js"></script>
+
     <!--===============================================================================================-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <!--===============================================================================================-->
 </head>
 
@@ -38,22 +39,20 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <!--  <a class="dropdown-item" href="lista-cliente">Clientes</a> -->
                         <a class="dropdown-item" href="ListOs.php">Ordens de serviço</a>
+                        
                     </div>
                 </li>
+
             </ul>
+            <form  class="form-inline my-2 my-lg-0" action="FindClient.php" method="POST" onsubmit="return false;">
+                    <input class="form-control mr-sm-2" name="campo" id="campo" type="search" placeholder="Pesquisar" aria-label="Search">
+                </form>
         </div>
     </nav>
 
-    <div class="limiter">
+
+    <div class="limiter" id="resultado">
         <div class="container-table100">
-            <div class="container h-100">
-                <div class="d-flex justify-content-center h-100">
-                    <div class="searchbar">
-                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-                        <input class="search_input" type="text" name="" placeholder="Search...">
-                    </div>
-                </div>
-            </div>
             <div class="wrap-table100">
                 <div class="table100">
                     <table>
@@ -80,7 +79,10 @@
             </div>
         </div>
     </div>
-    
+
+    <script src="jquery/jquery-3.2.1.min.js"></script>
+    <script src="jquery/validate.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>

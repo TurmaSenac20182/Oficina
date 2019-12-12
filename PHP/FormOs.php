@@ -66,9 +66,9 @@ include('ValidaOS.php');
 
             <form action="FormOs.php" method="POST">
                 <fieldset class="col-md-12 FieldsetTittle">
+                <legend class="LegendTittle">Ordem de Serviço</legend>
                     <div class="form-group">
-                        <legend class="LegendTittle">Ordem de Serviço</legend>
-
+                        
                         <div class="form-row">
                             <input type="hidden" name="idCliente">
                             <input type="hidden" name="idCarro">

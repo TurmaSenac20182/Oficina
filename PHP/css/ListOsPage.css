@@ -377,6 +377,7 @@ tbody tr:hover {
 }
 
 .searchbar {
+    display: flex;
     margin-bottom: 2em;
     margin-top: auto;
     height: 60px;
@@ -406,6 +407,51 @@ tbody tr:hover {
 .searchbar:hover>.search_icon {
     background: white;
     color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+    .searchbar {
+        width: 60%;
+    }
+    .search_input {
+        display: flex;
+        width: 100%;
+    }
+    .search_icon {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .searchbar {
+        width: 60%;
+    }
+    .search_input {
+        display: flex;
+        width: 100%;
+    }
+    .search_icon {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .searchbar {
+        width: 60%;
+    }
+    .search_input {
+        display: flex;
+        width: 100%;
+    }
+    .search_icon {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 50%;
+    }
 }
 
 .search_icon {

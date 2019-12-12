@@ -46,17 +46,17 @@
 
     <div class="limiter">
         <div class="container-table100">
-            <form action="FindClient.php" method="POST" onsubmit="return false">
-                <div class="container h-100">
-                    <div class="d-flex justify-content-center h-100">
-                        <div class="searchbar">
-                            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-                            <input class="search_input" type="search"  id="campo" name="campo" placeholder="Pesquisar">
+            <div class="wrap-table100">
+                <form action="FindClient.php" method="POST" onsubmit="return false">
+                    <div class="container h-100">
+                        <div class="d-flex justify-content-center h-100">
+                            <div class="searchbar">
+                                <input class="search_input" type="search" id="campo" name="campo" placeholder="Pesquisar">
+                                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-            <div class="wrap-table100">
+                </form>
                 <div class="table100" id="resultado">
                     <table>
                         <thead>

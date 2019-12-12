@@ -25,7 +25,6 @@
 /*//////////////////////////////////////////////////////////////////
   [ RESTYLE TAG ]*/
 
-  
 * {
     font-family: Poppins-Regular, sans-serif;
 }
@@ -33,7 +32,9 @@
 body,
 html {
     height: 100%;
-    font-family: Poppins-Regular, sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -147,6 +148,7 @@ iframe {
 
 .wrap-table100 {
     width: 1170px;
+    margin-bottom: 35em;
 }
 
 table {
@@ -362,4 +364,39 @@ tbody tr:hover {
         padding-left: 15px;
         padding-right: 15px;
     }
+}
+
+.search_input {
+    left: 0;
+    color: rgb(97, 95, 95);
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 450px;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover>.search_input {
+    width: 450px;
+    caret-color: red;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover>.search_icon {
+    background: white;
+    color: #e74c3c;
+}
+
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
 }

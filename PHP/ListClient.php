@@ -53,7 +53,7 @@
                     <table>
                         <thead>
                             <tr class="table100-head">
-                                <th class="column1">ID</th>
+                                <!--<th class="column1">ID</th>-->
                                 <th class="column2">NOME</th>
                                 <th class="column3">CPF</th>
                                 <th class="column4">TELEFONE</th>
@@ -62,10 +62,10 @@
                         <tbody>
                             <?php foreach($dados as $lista) { ?>
                                 <tr>
-                                    <td class="column1"><button class="columnButton"><?=$lista['idCliente'] ?></button></td>
-                                    <td class="column1"><button class="columnButton"><?=$lista['nome'] ?></button></td>
-                                    <td class="column1"><button class="columnButton"><?=$lista['cpf'] ?></button></td>
-                                    <td class="column1"><button class="columnButton"><?=$lista['cel'] ?></button></td>
+                                    <!--<td class="column1"><button class="columnButton"><?//=$lista['IDCliente'] ?></button></td>-->
+                                    <td class="column1"><button class="columnButton"><?=$lista['Cliente'] ?></button></td>
+                                    <td class="column1"><button class="columnButton"><?=$lista['CPF'] ?></button></td>
+                                    <td class="column1"><button class="columnButton"><?=$lista['Celular'] ?></button></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

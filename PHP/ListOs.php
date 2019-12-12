@@ -2,7 +2,10 @@
 <html lang="pt-br">
 <?php 
     require "function.php"; 
-    $dados = retriveAllOs(); ?>
+    $dados = retriveAllOs();
+    function data($data) {
+        return date("d/m/Y", strtotime($data));
+    } ?>
 <head>
     <meta charset="utf-8">
     <title>Marzo mecânica</title>
@@ -57,16 +60,18 @@
                             <tr class="table100-head">
                                 <th class="column1">ID</th>
                                 <th class="column2">Funcionario</th>
-                                <!--<th class="column3">Cliente</th>-->
+                                <th class="column3">Cliente</th>
+                                <th class="column3">Data</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($dados as $lista) {?>
-                            <tr>
-                                <td class="column1"><a clas="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['idordemServico'] ?></button></a></td>
-                                <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['funcionario'] ?></button></a></td>
-                                <!--<td class="column1"><button class="columnButton"><?//=$lista['c.nome'] ?></button></td>-->
-                            </tr>
+                                <tr>
+                                    <td class="column1"><a clas="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['idOS'] ?></button></a></td>
+                                    <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['Funcionário'] ?></button></a></td>
+                                    <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['Nome_Cliente'] ?></button></a></td>
+                                    <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?=data($lista['Data_de_Entrada']) ?></button></a></td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>

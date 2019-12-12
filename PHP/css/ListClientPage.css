@@ -385,10 +385,10 @@ tbody tr:hover {
     caret-color: transparent;
     line-height: 40px;
     transition: width 0.4s linear;
+    transition-delay: 4s;
 }
 
 .searchbar:hover>.search_input {
-    padding: 0 10px;
     width: 450px;
     caret-color: red;
     transition: width 0.4s linear;

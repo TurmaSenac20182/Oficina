@@ -6,14 +6,34 @@
     src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }
 
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url('../fonts/montserrat/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf');
+}
+
 
 /*//////////////////////////////////////////////////////////////////
   [ RESTYLE TAG ]*/
 
+  
+* {
+    font-family: Poppins-Regular, sans-serif;
+}
+
 body,
 html {
     height: 100%;
-    font-family: sans-serif;
+    font-family: Poppins-Regular, sans-serif;
 }
 
 

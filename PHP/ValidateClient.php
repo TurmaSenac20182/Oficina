@@ -178,7 +178,7 @@ if (isset($_POST['registrar_cliente'])) {
         if (($user['cpf'] === $cpf) || ($user['rg'] === $rg)) {
             array_push($errors, "Cliente já cadastrado");
             $_SESSION["usuario_existente"] = $errors["usuario_cadastrado"];
-            return false;
+            return false;   
         }
        /* if ($user['cpf'] === $cpf) {
             array_push($errors, "Cpf já cadastrado");
@@ -205,23 +205,6 @@ if (isset($_POST['registrar_cliente'])) {
     if ($row == 0) {
 
         //Inserção de dados
-
-        function insertCarro($marca, $modelo, $cor, $placa, $ano)
-        {
-            $conn = connection();
-
-            $query = "insert into dadoCarro (marca, modelo, cor, placa, anoCarro)
-            values('{$marca}','{$modelo}', '{$cor}', '{$placa}', '{$ano}')";
-
-            if (mysqli_query($conn, $query)) {
-                $_SESSION['idCarro'] = mysqli_insert_id($conn);
-                return  true;
-            } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
-            }
-            mysqli_close($conn);
-        }
-
 
         function insertContato($telR, $telC, $email)
         {
@@ -260,33 +243,50 @@ if (isset($_POST['registrar_cliente'])) {
         function insertCliente($nome, $cpf, $rg)
         {
             $conn = connection();
-            $idCarro = $_SESSION['idCarro'];
             $idContato = $_SESSION['idContato'];
             $idEndereco =  $_SESSION['idEndereco'];
 
-            $query4 = "insert into cliente (nome, cpf, rg, carro_cliente, contato_cliente, endereco_cliente)
-            values('{$nome}', '{$cpf}', '{$rg}', '{$idCarro}', '{$idContato}', '{$idEndereco}')";
+            $query4 = "insert into cliente (nome, cpf, rg, contato_cliente, endereco_cliente)
+            values('{$nome}', '{$cpf}', '{$rg}', '{$idContato}', '{$idEndereco}')";
 
             if (mysqli_query($conn, $query4)) {
+                $_SESSION['idCliente'] = mysqli_insert_id($conn);
                 return  true;
             } else {
                 echo "Error: " . $query4 . "<br>" . mysqli_error($conn);
             }
             mysqli_close($conn);
 
-            session_unset('idCarro');
-            session_unset('idContato');
-            session_unset('idEndereco');
+            unset($idContato); 
+            unset($idEndereco); 
         }
+
+        function insertCarro($marca, $modelo, $cor, $placa, $ano)
+        {
+            $conn = connection();
+            $idCliente = $_SESSION['idCliente'];
+
+            $query = "insert into dadoCarro (marca, modelo, cor, placa, anoCarro, FK_Cliente)
+            values('{$marca}','{$modelo}', '{$cor}', '{$placa}', '{$ano}', '{$idCliente}')";
+
+            if (mysqli_query($conn, $query)) {
+                return  true;
+            } else {
+                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+            }
+            mysqli_close($conn);
+
+            unset($idCliente);
+        }
+
+        if (insertContato($telR, $telC, $email)) { }
+        if (insertEndereco($logradouro, $numero, $cep, $bairro, $cidade, $estado, $complemento)) { }
+        if (insertCliente($nome, $cpf, $rg)) { }
+        if (insertCarro($marca, $modelo, $cor, $placa, $ano)) {}
+    
+        header('location: index.php');
+        $_SESSION['cadastro_realizado'] = $usuario_cadastrado;
+        die;
+
     }
-
-
-    if (insertCarro($marca, $modelo, $cor, $placa, $ano)) { }
-    if (insertContato($telR, $telC, $email)) { }
-    if (insertEndereco($logradouro, $numero, $cep, $bairro, $cidade, $estado, $complemento)) { }
-    if (insertCliente($nome, $cpf, $rg)) { }
-
-    header('location: index.php');
-    $_SESSION['cadastro_realizado'] = $usuario_cadastrado;
-    die;
 }

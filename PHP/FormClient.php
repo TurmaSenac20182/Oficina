@@ -13,6 +13,8 @@ include('ValidateClient.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!--===============================================================================================-->
+    <script src="jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/ClientPage.css" />
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -71,34 +73,34 @@ include('ValidateClient.php');
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="IDNome">Nome Completo</label>
-                            <input type="text" class="form-control" name="nome" id="IDNome" maxlength="100">
+                            <input type="text" class="form-control" name="nome" id="IDNome" required maxlength="100">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDCpf">CPF</label>
-                            <input type="text" class="form-control" name="cpf" id="IDCpf"  onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                            <input type="text" class="form-control" name="cpf" id="IDCpf" required onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDRg">RG</label>
-                            <input type="text" class="form-control" name="rg" id="IDRg" onkeypress="mascara(this, '##.###.###-#')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="12">
+                            <input type="text" class="form-control" name="rg" id="IDRg" required onkeypress="mascara(this, '##.###.###-#')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="12">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="IDEmail">Email</label>
-                            <input type="email" class="form-control" name="email" id="IDEmail" maxlength="50">
+                            <input type="email" class="form-control" name="email" required id="IDEmail" maxlength="50">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDResidencial">Telefone Residencial</label>
-                            <input type="text" class="form-control" name="telefone" id="IDResidencial" onkeypress="mascara(this, '## ####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="12">
+                            <input type="text" class="form-control" name="telefone" required id="IDResidencial" onkeypress="mascara(this, '## ####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="12">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDCelular">Telefone Celular</label>
-                            <input type="text" class="form-control" name="celular" id="IDCelular" onkeypress="mascara(this, '## #####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="13">
+                            <input type="text" class="form-control" name="celular" required id="IDCelular" onkeypress="mascara(this, '## #####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="13">
                         </div>
                     </div>
                 </fieldset>
@@ -112,10 +114,10 @@ include('ValidateClient.php');
                                 <button type="button" class="button-cep" onclick="pesquisacep(cep.value);"><i class="fas fa-map-marked-alt fa-lg"></i></button>
                             </div>
                         </div>
-                        
+
                         <div class="form-group col-md-4">
                             <label for="uf">Estado</label>
-                            <select name="uf" id="uf" class="form-control">
+                            <select name="uf" id="uf" class="form-control" required>
                                 <option selected>Selecione</option>
                                 <option value="AC">Acre</option>
                                 <option value="AL">Alagoas</option>
@@ -150,68 +152,72 @@ include('ValidateClient.php');
 
                         <div class="form-group col-md-4">
                             <label for="cidade">Cidade</label>
-                            <input type="text" class="form-control" name="cidade" id="cidade" maxlength="50">
+                            <input type="text" class="form-control" maxlength="50" required name="cidade" id="cidade">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="rua">Logradouro</label>
-                            <input type="text" class="form-control" name="logradouro" id="rua">
+                            <input type="text" class="form-control" maxlength="100" required name="logradouro" id="rua">
                         </div>
 
                         <div class="form-group col-md-2">
                             <label for="numero">Número</label>
-                            <input type="text" class="form-control" name="numero" onkeyup="OnlyNumbers(this);" id="numero">
+                            <input type="text" class="form-control" maxlength="10" required name="numero" onkeyup="OnlyNumbers(this);" id="numero">
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" name="complemento" id="complemento" maxlength="50">
+                            <input type="text" class="form-control" maxlength="100" required name="complemento" id="complemento">
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="bairro">Bairro</label>
-                            <input type="text" class="form-control" name="bairro" id="bairro" maxlength="50">
+                            <input type="text" class="form-control" maxlength="50" required name="bairro" id="bairro">
                         </div>
                     </div>
                 </fieldset>
 
-                <fieldset class="col-md-12 FieldsetTittle">
-                    <legend class="LegendTittle">Veículo do Cliente</legend>
-                    
-                    <div class="form-group col-md-12">
-                        <button type="button" class="button-add"><i class="fas fa-plus-circle fa-lg"></i></button>        
-                    </div>
+                <div id="elemento">
+                    <fieldset class="col-md-12 FieldsetTittle">
+                        <legend class="LegendTittle">Veículo do Cliente</legend>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="IDMarca">Marca</label>
-                            <input type="text" class="form-control" name="marca" id="IDMarca">
+                        <div class="form-group col-md-12">
+                            <button type="button" class="button-add" required onclick="duplicarCampos();"><i class="fas fa-plus-circle fa-lg"></i></button>
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="IDCarro">Modelo</label>
-                            <input type="text" class="form-control" name="modelo" id="IDNome">
-                        </div>
-                    </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="IDMarca">Marca</label>
+                                <input type="text" class="form-control" required maxlength="30" name="marca" id="IDMarca">
+                            </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="IDCor">Cor</label>
-                            <input type="text" class="form-control" name="cor" id="IDCor">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="IDPlaca">Placa</label>
-                            <input type="text" class="form-control" maxlength="7" name="placa" id="IDPlaca">
+                            <div class="form-group col-md-6">
+                                <label for="IDCarro">Modelo</label>
+                                <input type="text" class="form-control" required maxlength="30" name="modelo" id="IDNome">
+                            </div>
                         </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="IDPlaca">Ano</label>
-                            <input type="text" class="form-control" name="ano" id="IDPlaca" maxlength="4" onkeyup="OnlyNumbers(this);">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="IDCor">Cor</label>
+                                <input type="text" class="form-control" required maxlength="30" name="cor" id="IDCor">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="IDPlaca">Placa</label>
+                                <input type="text" class="form-control" required maxlength="7" name="placa" id="IDPlaca">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="IDAno">Ano</label>
+                                <input type="text" class="form-control" required id="IDAno" name="ano" maxlength="4" onkeyup="OnlyNumbers(this);">
+                            </div>
                         </div>
-                    </div>
-                </fieldset>
+                    </fieldset>
+                </div>
+
+                <div id="destino"></div>
 
                 <div class="ClassButton">
                     <button type="submit" name="registrar_cliente" class="btn btn-dark form-button">Cadastrar</button>
@@ -221,11 +227,14 @@ include('ValidateClient.php');
         </div>
     </div>
 
+    <script src="js/AddCar.js"></script>
     <script src="js/ValidateCPF.js"></script>
     <script src="js/MaskCepTel.js"></script>
     <script src="js/OnlyNumbers.js"></script>
     <script src="js/ViaCep.js"></script>
 
+
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

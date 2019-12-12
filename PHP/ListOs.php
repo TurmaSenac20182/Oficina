@@ -57,16 +57,16 @@
                             <tr class="table100-head">
                                 <th class="column1">ID</th>
                                 <th class="column2">Funcionario</th>
-                                <th class="column3">Cliente</th>
+                                <!--<th class="column3">Cliente</th>-->
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($dados as $lista) {?>
-                                <tr>
-                                    <td class="column1"><button class="columnButton"><?=$lista['idordemServico'] ?></button></td>
-                                    <td class="column1"><button class="columnButton"><?=$lista['funcionario'] ?></button></td>
-                                    <td class="column1"><button class="columnButton"><?=$lista['nome'] ?></button></td>
-                                </tr>
+                            <tr>
+                                <td class="column1"><a clas="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['idordemServico'] ?></button></a></td>
+                                <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?=$lista['funcionario'] ?></button></a></td>
+                                <!--<td class="column1"><button class="columnButton"><?//=$lista['c.nome'] ?></button></td>-->
+                            </tr>
                             <?php } ?>
                         </tbody>
                     </table>

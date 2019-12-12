@@ -142,7 +142,7 @@ include('ValidaOS.php');
         </fieldset>
 
         <div class="ClassButton">
-            <button type="submit" name="registrar_os" class="btn btn-dark form-button">Gerar</button>
+            <button type="submit" name="registrar_os" class="btn btn-dark form-button">Finalizar</button>
             <button type="reset" class="btn btn-info form-button">Limpar</button>
         </div>
         </form>

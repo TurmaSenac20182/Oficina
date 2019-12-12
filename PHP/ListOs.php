@@ -75,12 +75,13 @@ function data($data)
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($dados as $lista) { ?>
+                            <?php foreach ($dados as $lista) { 
+                                ?>
                                 <tr>
-                                    <td class="column1"><a clas="select-item" href="FormOs2.php"><button class="columnButton"><?= $lista['idOS'] ?></button></a></td>
-                                    <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?= $lista['Funcionário'] ?></button></a></td>
-                                    <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?= $lista['Nome_Cliente'] ?></button></a></td>
-                                    <td class="column1"><a class="select-item" href="FormOs2.php"><button class="columnButton"><?= data($lista['Data_de_Entrada']) ?></button></a></td>
+                                    <td class="column1"><a clas="select-item" href="FormOs2.php?O=<?= $lista['idOS']?>&C=<?= $lista['idCliente']?>&D=<?= $lista['idCarro']?>"><button class="columnButton"><?= $lista['idOS'] ?></button></a></td>
+                                    <td class="column1"><a class="select-item" href="FormOs2.php?O=<?= $lista['idOS']?>&C=<?= $lista['idCliente']?>&D=<?= $lista['idCarro']?>"><button class="columnButton"><?= $lista['Funcionário'] ?></button></a></td>
+                                    <td class="column1"><a class="select-item" href="FormOs2.php?O=<?= $lista['idOS']?>&C=<?= $lista['idCliente']?>&D=<?= $lista['idCarro']?>"><button class="columnButton"><?= $lista['Nome_Cliente'] ?></button></a></td>
+                                    <td class="column1"><a class="select-item" href="FormOs2.php?O=<?= $lista['idOS']?>&C=<?= $lista['idCliente']?>&D=<?= $lista['idCarro']?>"><button class="columnButton"><?= data($lista['Data_de_Entrada']) ?></button></a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

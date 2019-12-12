@@ -16,7 +16,7 @@
 
     function retriveAllOs() {
         $con = connection();
-        $query = "select idOS, Funcionário, Nome_Cliente, Data_de_Entrada from VIEW_OS";
+        $query = "select idOS, idCliente, idCarro, Funcionário, Nome_Cliente, Data_de_Entrada from VIEW_OS";
         $resultado = mysqli_query($con, $query);
 
         $dados = array();

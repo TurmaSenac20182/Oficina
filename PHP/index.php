@@ -2,6 +2,8 @@
 
 <!doctype html>
 <html lang="pt-br">
+<?php require "function.php";
+    $dados = retriveAllCli(); ?>
 
 <head>
     <meta charset="utf-8">
@@ -9,14 +11,16 @@
     <!--===============================================================================================-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/HomePage.css" />
+    <link rel="stylesheet" type="text/css" href="css/calendario.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!--===============================================================================================-->
-    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />  
 
     <style>
         #calendario {
@@ -24,8 +28,12 @@
             width: 70%;
             margin: 0px auto;
         }
-    </style>
 
+        .teste {
+            width: 108%;
+        }
+    </style>
+  
     <!-- script de tradução -->
     <script src='fullcalendar/lang/pt-br.js'></script>
 
@@ -121,15 +129,119 @@
 
 
 
-        <div id='calendario'>
+        <!--<div id='calendario'>
             <br />
             <form id="novo_evento" action="./php/cadastrarEvento.php" method="post">
                 Nome do Evento: <input type="text" name="nome" required /><br /><br />
                 Data do Evento: <input type="date" name="data" required /><br /><br />
                 <button type="submit"> Cadastrar novo evento </button>
             </form>
+        </div>-->
+
+    <div class="calendar-container">
+        <div class="calendar-header">
+          <h1>
+             November
+            <button>▾</button>
+          </h1>
+          <p>2018</p>
+        </div>
+        <div class="calendar">
+            <span class="day-name">Domingo</span>
+            <span class="day-name">Segunda</span>
+            <span class="day-name">Terça</span>
+            <span class="day-name">Quarta</span>
+            <span class="day-name">Quinta</span>
+            <span class="day-name">Sexta</span>
+            <span class="day-name">Sábado</span>
+
+
+          <div class="day day--disabled">30</div>
+          <div class="day day--disabled">31</div>
+          <div class="day"><a data-toggle="modal" data-target="#addServico" onclick="darAData(this.innerHTML);">1</a></div>
+          <div class="day"><a data-toggle="modal" data-target="#addServico" onclick="darAData(this.innerHTML);">2</a></div>
+          <div class="day">3</div>
+          <div class="day">4</div>
+          <div class="day">5</div>
+          <div class="day">6</div>
+          <div class="day">7</div>
+          <div class="day">8</div>
+          <div class="day">9</div>
+          <div class="day">10</div>
+          <div class="day">11</div>
+          <div class="day">12</div>
+          <div class="day">13</div>
+          <div class="day">14</div>
+          <div class="day">15</div>
+          <div class="day">16</div>
+          <div class="day">17</div>
+          <div class="day">18</div>
+          <div class="day">19</div>
+          <div class="day">20</div>
+          <div class="day">21</div>
+          <div class="day">22</div>
+          <div class="day">23</div>
+          <div class="day">24</div>
+          <div class="day">25</div>
+          <div class="day">26</div>
+          <div class="day">27</div>
+          <div class="day">28</div>
+          <div class="day">29</div>
+          <div class="day">30</div>
+          <div class="day">31</div>
+          <div class="day day--disabled">1</div>
+          <div class="day day--disabled">2</div>
+          <!--<section class="task task--warning">Projects</section>
+          <section class="task task--danger">Design Sprint</section>
+          <section class="task task--primary">Product Checkup 1
+            <div class="task__detail">
+              <h2>Product Checkup 1</h2>
+              <p>15-17th November</p>
+            </div>
+          </section>
+          <section class="task task--info">Product Checkup 2</section>-->
+        </div>
+      </div>
+
+
+   
+      
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="addServico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr style="text-align: center;">
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Celular</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($dados as $lista) { ?>  
+                                <tr>
+                                    <th scope="row"><button class="teste btn btn-light btn-lg btn-block"><?=$lista['IDCliente']?></button></th>
+                                    <td><button class="teste btn btn-light btn-lg btn-block"><?=$lista['Cliente']?></button></td>
+                                    <td><button class="teste btn btn-light btn-lg btn-block"><?=$lista['Celular']?></button></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+
+</div>
+
     <script src='fullcalendar/lib/jquery.min.js'></script>
     <script src='fullcalendar/lib/moment.min.js'></script>
     <script src='fullcalendar/fullcalendar.js'></script>

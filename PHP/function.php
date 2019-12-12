@@ -3,7 +3,7 @@
 
     function retriveAllCli() {
         $con = connection();
-        $query = 'select c.idCliente, c.nome, c.cpf, t.cel from cliente as c join contato as t on c.idCliente = idContato';
+        $query = 'select IDCliente, Cliente, CPF, Celular from VIEW_LISTA join contato as c where IDCliente = c.idContato';
         $resultado = mysqli_query($con, $query);
         
         $dados = array();
@@ -16,7 +16,7 @@
 
     function retriveAllOs() {
         $con = connection();
-        $query = "select idordemServico, funcionario from ordemservico;";
+        $query = "select idOS, Funcionário, Nome_Cliente, Data_de_Entrada from VIEW_OS";
         $resultado = mysqli_query($con, $query);
 
         $dados = array();

@@ -154,8 +154,6 @@ include('ValidaOS.php');
 
     <script src="jquery/SearchClient.js"></script>
 
-    <script src="jquery/validate.js"></script>
-
     <script src="js/MaskCepTel.js"></script>
 
     <script src="js/OnlyNumbers.js"></script>

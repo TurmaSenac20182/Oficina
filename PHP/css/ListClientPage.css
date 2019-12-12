@@ -366,19 +366,28 @@ tbody tr:hover {
     }
 }
 
+.searchbar {
+    margin-bottom: 2em;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+}
+
 .search_input {
-    left: 0;
-    color: rgb(97, 95, 95);
+    color: white;
     border: 0;
     outline: 0;
     background: none;
-    width: 450px;
+    width: 0;
     caret-color: transparent;
     line-height: 40px;
     transition: width 0.4s linear;
 }
 
 .searchbar:hover>.search_input {
+    padding: 0 10px;
     width: 450px;
     caret-color: red;
     transition: width 0.4s linear;

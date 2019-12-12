@@ -48,20 +48,8 @@ $dados = retriveAllOs(); ?>
 
     <div class="limiter" id="resultado">
         <div class="container-table100">
-            <div class="container h-100">
-                <form action="" method="POST">
-                    <div class="d-flex justify-content-center h-100">
-                        <div class="searchbar">
-                            <a href="" class="search_icon"><i class="fas fa-search"></i></a>
-                            <input class="search_input" type="text" name="" placeholder="Search..." aria-controls="resultado">
-                        </div>
-                    </div>
-                </div>
-            </form>
             <div class="wrap-table100">
-
                 <div class="table100">
-
                     <table>
                         <thead>
                             <tr class="table100-head">

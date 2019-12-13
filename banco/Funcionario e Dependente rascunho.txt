@@ -1,14 +1,15 @@
-Funcionário ->
+Funcionï¿½rio ->
 
 Atributos:
 
 -Nome
+-login
 -Senha
--Contato Funcionário (Celular, Telefome, Email)
+-Contato Funcionï¿½rio (Celular, Telefome, Email)
 -CPF
 -Data de Nascimento
 
-Endereço de Funcionário ->
+Endereï¿½o de Funcionï¿½rio ->
 
 Atributos:
 -Cep
@@ -16,14 +17,17 @@ Atributos:
 -Logradouro
 -Rua
 -Bairro
--Número
+-Nï¿½mero
 -Complemente
 
 
 Cargo ->
+
+Atributos:
+
 -Tipo de cargo
--Descrição
--Salário
+-Descriï¿½ï¿½o
+-Salï¿½rio
 
 
 Dependente ->
@@ -34,4 +38,4 @@ Atributos:
 -CPF
 -Data de Nascimento
 -Idade
--Filiação
+-Filiaï¿½ï¿½o

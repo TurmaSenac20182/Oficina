@@ -378,8 +378,7 @@ tbody tr:hover {
 
 .searchbar {
     display: flex;
-    margin-bottom: 2em;
-    margin-top: auto;
+    margin: auto auto 2em auto;
     height: 60px;
     background-color: #353b48;
     border-radius: 30px;
@@ -394,14 +393,14 @@ tbody tr:hover {
     width: 0;
     caret-color: transparent;
     line-height: 40px;
-    transition: width 0.4s linear;
-    transition-delay: 4s;
+    transition: width 0.5s linear;
+    transition-delay: 6s;
 }
 
 .searchbar:hover>.search_input {
     width: 450px;
     caret-color: red;
-    transition: width 0.4s linear;
+    transition: width 0.5s linear;
 }
 
 .searchbar:hover>.search_icon {

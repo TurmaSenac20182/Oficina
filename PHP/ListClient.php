@@ -1,9 +1,14 @@
+<?php 
+    require "function.php";
+    $dados = retriveAllCli(); 
+    /*if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+        header("Location: index.php");
+    }*/
+?>
 <!doctype html>
 <html lang="pt-br">
 
 <head>
-    <?php require "function.php";
-    $dados = retriveAllCli() ?>
     <meta charset="utf-8">
     <title>Marzo mecânica</title>
     <script src="jquery/jquery-3.2.1.min.js"></script>
@@ -20,7 +25,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
+        <a class="navbar-brand" href="home.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

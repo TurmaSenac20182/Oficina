@@ -3,6 +3,10 @@ session_start();
 include('ValidaOS.php');
 
 $dados = getIDS();
+    /*
+    if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+        header("Location: index.php");
+        }*/
 ?>
 
 <!doctype html>
@@ -27,7 +31,7 @@ $dados = getIDS();
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
+        <a class="navbar-brand" href="home.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -78,7 +82,7 @@ $dados = getIDS();
                             <div class="form-group col-md-4">
                                 <label for="IDCpf">CPF</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="IDCpf" name="cpf" value="<?=$os['CPF_Cliente']?>" required onkeypress="mascara(this, '###.###.###-##')" readonly onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                                    <input type="text" class="form-control" readonly id="IDCpf" name="cpf" value="<?=$os['CPF_Cliente']?>" required onkeypress="mascara(this, '###.###.###-##')" readonly onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
                                     <button type="button" id="btn-cpf" disabled class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
                                 </div>
                             </div>
@@ -105,7 +109,7 @@ $dados = getIDS();
 
                             <div class="form-group col-md-4">
                                 <label for="IDMaoDeObra">Trabalho Realizado</label>
-                                <input type="text" class="form-control" name="maoDeObra" id="IDMaoDeObra" value="<?=$os['Mão_de_Obra']?>" required maxlength="100">
+                                <input type="text" class="form-control" readonly name="maoDeObra" id="IDMaoDeObra" value="<?=$os['Mão_de_Obra']?>" required maxlength="100">
                             </div>
 
 
@@ -119,7 +123,7 @@ $dados = getIDS();
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="IDDataEntrada">Data de Entrada</label>
-                                <input type="date" class="form-control" name="dataEntrada" value="<?=$os['Data_de_Entrada']?>" readonly required id="IDDataEntrada">
+                                <input type="date" class="form-control" readonly name="dataEntrada" value="<?=$os['Data_de_Entrada']?>" readonly required id="IDDataEntrada">
                             </div>
 
                             <div class="form-group col-md-4">

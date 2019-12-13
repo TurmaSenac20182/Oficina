@@ -284,7 +284,7 @@ if (isset($_POST['registrar_cliente'])) {
         if (insertCliente($nome, $cpf, $rg)) { }
         if (insertCarro($marca, $modelo, $cor, $placa, $ano)) {}
     
-        header('location: index.php');
+        header('location: home.php');
         $_SESSION['cadastro_realizado'] = $usuario_cadastrado;
         die;
 

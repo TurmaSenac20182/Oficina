@@ -1,13 +1,19 @@
-<!doctype html>
-<html lang="pt-br">
 <?php
 require "function.php";
-$dados = retriveAllOs();
-function data($data)
-{
-    return date("d/m/Y", strtotime($data));
-} ?>
+/*
+if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+    header("Location: index.php");
+    }*/
+    
+    $dados = retriveAllOs();
+    function data($data)
+    {
+        return date("d/m/Y", strtotime($data));
+    } 
+?>
 
+<!doctype html>
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <title>Marzo mecânica</title>
@@ -26,7 +32,7 @@ function data($data)
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
+        <a class="navbar-brand" href="home.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

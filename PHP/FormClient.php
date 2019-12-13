@@ -1,6 +1,11 @@
 <?php
 session_start();
 include('ValidateClient.php');
+
+    /*
+    if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+        header("Location: index.php");
+        }*/
 ?>
 
 <!doctype html>
@@ -26,7 +31,7 @@ include('ValidateClient.php');
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
+        <a class="navbar-brand" href="home.php"><img src="images/LogoB2.png" width="60px" height="45px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

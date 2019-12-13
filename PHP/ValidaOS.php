@@ -150,7 +150,7 @@ if (isset($_POST['registrar_os'])) {
         if (insertServico($descricao, $trabalho, $valorServico)) { }
         if (insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal,  $idCarro, $idCliente)) { }
     
-        header('location: index.php');
+        header('location: home.php');
         $_SESSION['os_realizada'] = $servico_cadastrado;
         die;
 

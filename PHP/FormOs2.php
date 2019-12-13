@@ -1,6 +1,8 @@
 <?php
 session_start();
 include('ValidaOS.php');
+
+$dados = getIDS();
 ?>
 
 <!doctype html>
@@ -34,9 +36,9 @@ include('ValidaOS.php');
                 <li class="nav-item">
                     <a class="nav-link" href="FormClient.php"><i class="fas fa-user-plus fa-md"></i> Cliente</a>
                 </li>
-                <!-- <li class="nav-item">
+                     <li class="nav-item">
                         <a class="nav-link" href="ordem-servico"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
-                    </li>-->
+                    </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fab fa-searchengin fa-md"></i> Consultas</a>
@@ -60,11 +62,12 @@ include('ValidaOS.php');
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <?php unset($_SESSION["servico_existente"]); ?>
+                    <?php  unset($_SESSION["servico_existente"]); ?>
                 </div>
             <?php endif ?>
 
-            <form action="FormOs.php" method="POST">
+            <?php foreach($dados as $os) {?>
+            <form action="" method="POST">
                 <fieldset class="col-md-12 FieldsetTittle">
                 <legend class="LegendTittle">Ordem de Serviço</legend>
                     <div class="form-group">
@@ -75,19 +78,19 @@ include('ValidaOS.php');
                             <div class="form-group col-md-4">
                                 <label for="IDCpf">CPF</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="IDCpf" name="cpf" required onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
-                                    <button type="button" id="btn-cpf" class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
+                                    <input type="text" class="form-control" id="IDCpf" name="cpf" value="<?=$os['CPF_Cliente']?>" required onkeypress="mascara(this, '###.###.###-##')" readonly onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                                    <button type="button" id="btn-cpf" disabled class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
                                 </div>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDCliente">Cliente</label>
-                                <input type="text" class="form-control" readonly name="cliente" id="IDCliente" maxlength="15" required>
+                                <input type="text" class="form-control" readonly name="cliente" id="IDCliente" value="<?=$os['Nome_Cliente']?>" maxlength="15" required>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDVeiculo">Veículo</label>
-                                <input type="text" class="form-control" readonly name="placa" id="IDVeiculo" maxlength="50" required>
+                                <input type="text" class="form-control" readonly name="placa" id="IDVeiculo" value="<?=$os['Placa_Veiculo']?>" maxlength="50" required>
                             </div>
 
 
@@ -97,18 +100,18 @@ include('ValidaOS.php');
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="IDFuncionaro">Nome do Funcionário</label>
-                                <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" required maxlength="100">
+                                <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" value="<?=$os['Funcionário']?>" required maxlength="100">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDMaoDeObra">Trabalho Realizado</label>
-                                <input type="text" class="form-control" name="maoDeObra" id="IDMaoDeObra" required maxlength="100">
+                                <input type="text" class="form-control" name="maoDeObra" id="IDMaoDeObra" value="<?=$os['Mão_de_Obra']?>" required maxlength="100">
                             </div>
 
 
                             <div class="form-group col-md-4">
                                 <label for="IDValorServico">Valor do Serviço</label>
-                                <input type="text" class="form-control" name="valorServico" id="IDValorServico" required maxlength="100" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" name="valorServico" id="IDValorServico" value="<?=$os['Valor_do_Servico']?>" required maxlength="100" onkeyup="OnlyNumbers(this);">
                             </div>
                         </div>
 
@@ -116,17 +119,17 @@ include('ValidaOS.php');
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="IDDataEntrada">Data de Entrada</label>
-                                <input type="date" class="form-control" name="dataEntrada" required id="IDDataEntrada">
+                                <input type="date" class="form-control" name="dataEntrada" value="<?=$os['Data_de_Entrada']?>" readonly required id="IDDataEntrada">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDDataSaida">Data de Saída</label>
-                                <input type="date" class="form-control" name="dataSaida" required id="IDDataSaida">
+                                <input type="date" class="form-control" name="dataSaida" value="<?=$os['Data_de_Entrada']?>" required id="IDDataSaida">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDValorTotal">Valor Total</label>
-                                <input type="text" class="form-control" name="valorTotal" required id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" name="valorTotal" value="<?=$os['Valor_do_Servico']?>" required id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
                             </div>
                         </div>
 
@@ -134,17 +137,18 @@ include('ValidaOS.php');
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="IDDescricao">Descrição do Serviço</label>
-                            <textarea class="form-control" name="descricao" id="IDDescricao" required rows="5"></textarea>
+                            <textarea class="form-control" name="descricao" id="IDDescricao" required rows="5"><?=$os['Descrição']?></textarea>
                         </div>
                     </div>
         </div>
         </fieldset>
 
         <div class="ClassButton">
-            <button type="submit" name="registrar_os" class="btn btn-dark form-button">Finalizar</button>
-            <button type="reset" class="btn btn-info form-button">Limpar</button>
+            <button type="submit" name="registrar_os" class="btn btn-dark form-button btn-block">Finalizar</button>
+            <!--<button type="reset" class="btn btn-info form-button">Limpar</button>-->
         </div>
         </form>
+        <?php  } ?>
     </div>
     </div>
 

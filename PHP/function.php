@@ -27,10 +27,10 @@
         return $dados;
     }
 
-    function retriveSingleCli($id) {
+    function retriveSingleCliPOS($id) {
         $con = connection();
-        $query = "select * from cliente where id = $id";
-        mysqli_query($con, $query);
+        $query = "select IDCliente, Cliente, CPF, Placa from VIEW_LISTA where IDCliente = $id";
+        $resultado = mysqli_query($con, $query);
         
         $dados = array();
 
@@ -40,10 +40,10 @@
         return $dados;
     }
     
-    function retriveSingleOs($id) {
+    function retriveSingleOsPOS($id) {
         $con = connection();
-        $query = "select * from ordemservico where id = $id";
-        mysqli_query($con, $query);
+        $query = "select idOS, idCliente, Nome_Cliente, CPF_Cliente, Placa_Veiculo, Funcionário, Mão_de_Obra, Data_de_Entrada, Data_de_Saida, Valor_do_Servico, Valor_Total, Descrição from VIEW_OS where idOS = $id";
+        $resultado = mysqli_query($con, $query);
 
         $dados = array();
 
@@ -68,3 +68,15 @@
 
         return $query;
     }  
+
+    function getIDS() {
+        if($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $idOS = $_GET['O'];
+            $idCliente = $_GET['C'];
+            $idCarro = $_GET['D'];
+
+            $OS = retriveSingleOsPOS($idOS);
+
+            return $OS;
+        }
+    }

@@ -20,6 +20,8 @@
 html {
     height: 100%;
     width: 100%;
+    min-height: 70em;
+    background-repeat: no-repeat;
 }
 
 body {

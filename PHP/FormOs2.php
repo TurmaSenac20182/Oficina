@@ -41,7 +41,7 @@ $dados = getIDS();
                     <a class="nav-link" href="FormClient.php"><i class="fas fa-user-plus fa-md"></i> Cliente</a>
                 </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="ordem-servico"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
+                        <a class="nav-link" href="FormOs.php"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
                     </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

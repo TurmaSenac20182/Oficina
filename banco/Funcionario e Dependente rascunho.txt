@@ -1,0 +1,37 @@
+Funcionário ->
+
+Atributos:
+
+-Nome
+-Senha
+-Contato Funcionário (Celular, Telefome, Email)
+-CPF
+-Data de Nascimento
+
+Endereço de Funcionário ->
+
+Atributos:
+-Cep
+-Estado
+-Logradouro
+-Rua
+-Bairro
+-Número
+-Complemente
+
+
+Cargo ->
+-Tipo de cargo
+-Descrição
+-Salário
+
+
+Dependente ->
+
+Atributos:
+
+-Nome
+-CPF
+-Data de Nascimento
+-Idade
+-Filiação

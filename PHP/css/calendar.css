@@ -4,12 +4,9 @@ body {
   height: 100%;
 }
 
-body {
-  background: #f5f7fa;
-  padding: 40px 0;
-  box-sizing: border-box;
-  font-family: Montserrat, "sans-serif";
-  color: #51565d;
+.ContainerClass {
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .calendar {
@@ -21,13 +18,14 @@ body {
   overflow: auto;
 }
 .calendar-container {
-  width: 90%;
-  margin: auto;
+
+  width: 80%;
+  margin: 4em auto 4em auto;
   overflow: hidden;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   background: #fff;
-  max-width: 1200px;
+  max-width: 100%;
 }
 .calendar-header {
   text-align: center;

@@ -1,6 +1,6 @@
 
-CREATE DATABASE db_oficina;
-USE `db_oficina` ;
+CREATE DATABASE oficina;
+USE `oficina` ;
 
 -- -----------------------------------------------------
 -- Table `oficina`.`contato`

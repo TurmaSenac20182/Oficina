@@ -61,9 +61,9 @@
         return $query;
     }    
 
-    function updateOs($id, $cliente, $carro, $servico, $funcionario, $entrada, $saida, $maoDeObra, $total) {
+    function updateOsTRY($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc) {
         $con = connection();
-        $query = "update ordemservico set cliente_ordemServ = $cliente, carro_ordemServ = $carro, servico_ordemServ = $servico, funcionario = '$funcionario', dataEntrada = '$entrada', dataSaida = '$saida', maoDeObra = $maoDeObra, valorTotal = $total where id = $id";
+        $query = "update ordemservico set cliente_ordemServ = $cliente, carro_ordemServ = $carro, servico_ordemServ = $servico, funcionario = '$funcionario', dataEntrada = '$entrada', dataSaida = '$saida', maoDeObra = $maoDeObra, valorTotal, des = $total where id = $idOS";
         mysql_query($con, $query);
 
         return $query;
@@ -79,4 +79,17 @@
 
             return $OS;
         }
+    }
+    
+    function tryFimOS($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc) {
+        $upOS = updateOsTRY($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc);
+        
+    }
+
+    function updateButtonTrue() {
+        $con = connection();
+        $query = "update ordemservico set finalizada = true";
+        mysqli_query($con, $query);
+
+        return true;
     }

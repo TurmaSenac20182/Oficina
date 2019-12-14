@@ -15,7 +15,6 @@ Atributos:
 -Cep
 -Estado
 -Logradouro
--Rua
 -Bairro
 -N�mero
 -Complemente
@@ -37,5 +36,6 @@ Atributos:
 -Nome
 -CPF
 -Data de Nascimento
--Idade
 -Filia��o
+-Telefone
+-Celular

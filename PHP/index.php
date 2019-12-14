@@ -1,10 +1,10 @@
-<?php ?>
+<?php session_start();?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <title>Login V14</title>
+    <title>Marzo mecânica</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -56,11 +56,9 @@
     </div>
 
 
-    <div id="dropDownSelect1"></div>
 
-    <script src="jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
-
+    <script src="jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
     <script src="js/ValidateLogin.js"></script>
 

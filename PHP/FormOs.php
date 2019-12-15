@@ -126,7 +126,7 @@ include('ValidaOS.php');
 
                             <div class="form-group col-md-4">
                                 <label for="IDDataSaida">Data de Saída</label>
-                                <input type="date" class="form-control" name="dataSaida" required id="IDDataSaida">
+                                <input type="date" class="form-control" name="dataSaida" id="IDDataSaida">
                             </div>
 
                             <div class="form-group col-md-4">

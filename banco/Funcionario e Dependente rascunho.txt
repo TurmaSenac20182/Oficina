@@ -1,41 +1,28 @@
-Funcion�rio ->
-
-Atributos:
-
--Nome
--login
--Senha
--Contato Funcion�rio (Celular, Telefome, Email)
--CPF
--Data de Nascimento
+﻿Funcion�rio ->
+Nascimento
+Contato Funcionario
+Celular
+Telefome
+Email
 
 Endere�o de Funcion�rio ->
-
-Atributos:
--Cep
--Estado
--Logradouro
--Bairro
--N�mero
--Complemente
-
+Cep
+Estado
+Logradouro
+Rua
+Bairro
+Numero
+Complemente
 
 Cargo ->
-
-Atributos:
-
--Tipo de cargo
--Descri��o
--Sal�rio
-
+Atributos
+Tipo de cargo
+Descricao
+Salario
 
 Dependente ->
-
-Atributos:
-
--Nome
--CPF
--Data de Nascimento
--Filia��o
--Telefone
--Celular
+Nome
+CPF
+Data de Nascimento
+Idade
+Filiacao

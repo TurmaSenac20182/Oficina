@@ -21,7 +21,7 @@ CREATE VIEW VIEW_OS AS
 SELECT ordemServico.idordemServico AS idOS, cliente.idCliente AS idCliente, dadoCarro.idCarro AS idCarro, cliente.nome AS Nome_Cliente, 
 cliente.cpf AS CPF_Cliente, dadoCarro.marca AS Marca_Veiculo, dadoCarro.modelo AS Modelo_Veiculo, dadoCarro.cor AS Cor_Veiculo, dadoCarro.placa AS Placa_Veiculo,
 dadoCarro.anoCarro AS Ano_Veiculo, ordemServico.funcionario AS Funcionário, ordemServico.dataEntrada AS Data_de_Entrada,
-ordemServico.dataSaida AS Data_de_Saida, servico.valor AS Valor_do_Servico, ordemServico.valorTotal AS Valor_Total, ordemServico.finalizada AS fimOS, servico.MaoDeObra AS Mão_de_Obra, servico.descricao AS Descrição
+ordemServico.dataSaida AS Data_de_Saida, servico.valor AS Valor_do_Servico, ordemServico.valorTotal AS Valor_Total, servico.MaoDeObra AS Mão_de_Obra, servico.descricao AS Descrição
 FROM ordemServico, cliente, dadoCarro, servico
 where ordemServico.carro_ordemServ = dadoCarro.idCarro and ordemServico.servico_ordemServ = servico.idServico and ordemServico.cliente_ordemServ = cliente.idCliente
 order by idordemServico, carro_ordemServ, servico_ordemServ, cliente_ordemServ asc;

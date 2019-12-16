@@ -7,18 +7,6 @@ $dados = getIDS();
     if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
         header("Location: index.php");
         }*/
-
-        $isClose = verifClose();
-
-        if($isClose) {
-            $req = "readonly";
-            $btnT = "Ordem já finalizada";
-            $btn = "disabled";
-        } else {
-            $req = "";
-            $btnT = "Finalizar";
-            $btn = "";
-        }
 ?>
 
 <!doctype html>
@@ -83,7 +71,7 @@ $dados = getIDS();
             <?php endif ?>
 
             <?php foreach($dados as $os) {?>
-            <form action="testaOS2.php" method="POST">
+            <form action="" method="POST">
                 <fieldset class="col-md-12 FieldsetTittle">
                 <legend class="LegendTittle">Ordem de Serviço</legend>
                     <div class="form-group">
@@ -117,7 +105,7 @@ $dados = getIDS();
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="IDFuncionaro">Nome do Funcionário</label>
-                                <input type="text" class="form-control" name="funcionario" <?=$req?> id="IDFuncionaro" value="<?=$os['Funcionário']?>" required maxlength="100">
+                                <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" value="<?=$os['Funcionário']?>" required maxlength="100">
                             </div>
 
                             <div class="form-group col-md-4">
@@ -128,7 +116,7 @@ $dados = getIDS();
 
                             <div class="form-group col-md-4">
                                 <label for="IDValorServico">Valor do Serviço</label>
-                                <input type="text" class="form-control" name="valorServico" <?=$req?> id="IDValorServico" value="<?=$os['Valor_do_Servico']?>" required maxlength="100" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" name="valorServico" id="IDValorServico" value="<?=$os['Valor_do_Servico']?>" required maxlength="100" onkeyup="OnlyNumbers(this);">
                             </div>
                         </div>
 
@@ -141,12 +129,12 @@ $dados = getIDS();
 
                             <div class="form-group col-md-4">
                                 <label for="IDDataSaida">Data de Saída</label>
-                                <input type="date" class="form-control" name="dataSaida" <?=$req?> value="<?=$os['Data_de_Entrada']?>" required id="IDDataSaida">
+                                <input type="date" class="form-control" name="dataSaida" value="<?=$os['Data_de_Entrada']?>" required id="IDDataSaida">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDValorTotal">Valor Total</label>
-                                <input type="text" class="form-control" name="valorTotal" <?=$req?> value="<?=$os['Valor_do_Servico']?>" required id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" name="valorTotal" value="<?=$os['Valor_do_Servico']?>" required id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
                             </div>
                         </div>
 
@@ -154,14 +142,14 @@ $dados = getIDS();
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="IDDescricao">Descrição do Serviço</label>
-                            <textarea class="form-control" name="descricao" id="IDDescricao" <?=$req?> required rows="5"><?=$os['Descrição']?></textarea>
+                            <textarea class="form-control" name="descricao" id="IDDescricao" required rows="5"><?=$os['Descrição']?></textarea>
                         </div>
                     </div>
         </div>
         </fieldset>
 
         <div class="ClassButton">
-            <button type="submit" <?=$btn?> name="registrar_os" class="btn btn-dark form-button btn-block"><?=$btnT?></button>
+            <button type="submit" name="registrar_os" class="btn btn-dark form-button btn-block">Finalizar</button>
             <!--<button type="reset" class="btn btn-info form-button">Limpar</button>-->
         </div>
         </form>

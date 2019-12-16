@@ -5,9 +5,9 @@ USE `oficina` ;
 -- -----------------------------------------------------
 -- Table `oficina`.`contato`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `oficina`.`contato` ;
+DROP TABLE IF EXISTS `db_oficina`.`contato` ;
 
-CREATE TABLE IF NOT EXISTS `oficina`.`contato` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`contato` (
   `idContato` INT(11) NOT NULL AUTO_INCREMENT,
   `tel` VARCHAR(12) NULL DEFAULT NULL,
   `cel` VARCHAR(13) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `oficina`.`contato` (
 -- Table `Oficina2`.`endereco`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `oficina`.`endereco` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`endereco` (
   `idendereco` INT  PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `tipoLogradouro` VARCHAR(4) NULL,
   `logradouro` VARCHAR(100) NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `oficina`.`endereco` (
 -- -----------------------------------------------------
 
 
-CREATE TABLE IF NOT EXISTS `oficina`.`servico` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`servico` (
   `idservico` INT  PRIMARY KEY AUTO_INCREMENT NOT NULL ,
   `descricao` VARCHAR(45) NOT NULL,
   `valor` VARCHAR(45) NULL
@@ -44,15 +44,15 @@ CREATE TABLE IF NOT EXISTS `oficina`.`servico` (
 -- -----------------------------------------------------
 -- Table `Oficina2`.`cliente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `oficina`.`cliente` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`cliente` (
   `idcliente` INT  PRIMARY KEY  NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   `cpf` VARCHAR(15) NOT NULL,
   `rg` VARCHAR(9) NOT NULL,
   `Contato_idContato` INT NOT NULL,
   `idEndereco` INT NOT NULL,        
-  CONSTRAINT `fk_cliente_Contato` FOREIGN KEY (`Contato_idContato`)  REFERENCES `oficina`.`Contato` (`idContato`),   
-  CONSTRAINT `fk_cliente_endereco`FOREIGN KEY (`idEndereco`)  REFERENCES `oficina`.`endereco` (`idendereco`)
+  CONSTRAINT `fk_cliente_Contato` FOREIGN KEY (`Contato_idContato`)  REFERENCES `db_oficina`.`Contato` (`idContato`),   
+  CONSTRAINT `fk_cliente_endereco`FOREIGN KEY (`idEndereco`)  REFERENCES `db_oficina`.`endereco` (`idendereco`)
  
   );
   
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `oficina`.`cliente` (
 -- Table `Oficina2`.`carro`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `oficina`.`dadocarro` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`carro` (
   `idcarro` INT  PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `marca` VARCHAR(30) NOT NULL,
   `modelo` VARCHAR(30) NOT NULL,
@@ -68,13 +68,13 @@ CREATE TABLE IF NOT EXISTS `oficina`.`dadocarro` (
   `placa` VARCHAR(10) NOT NULL,
   `anoCarro` VARCHAR(4) NOT NULL,
   `idCliente_carro` INT NOT NULL,
-   CONSTRAINT `fk_carro_cliente` FOREIGN KEY (`idCliente_carro`) REFERENCES `oficina`.`cliente` (`idcliente`)
+   CONSTRAINT `fk_carro_cliente` FOREIGN KEY (`idCliente_carro`) REFERENCES `db_oficina`.`cliente` (`idcliente`)
    );
    
    -- -----------------------------------------------------
 -- Table `Oficina2`.`ordemServico`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `oficina`.`ordemServico` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`ordemServico` (
   `idordemServico` INT PRIMARY KEY  NOT NULL AUTO_INCREMENT,
   `idcliente` INT NOT NULL,
   `funcionario` VARCHAR(100) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `oficina`.`ordemServico` (
   `dataSaida`   VARCHAR(15) NOT NULL,
   `valorTotal` DOUBLE NOT NULL, 
   `finalizado` tinyint default false,   
-   CONSTRAINT `fk_idcliente`FOREIGN KEY (`idcliente`) REFERENCES `oficina`.`cliente` (`idcliente`)  
+   CONSTRAINT `fk_idcliente`FOREIGN KEY (`idcliente`) REFERENCES `db_oficina`.`cliente` (`idcliente`)  
   );
 
 -- -----------------------------------------------------
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `oficina`.`ordemServico` (
 -- -----------------------------------------------------
 
 
-CREATE TABLE IF NOT EXISTS `oficina`.`servico` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`servico` (
   `idServico` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `descricao` TEXT NOT NULL,
   `maoDeObra` VARCHAR(255) NULL DEFAULT NULL,
@@ -101,17 +101,17 @@ CREATE TABLE IF NOT EXISTS `oficina`.`servico` (
 -- Table `oficina`.`servico_has_ordemservico`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `oficina`.`servico_e_ordemservico` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`servico_e_ordemservico` (
   `servico_idServico` INT   NOT NULL,
   `ordemservico_idordemServico` INT   NOT NULL,   
-  CONSTRAINT `fk_servico` FOREIGN KEY (`servico_idServico`) REFERENCES `oficina`.`servico` (`idServico`),
-  CONSTRAINT `fk_ordemservico`FOREIGN KEY (`ordemservico_idordemServico`) REFERENCES `oficina`.`ordemservico` (`idordemServico`)
+  CONSTRAINT `fk_servico` FOREIGN KEY (`servico_idServico`) REFERENCES `db_oficina`.`servico` (`idServico`),
+  CONSTRAINT `fk_ordemservico`FOREIGN KEY (`ordemservico_idordemServico`) REFERENCES `db_oficina`.`ordemservico` (`idordemServico`)
   );  
   
   -- -----------------------------------------------------
 -- Table `Oficina2`.`pre_cadastro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `oficina`.`pre_cadastro` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`pre_cadastro` (
   `id` INT PRIMARY KEY NOT NULL,
   `nome` VARCHAR(45) NULL,
   `marca` VARCHAR(45) NULL,
@@ -122,12 +122,12 @@ CREATE TABLE IF NOT EXISTS `oficina`.`pre_cadastro` (
 -- -----------------------------------------------------
 -- Table `oficina`.`agendamento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `oficina`.`agendamento` (
+CREATE TABLE IF NOT EXISTS `db_oficina`.`agendamento` (
   `id` INT PRIMARY KEY  NOT NULL AUTO_INCREMENT,
   `data` VARCHAR(10) NOT NULL,
   `hora` VARCHAR(10) NULL,
   `pre_cadastro_id` INT NOT NULL,    
-  CONSTRAINT `fk_pre_cadastro1` FOREIGN KEY (`pre_cadastro_id`) REFERENCES `oficina`.`pre_cadastro` (`id`)
+  CONSTRAINT `fk_pre_cadastro1` FOREIGN KEY (`pre_cadastro_id`) REFERENCES `db_oficina`.`pre_cadastro` (`id`)
    );
 
 

@@ -63,7 +63,7 @@
 
     function updateOsTRY($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc) {
         $con = connection();
-        $query = "update ordemservico as o join cliente as c on o.cliente_ordemServ = c.idCliente set servico_ordemServ = $servico, funcionario = '$funcionario', dataSaida = '$saida', maoDeObra = $maoDeObra, valorTotal, des = $total where id = $idOS";
+        $query = "update ordemservico set cliente_ordemServ = $cliente, carro_ordemServ = $carro, servico_ordemServ = $servico, funcionario = '$funcionario', dataEntrada = '$entrada', dataSaida = '$saida', maoDeObra = $maoDeObra, valorTotal, des = $total where id = $idOS";
         mysql_query($con, $query);
 
         return $query;
@@ -84,41 +84,12 @@
     function tryFimOS($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc) {
         $upOS = updateOsTRY($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc);
         
-        $error = mysqli_error($upOS);
-
-        $linhas = mysqli_num_rows($error);
-
-        if($linhas == 0) {
-            updateButtonTrue();
-            return true;
-        } else {
-            return $error;
-        }
     }
 
     function updateButtonTrue() {
         $con = connection();
         $query = "update ordemservico set finalizada = true";
-        $result = mysqli_query($con, $query);
+        mysqli_query($con, $query);
 
-        $erros = mysqli_error($result);
-
-        if($erros >= 1) {
-            $msg = "Error na finalização da ordem. Erro:" . $erros;
-            return $msg;
-        } else {
-            return true;
-        }
-    }
-
-    function verifClose() {
-        $con = connection();
-        $query = "select finalizada from ordemservico";
-        $result = mysqli_query($con, $query);
-
-        if($result == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }

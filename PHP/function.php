@@ -63,7 +63,7 @@
 
     function updateOsTRY($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc) {
         $con = connection();
-        $query = "update ordemservico set cliente_ordemServ = $cliente, carro_ordemServ = $carro, servico_ordemServ = $servico, funcionario = '$funcionario', dataEntrada = '$entrada', dataSaida = '$saida', maoDeObra = $maoDeObra, valorTotal, des = $total where id = $idOS";
+        $query = "update ordemServico set cliente_ordemServ = $cliente, carro_ordemServ = $carro, servico_ordemServ = $servico, funcionario = '$funcionario', dataEntrada = '$entrada', dataSaida = '$saida', maoDeObra = $maoDeObra, valorTotal, des = $total where id = $idOS";
         mysql_query($con, $query);
 
         return $query;
@@ -88,7 +88,7 @@
 
     function updateButtonTrue() {
         $con = connection();
-        $query = "update ordemservico set finalizada = true";
+        $query = "update ordemServico set finalizada = true";
         mysqli_query($con, $query);
 
         return true;

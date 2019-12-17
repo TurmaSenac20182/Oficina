@@ -9,7 +9,7 @@ session_start();
 <!doctype html>
 <html lang="pt-br">
 <?php require "function.php";
-$dados = retriveAllCli(); ?>
+//$dados = retriveAllCli(); ?>
 
 <head>
     <meta charset="utf-8">

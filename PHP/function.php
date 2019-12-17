@@ -3,7 +3,7 @@
 
     function retriveAllCli() {
         $con = connection();
-        $query = 'select IDCliente, Cliente, CPF, Celular from VIEW_LISTA join contato as c where IDCliente = c.idContato';
+        $query = 'select IDCliente, IDCarro, Cliente, CPF, Celular from VIEW_LISTA join contato as c where IDCliente = c.idContato';
         $resultado = mysqli_query($con, $query);
         
         $dados = array();

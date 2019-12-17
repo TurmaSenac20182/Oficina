@@ -3,9 +3,9 @@ session_start();
 include('ValidaOS.php');
 
 $dados = getIDS();
-    if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
-        header("Location: index.php");
-        }
+if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
+    header("Location: index.php");
+}
 ?>
 
 <!doctype html>
@@ -39,9 +39,9 @@ $dados = getIDS();
                 <li class="nav-item">
                     <a class="nav-link" href="FormClient.php"><i class="fas fa-user-plus fa-md"></i> Cliente</a>
                 </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="FormOs.php"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FormOs.php"><i class="fas fa-paste fa-md"></i> Novo Serviço</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fab fa-searchengin fa-md"></i> Consultas</a>
@@ -56,94 +56,82 @@ $dados = getIDS();
 
     <div class="ContainerClass">
         <div class="container-fluid">
-            <p class="TittleForm">Gerar ordem de serviço</p>
+            <p class="TittleForm">Finalizar ordem de serviço</p>
+            <?php foreach ($dados as $os) { ?>
+                <form action="" method="POST">
+                    <fieldset class="col-md-12 FieldsetTittle">
+                        <legend class="LegendTittle">Ordem de Serviço</legend>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <input type="hidden" name="idCliente">
+                                <input type="hidden" name="idCarro">
+                                <input type="hidden" name="idOS" value="<?= $os['idOS'] ?>">
 
-            <?php if (isset($_SESSION["servico_existente"])) : ?>
-                <?php $erro_cadastro = $_SESSION["servico_existente"]; ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
-                    <strong><?php echo $erro_cadastro; ?></strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <?php  unset($_SESSION["servico_existente"]); ?>
-                </div>
-            <?php endif ?>
+                                <div class="form-group col-md-4">
+                                    <label for="IDCpf">CPF</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" readonly id="IDCpf" name="cpf" value="<?= $os['CPF_Cliente'] ?>" required onkeypress="mascara(this, '###.###.###-##')" readonly onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                                        <button type="button" id="btn-cpf" disabled class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
 
-            <?php foreach($dados as $os) {?>
-            <form action="" method="POST">
-                <fieldset class="col-md-12 FieldsetTittle">
-                <legend class="LegendTittle">Ordem de Serviço</legend>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <input type="hidden" name="idCliente">
-                            <input type="hidden" name="idCarro">
-                            <input type="hidden" name="idOS" value="<?=$os['idOS']?>">
-                            
-                            <div class="form-group col-md-4">
-                                <label for="IDCpf">CPF</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" readonly id="IDCpf" name="cpf" value="<?=$os['CPF_Cliente']?>" required onkeypress="mascara(this, '###.###.###-##')" readonly onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
-                                    <button type="button" id="btn-cpf" disabled class="button-cep"><i class="fas fa-search-plus fa-lg"></i></button>
+                                <div class="form-group col-md-4">
+                                    <label for="IDCliente">Cliente</label>
+                                    <input type="text" class="form-control" readonly name="cliente" id="IDCliente" value="<?= $os['Nome_Cliente'] ?>" maxlength="15" required>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="IDVeiculo">Veículo</label>
+                                    <input type="text" class="form-control" readonly name="placa" id="IDVeiculo" value="<?= $os['Placa_Veiculo'] ?>" maxlength="50" required>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="IDFuncionaro">Nome do Funcionário</label>
+                                    <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" value="<?= $os['Funcionário'] ?>" required maxlength="100">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="IDMaoDeObra">Trabalho Realizado</label>
+                                    <input type="text" class="form-control" readonly name="maoDeObra" id="IDMaoDeObra" value="<?= $os['Mão_de_Obra'] ?>" required maxlength="100">
+                                </div>
+
+
+                                <div class="form-group col-md-4">
+                                    <label for="IDValorServico">Valor do Serviço</label>
+                                    <input type="text" class="form-control" name="valorServico" id="IDValorServico" value="<?= $os['Valor_do_Servico'] ?>" required maxlength="100" onkeyup="OnlyNumbers(this);">
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-4">
-                                <label for="IDCliente">Cliente</label>
-                                <input type="text" class="form-control" readonly name="cliente" id="IDCliente" value="<?=$os['Nome_Cliente']?>" maxlength="15" required>
-                            </div>
 
-                            <div class="form-group col-md-4">
-                                <label for="IDVeiculo">Veículo</label>
-                                <input type="text" class="form-control" readonly name="placa" id="IDVeiculo" value="<?=$os['Placa_Veiculo']?>" maxlength="50" required>
-                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="IDDataEntrada">Data de Entrada</label>
+                                    <input type="date" class="form-control" readonly name="dataEntrada" value="<?= $os['Data_de_Entrada'] ?>" readonly required id="IDDataEntrada">
+                                </div>
 
+                                <div class="form-group col-md-4">
+                                    <label for="IDDataSaida">Data de Saída</label>
+                                    <input type="date" class="form-control" name="dataSaida" value="<?= $os['Data_de_Entrada'] ?>" required id="IDDataSaida">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="IDValorTotal">Valor Total</label>
+                                    <input type="text" class="form-control" name="valorTotal" value="<?= $os['Valor_do_Servico'] ?>" required id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
+                                </div>
+                            </div>
 
                         </div>
-
-
                         <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="IDFuncionaro">Nome do Funcionário</label>
-                                <input type="text" class="form-control" name="funcionario" id="IDFuncionaro" value="<?=$os['Funcionário']?>" required maxlength="100">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="IDMaoDeObra">Trabalho Realizado</label>
-                                <input type="text" class="form-control" readonly name="maoDeObra" id="IDMaoDeObra" value="<?=$os['Mão_de_Obra']?>" required maxlength="100">
-                            </div>
-
-
-                            <div class="form-group col-md-4">
-                                <label for="IDValorServico">Valor do Serviço</label>
-                                <input type="text" class="form-control" name="valorServico" id="IDValorServico" value="<?=$os['Valor_do_Servico']?>" required maxlength="100" onkeyup="OnlyNumbers(this);">
+                            <div class="form-group col-md-12">
+                                <label for="IDDescricao">Descrição do Serviço</label>
+                                <textarea class="form-control" name="descricao" id="IDDescricao" required rows="5"><?= $os['Descrição'] ?></textarea>
                             </div>
                         </div>
-
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="IDDataEntrada">Data de Entrada</label>
-                                <input type="date" class="form-control" readonly name="dataEntrada" value="<?=$os['Data_de_Entrada']?>" readonly required id="IDDataEntrada">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="IDDataSaida">Data de Saída</label>
-                                <input type="date" class="form-control" name="dataSaida" value="<?=$os['Data_de_Entrada']?>" required id="IDDataSaida">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="IDValorTotal">Valor Total</label>
-                                <input type="text" class="form-control" name="valorTotal" value="<?=$os['Valor_do_Servico']?>" required id="IDValorTotal" maxlength="100" onkeyup="OnlyNumbers(this);">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="IDDescricao">Descrição do Serviço</label>
-                            <textarea class="form-control" name="descricao" id="IDDescricao" required rows="5"><?=$os['Descrição']?></textarea>
-                        </div>
-                    </div>
         </div>
         </fieldset>
 
@@ -152,7 +140,7 @@ $dados = getIDS();
             <!--<button type="reset" class="btn btn-info form-button">Limpar</button>-->
         </div>
         </form>
-        <?php  } ?>
+    <?php  } ?>
     </div>
     </div>
 

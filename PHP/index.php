@@ -33,6 +33,29 @@
                         <?php unset($_SESSION["deslogado"]); ?>
                     </div>
                 <?php endif ?>
+
+                <?php if (isset($_SESSION["funcionario_cadastrado"])) : ?>
+                    <?php $cadastrado = $_SESSION["funcionario_cadastrado"]; ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center; margin-top: 10px;">
+                        <strong><?php echo $cadastrado; ?></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <?php unset($_SESSION["funcionario_cadastrado"]); ?>
+                        <?php unset($_SESSION["idUsuario"]); ?>
+                    </div>
+                <?php endif ?>
+
+                <?php if (isset($_SESSION["invalido"])) : ?>
+                    <?php $login_invalido = $_SESSION["invalido"]; ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center; margin-top: 10px;">
+                        <strong><?php echo $login_invalido; ?></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <?php unset($_SESSION["invalido"]); ?>
+                    </div>
+                <?php endif ?>
                 <form action="login.php" class="login100-form validate-form flex-sb flex-w" method="POST">
                     <span class="login100-form-title p-b-32">
                         Acesso de Funcionários

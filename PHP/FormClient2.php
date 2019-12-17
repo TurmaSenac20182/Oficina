@@ -2,9 +2,9 @@
 session_start();
 include('ValidateClient.php');
 
-    if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
-        header("Location: index.php");
-        }
+if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
+    header("Location: index.php");
+}
 ?>
 
 <!doctype html>
@@ -56,21 +56,8 @@ include('ValidateClient.php');
 
     <div class="ContainerClass">
         <div class="container-fluid">
-
-            <p class="TittleForm">Cadastro de Clientes</p>
-
-            <?php if (isset($_SESSION["usuario_existente"])) : ?>
-                <?php $erro_cadastro = $_SESSION["usuario_existente"]; ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
-                    <strong><?php echo $erro_cadastro; ?></strong>, insira um novo cliente!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <?php session_destroy(); ?>
-                </div>
-            <?php endif ?>
-
-            <form action="FormClient.php" method="POST">
+            <p class="TittleForm">Perfil do Cliente</p>
+            <form action="FormClient2.php" method="POST">
                 <fieldset class="col-md-12 FieldsetTittle">
                     <legend class="LegendTittle">Dados do Cliente</legend>
                     <!--<input type="text" class="SeparationForm" value="Dados do Cliente" readonly>-->
@@ -186,7 +173,7 @@ include('ValidateClient.php');
                     <fieldset class="col-md-12 FieldsetTittle">
                         <legend class="LegendTittle">Veículo do Cliente</legend>
 
-                       <!-- <div class="form-group col-md-12">
+                        <!--<div class="form-group col-md-12">
                             <button type="button" class="button-add" required onclick="duplicarCampos();"><i class="fas fa-plus-circle fa-lg"></i></button>
                         </div> -->
 
@@ -224,8 +211,8 @@ include('ValidateClient.php');
                 <div id="destino"></div>
 
                 <div class="ClassButton">
-                    <button type="submit" name="registrar_cliente" class="btn btn-dark form-button">Cadastrar</button>
-                    <button type="reset" class="btn btn-info form-button">Limpar</button>
+                    <button type="submit" name="registrar_cliente" class="btn btn-dark form-button btn-block">Alterar</button>
+                    <!--<button type="reset" class="btn btn-info form-button">Limpar</button>-->
                 </div>
             </form>
         </div>
@@ -238,7 +225,7 @@ include('ValidateClient.php');
     <script src="js/ViaCep.js"></script>
 
 
-    
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -4,7 +4,8 @@ $conn = connection();
 
 //Declarando as variáveis
 $errors = array(
-    "usuario_existente" => "Este usuário já existe!"
+    "usuario_existente" => "Este usuário já existe!",
+    "senhas_diferentes" => "As senhas não correspondem",
 );
 
 //Declarando para ser usado posteriormente.
@@ -17,7 +18,8 @@ if (isset($_POST['registrar_funcionario'])) {
     $nome_funcionario = mysqli_real_escape_string($conn, $_POST['nome_funcionario']);
     $usuario = mysqli_real_escape_string($conn, $_POST['usuario']);
     $senha = mysqli_real_escape_string($conn, $_POST['senha']);
-    
+    $senha2 = mysqli_real_escape_string($conn, $_POST['senha2']);
+
 
     //Bloquear que dados vazios sejam inseridos.
     if (empty($nome_funcionario)) {
@@ -35,7 +37,11 @@ if (isset($_POST['registrar_funcionario'])) {
         return false;
     }
 
-
+    if ($senha != $senha2) {
+        array_push($errors, "As senhas não correspondem");
+        $_SESSION["senhas_diferentes"] = $errors["senhas_diferentes"];
+        return false;
+    }
 
     //Verificar se já existe.
     $check = "select *from funcionario where usuario = '{$usuario}'";
@@ -56,7 +62,7 @@ if (isset($_POST['registrar_funcionario'])) {
 
     if ($row == false) {
         header("location: Register.php");
-    } 
+    }
 
     //Caso não ocorra nenhum erro, permita que os dados sejam inseridos no banco.
 
@@ -81,11 +87,11 @@ if (isset($_POST['registrar_funcionario'])) {
             mysqli_close($conn);
         }
 
-        if (insertFuncionario($nome_funcionario, $usuario, $senha_cript)) { }
-    
-        header('location: home.php');
+        if (insertFuncionario($nome_funcionario, $usuario, $senha_cript)) {
+        }
+
+        header('location: index.php');
         $_SESSION['funcionario_cadastrado'] = $funcionario_cadastrado;
         die;
-
     }
 }

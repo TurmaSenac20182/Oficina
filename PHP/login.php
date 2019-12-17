@@ -14,7 +14,7 @@ $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
 $query = "select *from funcionario where usuario='{$usuario}'";
 $result = mysqli_query($conn, $query);
 
-$error = "Login ou Senha incorretos!";
+$error = "Usuário ou Senha incorreto!";
 
 if ($result) {
     $row = mysqli_fetch_assoc($result);

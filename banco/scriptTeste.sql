@@ -96,7 +96,7 @@ create table agendamento_has_cliente (
 ); 
 
 create table preCadastro (
-    id int primary key not null,
+    idPrecadastro int primary key not null,
     nome varchar(45) null,
     marca varchar(45) null,
     modelo varchar(45) null,

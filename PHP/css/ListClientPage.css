@@ -48,6 +48,16 @@ a {
     -moz-transition: all 0.4s;
 }
 
+.select-item {
+    color: #535355 !important;
+    text-decoration: none;
+}
+
+.select-item:hover {
+    color: #535355 !important;
+    text-decoration: none;
+}
+
 a:focus {
     outline: none !important;
 }

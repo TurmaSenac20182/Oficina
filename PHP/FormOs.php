@@ -2,9 +2,9 @@
 session_start();
 include('ValidaOS.php');
 
- if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
+if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
     header("Location: index.php");
-    } 
+}
 ?>
 
 <!doctype html>
@@ -56,27 +56,15 @@ include('ValidaOS.php');
     <div class="ContainerClass">
         <div class="container-fluid">
             <p class="TittleForm">Gerar ordem de serviço</p>
-
-            <?php if (isset($_SESSION["servico_existente"])) : ?>
-                <?php $erro_cadastro = $_SESSION["servico_existente"]; ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
-                    <strong><?php echo $erro_cadastro; ?></strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <?php unset($_SESSION["servico_existente"]); ?>
-                </div>
-            <?php endif ?>
-
             <form action="FormOs.php" method="POST">
                 <fieldset class="col-md-12 FieldsetTittle">
-                <legend class="LegendTittle">Ordem de Serviço</legend>
+                    <legend class="LegendTittle">Ordem de Serviço</legend>
                     <div class="form-group">
-                        
+
                         <div class="form-row">
                             <input type="hidden" name="idCliente">
                             <input type="hidden" name="idCarro">
-                            
+
                             <div class="form-group col-md-4">
                                 <label for="IDCpf">CPF</label>
                                 <div class="input-group">
@@ -94,10 +82,7 @@ include('ValidaOS.php');
                                 <label for="IDVeiculo">Veículo</label>
                                 <input type="text" class="form-control" readonly name="placa" id="IDVeiculo" maxlength="50" required>
                             </div>
-
-
                         </div>
-
 
                         <div class="form-row">
                             <div class="form-group col-md-4">

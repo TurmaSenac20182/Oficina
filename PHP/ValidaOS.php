@@ -85,7 +85,7 @@ if (isset($_POST['registrar_os'])) {
 
 
     //Verificar se já existe.
-    $check = "select descricao, maoDeObra from servico where descricao = '{$descricao}' or maoDeObra ='{$trabalho}'";
+    /*$check = "select descricao, maoDeObra from servico where descricao = '{$descricao}' or maoDeObra ='{$trabalho}'";
 
     $result = mysqli_query($conn, $check);
     $user = mysqli_fetch_assoc($result);
@@ -97,7 +97,7 @@ if (isset($_POST['registrar_os'])) {
             $_SESSION["servico_existente"] = $errors["servico_existente"];
             return false;
         }
-    }
+    }*/
     //Para não permitir que o formulário seja enviado com erro ou vazio!
     $row = mysqli_num_rows($errors);
 

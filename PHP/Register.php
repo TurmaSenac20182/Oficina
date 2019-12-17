@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('ValidateFuncionario.php');
-    /*
+/*
     if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
         header("Location: index.php");
         }*/
@@ -70,6 +70,17 @@ include('ValidateFuncionario.php');
                 </div>
             <?php endif ?>
 
+            <?php if (isset($_SESSION["senhas_diferentes"])) : ?>
+                <?php $senhas_diferentes = $_SESSION["senhas_diferentes"]; ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align:center; margin-top: 10px;">
+                    <strong><?php echo $senhas_diferentes; ?></strong>!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <?php unset($_SESSION["senhas_diferentes"]); ?>
+                </div>
+            <?php endif ?>
+
             <form action="Register.php" method="POST">
                 <fieldset class="col-md-12 FieldsetTittle">
                     <legend class="LegendTittle">Dados do Funcionário</legend>
@@ -88,6 +99,11 @@ include('ValidateFuncionario.php');
                         <div class="form-group col-md-12">
                             <label for="IDSenha">Senha</label>
                             <input type="password" class="form-control" name="senha" id="IDSenha" required maxlength="15">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="IDSenha2">Confirmar Senha</label>
+                            <input type="password" class="form-control" name="senha2" id="IDSenha2" required maxlength="15">
                         </div>
                     </div>
                 </fieldset>

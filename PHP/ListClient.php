@@ -79,9 +79,9 @@
                                 <tr>
                                     <!--<td class="column1"><button class="columnButton"><? //=$lista['IDCliente'] 
                                                                                                 ?></button></td>-->
-                                    <td class="column1"><button class="columnButton"><?= $lista['Cliente'] ?></button></td>
-                                    <td class="column1"><button class="columnButton"><?= $lista['CPF'] ?></button></td>
-                                    <td class="column1"><button class="columnButton"><?= $lista['Celular'] ?></button></td>
+                                    <td class="column1"><a clas="select-item" href="FormClient2.php?C=<?= $lista['IDCliente']?>&D=<?= $lista['IDCarro']?>"><button class="columnButton"><?= $lista['Cliente'] ?></button></a></td>
+                                    <td class="column1"><a clas="select-item" href="FormClient2.php?C=<?= $lista['IDCliente']?>&D=<?= $lista['IDCarro']?>"><button class="columnButton"><?= $lista['CPF'] ?></button></a></td>
+                                    <td class="column1"><a clas="select-item" href="FormClient2.php?C=<?= $lista['IDCliente']?>&D=<?= $lista['IDCarro']?>"><button class="columnButton"><?= $lista['Celular'] ?></button></a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

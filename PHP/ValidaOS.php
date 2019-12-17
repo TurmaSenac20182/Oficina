@@ -129,13 +129,31 @@ if (isset($_POST['registrar_os'])) {
             mysqli_close($conn);
         }
 
-        function insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal,  $idCarro, $idCliente)
+        function insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal, $idCliente)
+        {
+            $conn = connection();
+            $idFuncionario = $_SESSION['idUsuario'];;
+
+            $query2 = "insert into ordemServico (funcionario, dataEntrada, dataSaida, valorTotal, finalizada, cliente_ordemServ, Fk_Funcionario)
+            values('{$funcionario}', '{$dataEntrada}', '{$dataSaida}', '{$valorTotal}', false, '{$idCliente}', '{$idFuncionario}')";
+
+            if (mysqli_query($conn, $query2)) {
+                $_SESSION['idOS'] = mysqli_insert_id($conn);
+                return  true;
+            } else {
+                echo "Error: " . $query2 . "<br>" . mysqli_error($conn);
+            }
+            mysqli_close($conn);
+        }
+
+        function insertServicoOS()
         {
             $conn = connection();
             $idServico = $_SESSION['idServico'];
+            $idOs = $_SESSION['idOS'];
 
-            $query2 = "insert into ordemServico (funcionario, dataEntrada, dataSaida, valorTotal, carro_ordemServ, servico_ordemServ, cliente_ordemServ)
-            values('{$funcionario}', '{$dataEntrada}', '{$dataSaida}', '{$valorTotal}', '{$idCarro}', '{$idServico}', '{$idCliente}')";
+            $query2 = "insert into servico_has_ordemservico (Fk_Servico, Fk_OrdemServico)
+            values('{$idServico}', '{$idOs}')";
 
             if (mysqli_query($conn, $query2)) {
                 return  true;
@@ -145,10 +163,12 @@ if (isset($_POST['registrar_os'])) {
             mysqli_close($conn);
 
             unset($idServico);
+            unset($idOs);
         }
 
         if (insertServico($descricao, $trabalho, $valorServico)) { }
-        if (insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal,  $idCarro, $idCliente)) { }
+        if (insertOS($funcionario, $dataEntrada, $dataSaida, $valorTotal, $idCliente)) { }
+        if (insertServicoOS()) {}
     
         header('location: home.php');
         $_SESSION['os_realizada'] = $servico_cadastrado;

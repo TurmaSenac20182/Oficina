@@ -18,12 +18,14 @@ SELECT *FROM VIEW_LISTA;
 DROP VIEW IF EXISTS VIEW_OS;
 
 CREATE VIEW VIEW_OS AS
-SELECT ordemServico.idordemServico AS idOS, cliente.idCliente AS idCliente, dadoCarro.idCarro AS idCarro, cliente.nome AS Nome_Cliente, 
+SELECT ordemServico.idordemServico AS idOS, cliente.idCliente AS idCliente, dadoCarro.idCarro AS idCarro, funcionario.idFuncionario AS idFuncionario, cliente.nome AS Nome_Cliente, 
 cliente.cpf AS CPF_Cliente, dadoCarro.marca AS Marca_Veiculo, dadoCarro.modelo AS Modelo_Veiculo, dadoCarro.cor AS Cor_Veiculo, dadoCarro.placa AS Placa_Veiculo,
 dadoCarro.anoCarro AS Ano_Veiculo, ordemServico.funcionario AS Funcionário, ordemServico.dataEntrada AS Data_de_Entrada,
-ordemServico.dataSaida AS Data_de_Saida, servico.valor AS Valor_do_Servico, ordemServico.valorTotal AS Valor_Total, servico.MaoDeObra AS Mão_de_Obra, servico.descricao AS Descrição
-FROM ordemServico, cliente, dadoCarro, servico
-where ordemServico.carro_ordemServ = dadoCarro.idCarro and ordemServico.servico_ordemServ = servico.idServico and ordemServico.cliente_ordemServ = cliente.idCliente
-order by idordemServico, carro_ordemServ, servico_ordemServ, cliente_ordemServ asc;
+ordemServico.dataSaida AS Data_de_Saida, servico.valor AS Valor_do_Servico, ordemServico.valorTotal AS Valor_Total,  ordemServico.finalizada AS FimOS, servico.MaoDeObra AS Mão_de_Obra,
+servico.descricao AS Descrição, funcionario.nomeFuncionario AS Nome_do_Funcionario
+FROM ordemServico, cliente, dadoCarro, servico, funcionario, servico_has_ordemservico
+where ordemServico.Fk_Funcionario = funcionario.idFuncionario and servico_has_ordemservico.Fk_Servico = servico.idServico 
+and servico_has_ordemservico.Fk_OrdemServico = ordemServico.idordemServico and ordemServico.cliente_ordemServ = cliente.idCliente
+order by idordemServico, cliente_ordemServ, Fk_Funcionario asc;
 
 SELECT *FROM VIEW_OS;

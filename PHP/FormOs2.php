@@ -3,10 +3,9 @@ session_start();
 include('ValidaOS.php');
 
 $dados = getIDS();
-    /*
-    if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+    if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
         header("Location: index.php");
-        }*/
+        }
 ?>
 
 <!doctype html>

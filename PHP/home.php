@@ -1,9 +1,8 @@
 <?php
 session_start();
-/*
-    if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+    if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
         header("Location: index.php");
-    }*/
+    }
 ?>
 
 <!doctype html>
@@ -114,6 +113,17 @@ $dados = retriveAllCli(); ?>
         <div class="container-fluid">
 
             <div class="container">
+            <?php if (isset($_SESSION["funcionario_cadastrado"])) : ?>
+                    <?php $funcionario_cadastrado = $_SESSION["funcionario_cadastrado"]; ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center; margin-top: 10px;">
+                        <strong><?php echo $funcionario_cadastrado; ?></strong>!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <?php unset($_SESSION["funcionario_cadastrado"]); ?>
+                    </div>
+                <?php endif ?>
+
                 <?php if (isset($_SESSION["cadastro_realizado"])) : ?>
                     <?php $usuario_cadastrado = $_SESSION["cadastro_realizado"]; ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center; margin-top: 10px;">

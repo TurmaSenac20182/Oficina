@@ -9,10 +9,9 @@ if (empty($_POST['usuario']) || empty($_POST['senha'])) {
 }
 
 $usuario = mysqli_real_escape_string($conn, $_POST['usuario']);
-$email = mysqli_real_escape_string($conn, $_POST['usuario']);
 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
 
-$query = "select *from funcionario where login='{$usuario}' or email='{$email}'";
+$query = "select *from funcionario where usuario='{$usuario}'";
 $result = mysqli_query($conn, $query);
 
 $error = "Login ou Senha incorretos!";
@@ -22,7 +21,6 @@ if ($result) {
 
     if (password_verify($senha, $row['senha'])) {
         $_SESSION['usuario'] = $usuario;
-        $_SESSION['email'] = $email;
         $_SESSION['senha'] = $row['senha'];
 
         $_SESSION['idUsuario'] = $row['idFuncionario'];
@@ -32,7 +30,6 @@ if ($result) {
         
     } else {
         unset($_SESSION['usuario']);
-        unset($_SESSION['email']);
         unset($_SESSION['senha']);
 
         $_SESSION["invalido"] = $error;

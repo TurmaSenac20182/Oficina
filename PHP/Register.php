@@ -1,9 +1,8 @@
 <?php
 session_start();
-include('ValidateClient.php');
-
-/*
-    if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+include('ValidateFuncionario.php');
+    /*
+    if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
         header("Location: index.php");
         }*/
 ?>
@@ -63,7 +62,7 @@ include('ValidateClient.php');
             <?php if (isset($_SESSION["usuario_existente"])) : ?>
                 <?php $erro_cadastro = $_SESSION["usuario_existente"]; ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
-                    <strong><?php echo $erro_cadastro; ?></strong>, insira um novo cliente!
+                    <strong><?php echo $erro_cadastro; ?></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -76,144 +75,25 @@ include('ValidateClient.php');
                     <legend class="LegendTittle">Dados do Funcionário</legend>
                     <!--<input type="text" class="SeparationForm" value="Dados do Cliente" readonly>-->
                     <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="IDNome">Nome Completo</label>
-                            <input type="text" class="form-control" name="funcionario" id="IDNome" required maxlength="100">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="IDCpf">CPF</label>
-                            <input type="text" class="form-control" name="cpf_funcionario" id="IDCpf" required onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="IDUsuario">Usuário</label>
-                            <input type="text" class="form-control" name="usuario" id="IDUsuario" required maxlength="100">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="IDEmail">Email</label>
-                            <input type="email" class="form-control" name="email_funcionario" required id="IDEmail" maxlength="50">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label for="IDNascimento">Data de Nascimento</label>
-                            <input type="date" class="form-control" name="nascimento" required id="IDNascimento">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label for="IDResidencial">Telefone Residencial</label>
-                            <input type="text" class="form-control" name="telefone_funcionario" required id="IDResidencial" onkeypress="mascara(this, '## ####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="12">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label for="IDCelular">Telefone Celular</label>
-                            <input type="text" class="form-control" name="celular_funcionario" required id="IDCelular" onkeypress="mascara(this, '## #####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="13">
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset class="col-md-12 FieldsetTittle">
-                    <legend class="LegendTittle">Endereço do Funcionário</legend>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="cep">CEP</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="cep" name="cep" onkeypress="mascara(this, '#####-###')" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
-                                <button type="button" class="button-cep" onclick="pesquisacep(cep.value);"><i class="fas fa-map-marked-alt fa-lg"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="uf">Estado</label>
-                            <select name="uf" id="uf" class="form-control" required>
-                                <option selected>Selecione</option>
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AP">Amapá</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="ES">Espírito Santo</option>
-                                <option value="GO">Goiás</option>
-                                <option value="MA">Maranhão</option>
-                                <option value="MT">Mato Grosso</option>
-                                <option value="MS">Mato Grosso do Sul</option>
-                                <option value="MG">Minas Gerais</option>
-                                <option value="PA">Pará</option>
-                                <option value="PB">Paraíba</option>
-                                <option value="PR">Paraná</option>
-                                <option value="PE">Pernambuco</option>
-                                <option value="PI">Piauí</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="RN">Rio Grande do Norte</option>
-                                <option value="RS">Rio Grande do Sul</option>
-                                <option value="RO">Rondônia</option>
-                                <option value="RR">Roraima</option>
-                                <option value="SC">Santa Catarina</option>
-                                <option value="SP">São Paulo</option>
-                                <option value="SE">Sergipe</option>
-                                <option value="TO">Tocantins</option>
-                                <option value="ET">Estrangeiro</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="cidade">Cidade</label>
-                            <input type="text" class="form-control" maxlength="50" required name="cidade" id="cidade">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="rua">Logradouro</label>
-                            <input type="text" class="form-control" maxlength="100" required name="logradouro" id="rua">
-                        </div>
-
-                        <div class="form-group col-md-2">
-                            <label for="numero">Número</label>
-                            <input type="text" class="form-control" maxlength="10" required name="numero" onkeyup="OnlyNumbers(this);" id="numero">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" maxlength="100" required name="complemento" id="complemento">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label for="bairro">Bairro</label>
-                            <input type="text" class="form-control" maxlength="50" required name="bairro" id="bairro">
-                        </div>
-                    </div>
-                </fieldset>
-
-
-                <fieldset class="col-md-12 FieldsetTittle">
-                    <legend class="LegendTittle">Função do Funcionário</legend>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="IDCargo">Cargo</label>
-                            <input type="text" class="form-control" required maxlength="50" name="cargo" id="IDCargo">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="IDSalario">Salário</label>
-                            <input type="text" class="form-control" required maxlength="30" name="salario" id="IDSalario">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="IDDescricao">Descrição do Cargo</label>
-                            <textarea class="form-control" name="descricao_cargo" id="IDDescricao" required rows="5"></textarea>
+                            <label for="IDNome">Nome Completo</label>
+                            <input type="text" class="form-control" name="nome_funcionario" id="IDNome" required maxlength="100">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="IDUsuario">Usuário</label>
+                            <input type="text" class="form-control" name="usuario" id="IDUsuario" required maxlength="50">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="IDSenha">Senha</label>
+                            <input type="password" class="form-control" name="senha" id="IDSenha" required maxlength="15">
                         </div>
                     </div>
                 </fieldset>
 
                 <div class="ClassButton">
-                    <button type="submit" name="registrar_cliente" class="btn btn-dark form-button">Cadastrar</button>
+                    <button type="submit" name="registrar_funcionario" class="btn btn-dark form-button">Cadastrar</button>
                     <button type="reset" class="btn btn-info form-button">Limpar</button>
                 </div>
             </form>

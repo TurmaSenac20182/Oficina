@@ -1,9 +1,11 @@
 <?php 
     require "function.php";
     $dados = retriveAllCli(); 
-    /*if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+    session_start();
+    
+    if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
         header("Location: index.php");
-    }*/
+    }
 ?>
 <!doctype html>
 <html lang="pt-br">

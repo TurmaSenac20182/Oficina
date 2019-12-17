@@ -1,9 +1,10 @@
 <?php
 require "function.php";
-/*
-if (!isset($_SESSION["usuario"]) || !isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
+session_start();
+
+if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
     header("Location: index.php");
-    }*/
+    } 
     
     $dados = retriveAllOs();
     function data($data)

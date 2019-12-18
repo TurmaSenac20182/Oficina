@@ -5,6 +5,8 @@ include('ValidateClient.php');
 if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
     header("Location: index.php");
 }
+
+$dados = getIDSCli();
 ?>
 
 <!doctype html>
@@ -58,40 +60,41 @@ if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
         <div class="container-fluid">
             <p class="TittleForm">Perfil do Cliente</p>
             <form action="FormClient2.php" method="POST">
+                <?php foreach ($dados as $cli) { ?>
                 <fieldset class="col-md-12 FieldsetTittle">
                     <legend class="LegendTittle">Dados do Cliente</legend>
                     <!--<input type="text" class="SeparationForm" value="Dados do Cliente" readonly>-->
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="IDNome">Nome Completo</label>
-                            <input type="text" class="form-control" name="nome" id="IDNome" required maxlength="100">
+                            <input type="text" class="form-control" name="nome" value="<?=$cli['Cliente']?>" id="IDNome" required maxlength="100">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDCpf">CPF</label>
-                            <input type="text" class="form-control" name="cpf" id="IDCpf" required onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
+                            <input type="text" class="form-control" name="cpf" value="<?=$cli['CPF']?>" id="IDCpf" required onkeypress="mascara(this, '###.###.###-##')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="14">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDRg">RG</label>
-                            <input type="text" class="form-control" name="rg" id="IDRg" required onkeypress="mascara(this, '##.###.###-#')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="12">
+                            <input type="text" class="form-control" name="rg" id="IDRg" value="<?=$cli['RG']?>" required onkeypress="mascara(this, '##.###.###-#')" onkeyup="OnlyNumbersCpfRG(this);" maxlength="12">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="IDEmail">Email</label>
-                            <input type="email" class="form-control" name="email" required id="IDEmail" maxlength="50">
+                            <input type="email" class="form-control" name="email" value="<?=$cli['Email']?>" required id="IDEmail" maxlength="50">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDResidencial">Telefone Residencial</label>
-                            <input type="text" class="form-control" name="telefone" required id="IDResidencial" onkeypress="mascara(this, '## ####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="12">
+                            <input type="text" class="form-control" name="telefone" value="<?=$cli['Telefone']?>" required id="IDResidencial" onkeypress="mascara(this, '## ####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="12">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="IDCelular">Telefone Celular</label>
-                            <input type="text" class="form-control" name="celular" required id="IDCelular" onkeypress="mascara(this, '## #####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="13">
+                            <input type="text" class="form-control" name="celular" value="<?=$cli['Celular']?>" required id="IDCelular" onkeypress="mascara(this, '## #####-####')" onkeyup="OnlyNumbersTel(this);" maxlength="13">
                         </div>
                     </div>
                 </fieldset>
@@ -101,14 +104,14 @@ if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
                         <div class="form-group col-md-4">
                             <label for="cep">CEP</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="cep" name="cep" onkeypress="mascara(this, '#####-###')" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" id="cep" name="cep" value="<?=$cli['CEP']?>" onkeypress="mascara(this, '#####-###')" maxlength="9" pattern="\d{5}-?\d{3}" onkeyup="OnlyNumbers(this);">
                                 <button type="button" class="button-cep" onclick="pesquisacep(cep.value);"><i class="fas fa-map-marked-alt fa-lg"></i></button>
                             </div>
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="uf">Estado</label>
-                            <select name="uf" id="uf" class="form-control" required>
+                            <select name="uf" id="uf" value="<?=$cli['Estado']?>" class="form-control" required>
                                 <option selected>Selecione</option>
                                 <option value="AC">Acre</option>
                                 <option value="AL">Alagoas</option>
@@ -143,28 +146,28 @@ if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
 
                         <div class="form-group col-md-4">
                             <label for="cidade">Cidade</label>
-                            <input type="text" class="form-control" maxlength="50" required name="cidade" id="cidade">
+                            <input type="text" class="form-control" value="<?=$cli['cidade']?>" maxlength="50" required name="cidade" id="cidade">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="rua">Logradouro</label>
-                            <input type="text" class="form-control" maxlength="100" required name="logradouro" id="rua">
+                            <input type="text" class="form-control" maxlength="100" value="<?=$cli['Logradouro']?>" required name="logradouro" id="rua">
                         </div>
 
                         <div class="form-group col-md-2">
                             <label for="numero">Número</label>
-                            <input type="text" class="form-control" maxlength="10" required name="numero" onkeyup="OnlyNumbers(this);" id="numero">
+                            <input type="text" class="form-control" maxlength="10" required name="numero" value="<?=$cli['Numero']?>" onkeyup="OnlyNumbers(this);" id="numero">
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" maxlength="100" required name="complemento" id="complemento">
+                            <input type="text" class="form-control" maxlength="100" value="<?=$cli['Complemento']?>" required name="complemento" id="complemento">
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="bairro">Bairro</label>
-                            <input type="text" class="form-control" maxlength="50" required name="bairro" id="bairro">
+                            <input type="text" class="form-control" maxlength="50" value="<?=$cli['Bairro']?>" required name="bairro" id="bairro">
                         </div>
                     </div>
                 </fieldset>
@@ -180,33 +183,35 @@ if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="IDMarca">Marca</label>
-                                <input type="text" class="form-control" required maxlength="30" name="marca" id="IDMarca">
+                                <input type="text" class="form-control" required maxlength="30" value="<?=$cli['Marca']?>" name="marca" id="IDMarca">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="IDCarro">Modelo</label>
-                                <input type="text" class="form-control" required maxlength="30" name="modelo" id="IDNome">
+                                <input type="text" class="form-control" required maxlength="30" value="<?=$cli['Modelo']?>" name="modelo" id="IDNome">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="IDCor">Cor</label>
-                                <input type="text" class="form-control" required maxlength="30" name="cor" id="IDCor">
+                                <input type="text" class="form-control" required maxlength="30" value="<?=$cli['Cor']?>" name="cor" id="IDCor">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDPlaca">Placa</label>
-                                <input type="text" class="form-control" required maxlength="7" name="placa" id="IDPlaca">
+                                <input type="text" class="form-control" required maxlength="7" value="<?=$cli['Placa']?>" name="placa" id="IDPlaca">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="IDAno">Ano</label>
-                                <input type="text" class="form-control" required id="IDAno" name="ano" maxlength="4" onkeyup="OnlyNumbers(this);">
+                                <input type="text" class="form-control" required id="IDAno" name="ano" value="<?=$cli['Ano']?>" maxlength="4" onkeyup="OnlyNumbers(this);">
                             </div>
                         </div>
                     </fieldset>
                 </div>
+
+                <?php } ?>
 
                 <div id="destino"></div>
 

@@ -82,8 +82,7 @@ if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($dados as $lista) { 
-                                ?>
+                            <?php foreach ($dados as $lista) { ?>
                                 <tr>
                                     <td class="column1"><a clas="select-item" href="FormOs2.php?O=<?= $lista['idOS']?>&C=<?= $lista['idCliente']?>&D=<?= $lista['idCarro']?>"><button class="columnButton"><?= $lista['idOS'] ?></button></a></td>
                                     <td class="column1"><a class="select-item" href="FormOs2.php?O=<?= $lista['idOS']?>&C=<?= $lista['idCliente']?>&D=<?= $lista['idCarro']?>"><button class="columnButton"><?= $lista['Funcionário'] ?></button></a></td>

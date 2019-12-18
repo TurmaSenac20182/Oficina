@@ -12,11 +12,11 @@
         $total = $_POST['valorTotal'];
         $desc = $_POST['descricao'];
 
-        $dados = tryFimOS($idOS, $idCli, $idCarro, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc);
+        //$dados = tryFimOS($idOS, $idCli, $idCarro, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc);
         //$dados = tryFimOS($idOS, $idCli, $idCarro, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc);
         //testando
 
-        $dados = updateButtonTrue();
+        $dados = updateButtonTrue($idOS);
 
         if($dados) {
             $mensagem = "Ordem de serviço finalizada com sucesso";

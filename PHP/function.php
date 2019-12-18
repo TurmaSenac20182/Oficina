@@ -29,7 +29,7 @@
 
     function retriveSingleCliPOS($id) {
         $con = connection();
-        $query = "select IDCliente, Cliente, CPF, Placa from VIEW_LISTA where IDCliente = $id";
+        $query = "select IDCliente, Cliente, CPF, RG, Telefone, Celular, Email, CEP, Logradouro, Bairro, Numero, cidade, Estado, Complemento, Marca, Modelo, Cor, Placa, Ano from VIEW_LISTA where IDCliente = $id";
         $resultado = mysqli_query($con, $query);
         
         $dados = array();
@@ -56,7 +56,7 @@
     function updateCli($id, $nome, $cpf, $rg, $carro, $contato, $endereco) {
         $con = connection();
         $query = "update cliente set nome = '$nome', cpf = '$cpf', rg = '$rg', carro_cliente = $carro, contato_cliente = $contato, endereco_cliente = $endereco where id = $id";
-        mysql_query($con, $query);
+        mysqli_query($con, $query);
 
         return $query;
     }    
@@ -64,12 +64,12 @@
     function updateOsTRY($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc) {
         $con = connection();
         $query = "update ordemservico as o join cliente as c on o.cliente_ordemServ = c.idCliente set servico_ordemServ = $servico, funcionario = '$funcionario', dataSaida = '$saida', maoDeObra = $maoDeObra, valorTotal, des = $total where id = $idOS";
-        mysql_query($con, $query);
+        mysqli_query($con, $query);
 
         return $query;
     }  
 
-    function getIDS() {
+    function getIDSOS() {
         if($_SERVER['REQUEST_METHOD'] === 'GET') {
             $idOS = $_GET['O'];
             $idCliente = $_GET['C'];
@@ -81,6 +81,17 @@
         }
     }
     
+    function getIDSCli() {
+        if($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $idCliente = $_GET['C'];
+            $idCarro = $_GET['D'];
+
+            $cli = retriveSingleCliPOS($idCliente);
+
+            return $cli;
+        }
+    }
+
     function tryFimOS($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc) {
         $upOS = updateOsTRY($idOS, $funcionario, $maoDeObra, $valorServico, $saida, $total, $desc);
         
@@ -96,9 +107,9 @@
         }
     }
 
-    function updateButtonTrue() {
+    function updateButtonTrue($idOS) {
         $con = connection();
-        $query = "update ordemServico set finalizada = true";
+        $query = "update ordemServico set finalizada = 1 where idordemServico = $idOS";
 
         $result = mysqli_query($con, $query);
         
@@ -117,7 +128,7 @@
         $query = "select finalizada from ordemservico";
         $result = mysqli_query($con, $query);
 
-        if($result == 1) {
+        if($result === 1) {
             return true;
         } else {
             return false;

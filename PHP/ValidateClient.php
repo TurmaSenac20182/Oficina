@@ -1,5 +1,5 @@
 <?php
-include('connection.php');
+include('function.php');
 $conn = connection();
 
 //Declarando as variáveis

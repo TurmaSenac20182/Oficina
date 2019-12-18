@@ -2,14 +2,14 @@
 session_start();
 include('ValidaOS.php');
 
-$dados = getIDS();
+$dados = getIDSOS();
 if (!isset($_SESSION["usuario"]) && !isset($_SESSION["senha"])) {
     header("Location: index.php");
 }
 
     $isClose = verifClose();
 
-    if($isClose) {
+    if($isClose == true) {
         $req = "readonly";
         $btnT = "Ordem já finalizada";
         $btn = "disabled";
